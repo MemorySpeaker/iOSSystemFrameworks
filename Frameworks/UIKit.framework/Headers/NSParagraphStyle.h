@@ -41,6 +41,7 @@ typedef NS_ENUM(NSInteger, NSLineBreakMode) {
 } NS_ENUM_AVAILABLE(10_0, 6_0);
 
 
+// 段落样式
 NS_CLASS_AVAILABLE(10_0, 6_0) @interface NSParagraphStyle : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 
 + (NSParagraphStyle *)defaultParagraphStyle; // This class method returns a shared and cached NSParagraphStyle instance with the default style settings, with same value as the result of [[NSParagraphStyle alloc] init].
@@ -77,8 +78,10 @@ NS_CLASS_AVAILABLE(10_0, 6_0) @interface NSParagraphStyle : NSObject <NSCopying,
 @end
 
 
+// 可变段落样式
 NS_CLASS_AVAILABLE(10_0, 6_0) @interface NSMutableParagraphStyle : NSParagraphStyle
 
+// 行间距
 @property(NS_NONATOMIC_IOSONLY) CGFloat lineSpacing;
 @property(NS_NONATOMIC_IOSONLY) CGFloat paragraphSpacing;
 @property(NS_NONATOMIC_IOSONLY) NSTextAlignment alignment;

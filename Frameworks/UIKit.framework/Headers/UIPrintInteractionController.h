@@ -30,6 +30,7 @@ NS_ENUM_AVAILABLE_IOS(9_0) typedef NS_ENUM(NSInteger, UIPrinterCutterBehavior) {
 
 NS_CLASS_AVAILABLE_IOS(4_2) __TVOS_PROHIBITED @interface UIPrintInteractionController : NSObject
 
+// 是否支持无线打印
 + (BOOL)isPrintingAvailable;                    // return YES if system supports printing. use this to hide HI for unsupported devices.
 
 + (NSSet<NSString *> *)printableUTIs;                       // return set of all document UTI types we can print

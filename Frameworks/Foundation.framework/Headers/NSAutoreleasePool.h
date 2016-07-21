@@ -6,6 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//自动释放池
 NS_AUTOMATED_REFCOUNT_UNAVAILABLE
 @interface NSAutoreleasePool : NSObject {
 @private

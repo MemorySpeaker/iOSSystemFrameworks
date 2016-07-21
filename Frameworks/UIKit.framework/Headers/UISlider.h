@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIImageView, UIImage;
 
+// 滑块
 NS_CLASS_AVAILABLE_IOS(2_0) __TVOS_PROHIBITED @interface UISlider : UIControl <NSCoding>
 
 @property(nonatomic) float value;                                 // default 0.0. this value will be pinned to min/max
