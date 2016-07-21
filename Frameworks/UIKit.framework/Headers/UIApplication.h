@@ -102,6 +102,7 @@ UIKIT_EXTERN const NSTimeInterval UIApplicationBackgroundFetchIntervalNever NS_A
 
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UIApplication : UIResponder
 
+//获取当前应用的单例对象
 + (UIApplication *)sharedApplication NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
 
 @property(nullable, nonatomic,assign) id<UIApplicationDelegate> delegate;
@@ -112,7 +113,9 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIApplication : UIResponder
 
 @property(nonatomic,getter=isIdleTimerDisabled)       BOOL idleTimerDisabled;	  // default is NO
 
+// 执行url操作,返回是否执行完成
 - (BOOL)openURL:(NSURL*)url NS_EXTENSION_UNAVAILABLE_IOS("");
+// 是否能够执行url操作
 - (BOOL)canOpenURL:(NSURL *)url NS_AVAILABLE_IOS(3_0);
 
 - (void)sendEvent:(UIEvent *)event;

@@ -38,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* The basic duration of the object. Defaults to 0. */
 
+// 动画时长,默认为0
 @property CFTimeInterval duration;
 
 /* The rate of the layer. Used to scale parent time to local time, e.g.

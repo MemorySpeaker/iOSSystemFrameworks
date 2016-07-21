@@ -31,6 +31,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIResponder : NSObject
 // touch it is handling (those touches it received in touchesBegan:withEvent:).
 // *** You must handle cancelled touches to ensure correct behavior in your application.  Failure to
 // do so is very likely to lead to incorrect behavior or crashes.
+// 触碰开始
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event;
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event;
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event;

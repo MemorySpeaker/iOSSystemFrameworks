@@ -52,6 +52,7 @@ typedef NS_ENUM(NSInteger, UIImageRenderingMode) {
 
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UIImage : NSObject <NSSecureCoding> 
 
+// 从主bundle中加载名称为name的png图片到内存,图片会被缓存在内存中.
 + (nullable UIImage *)imageNamed:(NSString *)name;      // load from main bundle
 #if __has_include(<UIKit/UITraitCollection.h>)
 + (nullable UIImage *)imageNamed:(NSString *)name inBundle:(nullable NSBundle *)bundle compatibleWithTraitCollection:(nullable UITraitCollection *)traitCollection NS_AVAILABLE_IOS(8_0);

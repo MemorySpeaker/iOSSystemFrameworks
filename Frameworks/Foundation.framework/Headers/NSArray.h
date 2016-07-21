@@ -85,7 +85,9 @@ typedef NS_OPTIONS(NSUInteger, NSBinarySearchingOptions) {
 
 @interface NSArray<ObjectType> (NSArrayCreation)
 
+//实例化一个空数组
 + (instancetype)array;
+// 实例化一个只包含anObject的数组
 + (instancetype)arrayWithObject:(ObjectType)anObject;
 + (instancetype)arrayWithObjects:(const ObjectType [])objects count:(NSUInteger)cnt;
 + (instancetype)arrayWithObjects:(ObjectType)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
@@ -114,6 +116,7 @@ typedef NS_OPTIONS(NSUInteger, NSBinarySearchingOptions) {
 
 @interface NSMutableArray<ObjectType> : NSArray<ObjectType>
 
+// 添加anObject到数组
 - (void)addObject:(ObjectType)anObject;
 - (void)insertObject:(ObjectType)anObject atIndex:(NSUInteger)index;
 - (void)removeLastObject;

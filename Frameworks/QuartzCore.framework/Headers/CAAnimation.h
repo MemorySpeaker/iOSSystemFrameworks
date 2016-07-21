@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* Creates a new animation object. */
 
+// 创建一个新的动画对象;常被子类调用来生成相应的子类对象
 + (instancetype)animation;
 
 /* Animations implement the same property model as defined by CALayer.
@@ -267,19 +268,19 @@ CA_EXTERN NSString * const kCAAnimationRotateAutoReverse
 @end
 
 /** Transition animation subclass. **/
-
+// 过渡动画
 @interface CATransition : CAAnimation
 
 /* The name of the transition. Current legal transition types include
  * `fade', `moveIn', `push' and `reveal'. Defaults to `fade'. */
-
+// 过渡动画类型,例如:@"cube"立方体  
 @property(copy) NSString *type;
 
 /* An optional subtype for the transition. E.g. used to specify the
  * transition direction for motion-based transitions, in which case
  * the legal values are `fromLeft', `fromRight', `fromTop' and
  * `fromBottom'. */
-
+//过渡动画子类型,指定动画过渡的方向.
 @property(nullable, copy) NSString *subtype;
 
 /* The amount of progress through to the transition at which to begin
@@ -303,6 +304,8 @@ CA_EXTERN NSString * const kCAAnimationRotateAutoReverse
 
 /* Common transition types. */
 
+// 过渡动画类型
+// 淡入淡出
 CA_EXTERN NSString * const kCATransitionFade
     __OSX_AVAILABLE_STARTING (__MAC_10_5, __IPHONE_2_0);
 CA_EXTERN NSString * const kCATransitionMoveIn
@@ -314,12 +317,17 @@ CA_EXTERN NSString * const kCATransitionReveal
 
 /* Common transition subtypes. */
 
+// 过渡动画子类型
+// 从右开始
 CA_EXTERN NSString * const kCATransitionFromRight
     __OSX_AVAILABLE_STARTING (__MAC_10_5, __IPHONE_2_0);
+// 从左开始
 CA_EXTERN NSString * const kCATransitionFromLeft
     __OSX_AVAILABLE_STARTING (__MAC_10_5, __IPHONE_2_0);
+// 从上开始
 CA_EXTERN NSString * const kCATransitionFromTop
     __OSX_AVAILABLE_STARTING (__MAC_10_5, __IPHONE_2_0);
+// 从下开始
 CA_EXTERN NSString * const kCATransitionFromBottom
     __OSX_AVAILABLE_STARTING (__MAC_10_5, __IPHONE_2_0);
 

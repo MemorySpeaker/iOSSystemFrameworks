@@ -65,8 +65,10 @@ FOUNDATION_EXPORT NSString *NSURLFileScheme;
 
 /* These methods expect their string arguments to contain any percent escape codes that are necessary. It is an error for URLString to be nil.
  */
+//使用URLString字符串实例化:例如,@"tel://110",@"sms://110",@"http://so.com"
 - (nullable instancetype)initWithString:(NSString *)URLString;
 - (nullable instancetype)initWithString:(NSString *)URLString relativeToURL:(nullable NSURL *)baseURL NS_DESIGNATED_INITIALIZER;
+//使用URLString字符串直接实例化对象
 + (nullable instancetype)URLWithString:(NSString *)URLString;
 + (nullable instancetype)URLWithString:(NSString *)URLString relativeToURL:(nullable NSURL *)baseURL;
 

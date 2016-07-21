@@ -343,6 +343,7 @@ FOUNDATION_EXPORT NSString * const NSStringTransformStripDiacritics         NS_A
 + (instancetype)stringWithString:(NSString *)string;
 + (instancetype)stringWithCharacters:(const unichar *)characters length:(NSUInteger)length;
 + (nullable instancetype)stringWithUTF8String:(const char *)nullTerminatedCString;
+// 以format格式实例化一个字符串
 + (instancetype)stringWithFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 + (instancetype)localizedStringWithFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 

@@ -678,6 +678,7 @@ typedef NS_OPTIONS (unsigned int, CAEdgeAntialiasingMask)
  * subsequent modifications to `anim' will have no affect unless it is
  * added to another layer. */
 
+// 为图层添加动画anim,对应的键为key
 - (void)addAnimation:(CAAnimation *)anim forKey:(nullable NSString *)key;
 
 /* Remove all animations attached to the layer. */
