@@ -79,6 +79,7 @@ extern NSString * const NSUbiquityIdentityDidChangeNotification NS_AVAILABLE(10_
 
 /* Returns the default singleton instance.
 */
+// 文件管理器的单例对象方法
 + (NSFileManager *)defaultManager;
 
 /* -mountedVolumeURLsIncludingResourceValuesForKeys:options: returns an NSArray of NSURLs locating the mounted volumes available on the computer. The property keys that can be requested are available in <Foundation/NSURL.h>.
@@ -144,6 +145,7 @@ extern NSString * const NSUbiquityIdentityDidChangeNotification NS_AVAILABLE(10_
  
     This method replaces directoryContentsAtPath:
  */
+//获取path下所有文件和子目录,不会递归子目录
 - (nullable NSArray<NSString *> *)contentsOfDirectoryAtPath:(NSString *)path error:(NSError **)error NS_AVAILABLE(10_5, 2_0);
 
 /* subpathsOfDirectoryAtPath:error: returns an NSArray of NSStrings representing the filenames of the items in the specified directory and all its subdirectories recursively. If this method returns 'nil', an NSError will be returned by reference in the 'error' parameter. If the directory contains no items, this method will return the empty array.
@@ -220,11 +222,17 @@ extern NSString * const NSUbiquityIdentityDidChangeNotification NS_AVAILABLE(10_
 
 /* The following methods are of limited utility. Attempting to predicate behavior based on the current state of the filesystem or a particular file on the filesystem is encouraging odd behavior in the face of filesystem race conditions. It's far better to attempt an operation (like loading a file or creating a directory) and handle the error gracefully than it is to try to figure out ahead of time whether the operation will succeed.
  */
+// path指定的文件或目录是否存在
 - (BOOL)fileExistsAtPath:(NSString *)path;
+// path指定的文件或目录是否存在,isDirectory需要传址,保存了path是否是目录
 - (BOOL)fileExistsAtPath:(NSString *)path isDirectory:(nullable BOOL *)isDirectory;
+// path指定的文件或目录是否是否可读
 - (BOOL)isReadableFileAtPath:(NSString *)path;
+// path指定的文件或目录是否可写
 - (BOOL)isWritableFileAtPath:(NSString *)path;
+// path指定的文件或目录是否可执行
 - (BOOL)isExecutableFileAtPath:(NSString *)path;
+// path指定的文件或目录是否可删除
 - (BOOL)isDeletableFileAtPath:(NSString *)path;
 
 /* -contentsEqualAtPath:andPath: does not take into account data stored in the resource fork or filesystem extended attributes.
@@ -241,6 +249,7 @@ extern NSString * const NSUbiquityIdentityDidChangeNotification NS_AVAILABLE(10_
 
 /* enumeratorAtPath: returns an NSDirectoryEnumerator rooted at the provided path. If the enumerator cannot be created, this returns NULL. Because NSDirectoryEnumerator is a subclass of NSEnumerator, the returned object can be used in the for...in construct.
  */
+// 获取path目录下的所有文件及子目录的目录过滤器,该方法会递归所有子目录
 - (nullable NSDirectoryEnumerator<NSString *> *)enumeratorAtPath:(NSString *)path;
 
 /* enumeratorAtURL:includingPropertiesForKeys:options:errorHandler: returns an NSDirectoryEnumerator rooted at the provided directory URL. The NSDirectoryEnumerator returns NSURLs from the -nextObject method. The optional 'includingPropertiesForKeys' parameter indicates which resource properties should be pre-fetched and cached with each enumerated URL. The optional 'errorHandler' block argument is invoked when an error occurs. Parameters to the block are the URL on which an error occurred and the error. When the error handler returns YES, enumeration continues if possible. Enumeration stops immediately when the error handler returns NO.
@@ -383,6 +392,7 @@ extern NSString * const NSUbiquityIdentityDidChangeNotification NS_AVAILABLE(10_
 @end
 
 
+// 目录枚举器
 @interface NSDirectoryEnumerator<ObjectType> : NSEnumerator<ObjectType>
 
 /* For NSDirectoryEnumerators created with -enumeratorAtPath:, the -fileAttributes and -directoryAttributes methods return an NSDictionary containing the keys listed below. For NSDirectoryEnumerators created with -enumeratorAtURL:includingPropertiesForKeys:options:errorHandler:, these two methods return nil.

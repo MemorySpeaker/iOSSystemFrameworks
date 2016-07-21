@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <LocalAuthentication/LAPublicDefines.h>
 
+// 一些错误情况枚举
 typedef NS_ENUM(NSInteger, LAError)
 {
     /// Authentication was not successful, because user failed to provide valid credentials.
@@ -45,4 +46,5 @@ typedef NS_ENUM(NSInteger, LAError)
 } NS_ENUM_AVAILABLE(10_10, 8_0);
 
 /// LocalAuthentication error domain.
+//错误域:"com.apple.LocalAuthentication"
 extern NSString *const __nonnull LAErrorDomain NS_AVAILABLE(10_10, 8_3);

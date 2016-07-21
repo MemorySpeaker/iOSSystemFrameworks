@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly, copy) NSString *lastPathComponent;
 @property (readonly, copy) NSString *stringByDeletingLastPathComponent;
+// 将str作为路径的一部分添加到对象后来生成新的文件路径
 - (NSString *)stringByAppendingPathComponent:(NSString *)str;
 
 @property (readonly, copy) NSString *pathExtension;

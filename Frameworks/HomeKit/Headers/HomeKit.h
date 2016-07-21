@@ -3,6 +3,8 @@
 //
 // Copyright (c) 2014-2015 Apple Inc. All rights reserved.
 
+// 用于开发智能家居相关的应用程序
+
 #import <HomeKit/HMHomeManager.h>
 #import <HomeKit/HMAccessoryBrowser.h>
 #import <HomeKit/HMHome.h>

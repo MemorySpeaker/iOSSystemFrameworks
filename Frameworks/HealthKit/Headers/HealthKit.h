@@ -5,6 +5,8 @@
 //  Copyright (c) 2013-2014 Apple Inc. All rights reserved.
 //
 
+// 收集和分析用户的健康数据
+
 #import <HealthKit/HKActivitySummary.h>
 #import <HealthKit/HKActivitySummaryQuery.h>
 #import <HealthKit/HKAnchoredObjectQuery.h>

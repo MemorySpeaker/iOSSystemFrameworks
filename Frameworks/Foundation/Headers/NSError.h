@@ -49,11 +49,14 @@ FOUNDATION_EXPORT NSString *const NSFilePathErrorKey;         // NSString
 
 /* These define the error. Domains are described by names that are arbitrary strings used to differentiate groups of codes; for custom domain using reverse-DNS naming will help avoid conflicts. Codes are domain-specific.
 */
+// 错误域:表示错误发生在什么范围内
 @property (readonly, copy) NSString *domain;
+// 错误码
 @property (readonly) NSInteger code;
 
 /* Additional info which may be used to describe the error further. Examples of keys that might be included in here are "Line Number", "Failed URL", etc. Embedding other errors in here can also be used as a way to communicate underlying reasons for failures; for instance "File System Error" embedded in the userInfo of an NSError returned from a higher level document object. If the embedded error information is itself NSError, the standard key NSUnderlyingErrorKey can be used.
 */
+// 错误的附加信息
 @property (readonly, copy) NSDictionary *userInfo;
 
 /* The primary user-presentable message for the error, for instance for NSFileReadNoPermissionError: "The file "File Name" couldn't be opened because you don't have permission to view it.". By default this looks for NSLocalizedDescriptionKey in the user info. If not present, it consults the userInfoValueProvider for the domain, and if that returns nil, it manufactures a last-resort string from the domain and code. This manufactured result is likely not suitable for presentation to the user, but can be used in logs or debugging.

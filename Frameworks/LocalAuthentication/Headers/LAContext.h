@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 验证策略
 typedef NS_ENUM(NSInteger, LAPolicy)
 {
     /// Device owner was authenticated using a biometric method (Touch ID).
@@ -26,6 +27,7 @@ typedef NS_ENUM(NSInteger, LAPolicy)
     ///
     ///             Biometric authentication will get locked after 5 unsuccessful attempts. After that,
     ///             users have to unlock it by entering passcode.
+    //只使用TouchID验证
     LAPolicyDeviceOwnerAuthenticationWithBiometrics NS_ENUM_AVAILABLE(NA, 8_0) = kLAPolicyDeviceOwnerAuthenticationWithBiometrics,
 
     /// Device owner was authenticated by Touch ID or device passcode.
@@ -41,6 +43,7 @@ typedef NS_ENUM(NSInteger, LAPolicy)
     ///
     ///             Passcode authentication will get locked after 6 unsuccessful attempts with progressively
     ///             increased backoff delay.
+    // 使用TouchID或者密码.优先使用TouchID,如果TouchID无法使用则使用密码
     LAPolicyDeviceOwnerAuthentication NS_ENUM_AVAILABLE(10_11, 9_0) = kLAPolicyDeviceOwnerAuthentication
 
 } NS_ENUM_AVAILABLE(10_10, 8_0);
@@ -53,6 +56,7 @@ extern const NSTimeInterval LATouchIDAuthenticationMaximumAllowableReuseDuration
 /// @discussion This context can be used for evaluating policies.
 ///
 /// @see LAPolicy
+// 认证的上下文环境
 NS_CLASS_AVAILABLE(10_10, 8_0)
 @interface LAContext : NSObject
 
@@ -75,6 +79,7 @@ NS_CLASS_AVAILABLE(10_10, 8_0)
 ///              contains error information if policy evaluation is not possible.
 ///
 /// @return YES if the policy can be evaluated, NO otherwise.
+// 判断是否能够认证TouchID;不能认证时error指向错误信息,要传一个错误对象的地址,例如:NSError *error = nil;则传入&error
 - (BOOL)canEvaluatePolicy:(LAPolicy)policy error:(NSError * __autoreleasing *)error __attribute__((swift_error(none)));
 
 /// Evaluates the specified policy.
@@ -119,6 +124,7 @@ NS_CLASS_AVAILABLE(10_10, 8_0)
 /// @li          LAErrorUserFallback if user tapped the fallback button
 /// @li          LAErrorUserCancel if user has tapped the Cancel button
 /// @li          LAErrorSystemCancel if some system event interrupted the evaluation (e.g. Home button pressed).
+// 认证TouchID:policy代表验证策略;localizedReason用于提示用户验证时显示;在块中处理验证结果
 - (void)evaluatePolicy:(LAPolicy)policy
        localizedReason:(NSString *)localizedReason
                  reply:(void(^)(BOOL success, NSError * __nullable error))reply;
@@ -133,6 +139,7 @@ NS_CLASS_AVAILABLE(10_10, 8_0)
 ///             used for policy evaluation and an attempt to do so will fail with LAErrorInvalidContext.
 ///
 ///             Invalidating a context that has been already invalidated has no effect.
+// 手动注销验证的上下文环境,使其失效
 - (void)invalidate NS_AVAILABLE(10_11, 9_0);
 
 typedef NS_ENUM(NSInteger, LACredentialType)

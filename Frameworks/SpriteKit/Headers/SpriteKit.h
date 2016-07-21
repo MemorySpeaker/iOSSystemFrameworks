@@ -5,6 +5,8 @@
 //  Copyright (c) 2011 Apple, Inc. All rights reserved.
 //
 
+// 2D游戏开发框架,iOS7+
+
 #import <SpriteKit/SKScene.h>
 #import <SpriteKit/SKCameraNode.h>
 #import <SpriteKit/SKNode.h>

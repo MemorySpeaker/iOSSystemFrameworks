@@ -5,6 +5,7 @@
 //  Copyright (c) 2014 Apple. All rights reserved.
 //
 
+// 一些公用的宏定义
 #ifndef LocalAuthentication_LAPublicDefines_h
 #define LocalAuthentication_LAPublicDefines_h
 
@@ -29,6 +30,7 @@
 #define kLAErrorInvalidContext                            -10
 
 // Error domain
+// 错误域
 #define kLAErrorDomain        "com.apple.LocalAuthentication"
 
 #endif

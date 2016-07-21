@@ -33,6 +33,7 @@ typedef struct {
 
 @interface NSEnumerator<ObjectType> : NSObject <NSFastEnumeration>
 
+// 获取枚举器指向的下一个对象
 - (nullable ObjectType)nextObject;
 
 @end
