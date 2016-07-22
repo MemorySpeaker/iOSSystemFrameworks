@@ -3,12 +3,14 @@
    Copyright (c) 2006-2016, Apple Inc.
    All rights reserved. */
 
+// 核心动画
 #ifndef COREANIMATION_H
 #define COREANIMATION_H
 
 #include <QuartzCore/CABase.h>
 #include <QuartzCore/CATransform3D.h>
 
+// 只有在OC环境下才引入相关文件
 #ifdef __OBJC__
 #import <Foundation/Foundation.h>
 #import <QuartzCore/CAAnimation.h>

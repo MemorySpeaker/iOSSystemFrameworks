@@ -27,6 +27,7 @@ typedef NS_OPTIONS (unsigned int, CAEdgeAntialiasingMask)
 
 /** The base layer class. **/
 
+// 基础图层类
 @interface CALayer : NSObject <NSCoding, CAMediaTiming>
 {
 @private
@@ -42,6 +43,7 @@ typedef NS_OPTIONS (unsigned int, CAEdgeAntialiasingMask)
 
 /** Layer creation and initialization. **/
 
+// 快速创建一个图层对象
 + (instancetype)layer;
 
 /* The designated initializer. */

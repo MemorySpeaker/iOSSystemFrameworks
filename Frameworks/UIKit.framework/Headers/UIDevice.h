@@ -10,13 +10,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 设备朝向枚举
 typedef NS_ENUM(NSInteger, UIDeviceOrientation) {
-    UIDeviceOrientationUnknown,
+    //未知
+    UIDeviceOrientationUnknown, 
+    //竖直,home键在下
     UIDeviceOrientationPortrait,            // Device oriented vertically, home button on the bottom
+    // 竖直,home键在上
     UIDeviceOrientationPortraitUpsideDown,  // Device oriented vertically, home button on the top
+    // 横向,home键在左
     UIDeviceOrientationLandscapeLeft,       // Device oriented horizontally, home button on the right
+    // 横向,home键在右
     UIDeviceOrientationLandscapeRight,      // Device oriented horizontally, home button on the left
+    //水平放置,正面在上
     UIDeviceOrientationFaceUp,              // Device oriented flat, face up
+    //水平放置,正面在下
     UIDeviceOrientationFaceDown             // Device oriented flat, face down
 } __TVOS_PROHIBITED;
 
@@ -35,16 +43,20 @@ typedef NS_ENUM(NSInteger, UIUserInterfaceIdiom) {
     UIUserInterfaceIdiomCarPlay NS_ENUM_AVAILABLE_IOS(9_0), // CarPlay style UI
 };
 
+// 当前设备竖直朝向
 static inline BOOL UIDeviceOrientationIsPortrait(UIDeviceOrientation orientation)  __TVOS_PROHIBITED {
     return ((orientation) == UIDeviceOrientationPortrait || (orientation) == UIDeviceOrientationPortraitUpsideDown);
 }
 
+// 当前设备是否横向
 static inline BOOL UIDeviceOrientationIsLandscape(UIDeviceOrientation orientation)  __TVOS_PROHIBITED {
     return ((orientation) == UIDeviceOrientationLandscapeLeft || (orientation) == UIDeviceOrientationLandscapeRight);
 }
 
+// 设备对象
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UIDevice : NSObject 
 
+// 当前设备的单例对象方法
 + (UIDevice *)currentDevice;
 
 @property(nonatomic,readonly,strong) NSString    *name;              // e.g. "My iPhone"

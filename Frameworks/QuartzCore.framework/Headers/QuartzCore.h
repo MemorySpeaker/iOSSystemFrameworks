@@ -6,6 +6,7 @@
 #ifndef QUARTZCORE_H
 #define QUARTZCORE_H
 
+// 核心动画
 #include <QuartzCore/CoreAnimation.h>
 
 #endif /* QUARTZCORE_H */

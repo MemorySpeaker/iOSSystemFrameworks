@@ -259,6 +259,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIViewController : UIResponder <NSCoding,
 @end
 
 // To make it more convenient for applications to adopt rotation, a view controller may implement the below methods. Your UIWindow's frame should use [UIScreen mainScreen].bounds as its frame.
+// 与界面旋转相关的扩展
 @interface UIViewController (UIViewControllerRotation)
 
 // call this method when your return value from shouldAutorotateToInterfaceOrientation: changes
@@ -266,12 +267,17 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIViewController : UIResponder <NSCoding,
 + (void)attemptRotationToDeviceOrientation NS_AVAILABLE_IOS(5_0) __TVOS_PROHIBITED;
 
 // Applications should use supportedInterfaceOrientations and/or shouldAutorotate..
+// 界面将要转向toInterfaceOrientation,是否支持
+// 该方法6.0+已过时,使用supportedInterfaceOrientations 和/或 shouldAutorotate来代替
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation NS_DEPRECATED_IOS(2_0, 6_0) __TVOS_PROHIBITED;
 
 // New Autorotation support.
+// 是否支持自动旋转
 - (BOOL)shouldAutorotate NS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED;
+// 如果shouldAutorotate返回YES,这里返回的UIInterfaceOrientationMask决定了支持哪些方向
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations NS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED;
 // Returns interface orientation masks.
+// 返回优先的界面朝向,也就是一开始时的原始朝向
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation NS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED;
 
 // The rotating header and footer views will slide out during the rotation and back in once it has completed.
@@ -338,6 +344,7 @@ UIKIT_EXTERN NSString *const UIViewControllerHierarchyInconsistencyException NS_
   Removes the the receiver from its parent's children controllers array. If this method is overridden then
   the super implementation must be called.
 */
+// 将receiver从父控件的子控制器数组中移除,如果该方法被覆写,则父类实现一定要被调用
 - (void) removeFromParentViewController NS_AVAILABLE_IOS(5_0);
 
 /*

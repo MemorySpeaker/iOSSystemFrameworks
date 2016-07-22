@@ -13,11 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIWindow, UIView, UIGestureRecognizer, UITouch;
 
+// 事件类型枚举
 typedef NS_ENUM(NSInteger, UIEventType) {
-    UIEventTypeTouches,
-    UIEventTypeMotion,
-    UIEventTypeRemoteControl,
-    UIEventTypePresses NS_ENUM_AVAILABLE_IOS(9_0),
+    UIEventTypeTouches, //多点触摸事件
+    UIEventTypeMotion,  //行动事件
+    UIEventTypeRemoteControl,  //远程控制事件
+    UIEventTypePresses NS_ENUM_AVAILABLE_IOS(9_0),  //按压事件
 };
 
 typedef NS_ENUM(NSInteger, UIEventSubtype) {
@@ -41,6 +42,7 @@ typedef NS_ENUM(NSInteger, UIEventSubtype) {
 };
 
 
+// 事件对象
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UIEvent : NSObject
 
 @property(nonatomic,readonly) UIEventType     type NS_AVAILABLE_IOS(3_0);

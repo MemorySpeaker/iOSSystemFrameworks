@@ -23,43 +23,65 @@ typedef NS_ENUM(NSInteger, UIStatusBarStyle) {
     UIStatusBarStyleBlackOpaque      NS_ENUM_DEPRECATED_IOS(2_0, 7_0, "Use UIStatusBarStyleLightContent") = 2,
 } __TVOS_PROHIBITED;
 
+// 状态条动画效果枚举
 typedef NS_ENUM(NSInteger, UIStatusBarAnimation) {
-    UIStatusBarAnimationNone,
+    //无动画
+    UIStatusBarAnimationNone, 
+    // 淡入淡出
     UIStatusBarAnimationFade NS_ENUM_AVAILABLE_IOS(3_2),
+    // 滑动效果
     UIStatusBarAnimationSlide NS_ENUM_AVAILABLE_IOS(3_2),
 } __TVOS_PROHIBITED;
 
 // Note that UIInterfaceOrientationLandscapeLeft is equal to UIDeviceOrientationLandscapeRight (and vice versa).
 // This is because rotating the device to the left requires rotating the content to the right.
+// 界面朝向枚举;注意这里横向时值与device的枚举相反,这是因为旋转设备向左时内容需要反方向向右旋转
 typedef NS_ENUM(NSInteger, UIInterfaceOrientation) {
+    // 未知
     UIInterfaceOrientationUnknown            = UIDeviceOrientationUnknown,
+    // 竖向,home键在下
     UIInterfaceOrientationPortrait           = UIDeviceOrientationPortrait,
+    //竖向,home键在上
     UIInterfaceOrientationPortraitUpsideDown = UIDeviceOrientationPortraitUpsideDown,
+    // 横向,home键在右
     UIInterfaceOrientationLandscapeLeft      = UIDeviceOrientationLandscapeRight,
+    // 横向,home键在左
     UIInterfaceOrientationLandscapeRight     = UIDeviceOrientationLandscapeLeft
 } __TVOS_PROHIBITED;
 
 /* This exception is raised if supportedInterfaceOrientations returns 0, or if preferredInterfaceOrientationForPresentation
    returns an orientation that is not supported.
 */
+// 朝向异常,当supportedInterfaceOrientations方法返回0,或者preferredInterfaceOrientationForPresentation返回一个无效值是该异常被触发
 UIKIT_EXTERN NSString *const UIApplicationInvalidInterfaceOrientationException NS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED;
 
+// 界面朝向枚举的位移形式值,在原有枚举值得基础上左移一位.好处是可以通过|运算来生成一个表示多个值意义的单值
 typedef NS_OPTIONS(NSUInteger, UIInterfaceOrientationMask) {
+    // 竖向,home键在下
     UIInterfaceOrientationMaskPortrait = (1 << UIInterfaceOrientationPortrait),
+    // 横向,home键在右
     UIInterfaceOrientationMaskLandscapeLeft = (1 << UIInterfaceOrientationLandscapeLeft),
+    // 横向,home键在左
     UIInterfaceOrientationMaskLandscapeRight = (1 << UIInterfaceOrientationLandscapeRight),
+    // 竖向,home键在上
     UIInterfaceOrientationMaskPortraitUpsideDown = (1 << UIInterfaceOrientationPortraitUpsideDown),
+    // 横向
     UIInterfaceOrientationMaskLandscape = (UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight),
+    // 所有朝向
     UIInterfaceOrientationMaskAll = (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskPortraitUpsideDown),
+    // 除了home键在上的竖向以外的所有朝向
     UIInterfaceOrientationMaskAllButUpsideDown = (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight),
 } __TVOS_PROHIBITED;
 
+// orientation是否是一个有效的朝向值
 #define UIDeviceOrientationIsValidInterfaceOrientation(orientation) ((UIDeviceOrientation)(orientation) == UIDeviceOrientationPortrait || (UIDeviceOrientation)(orientation) == UIDeviceOrientationPortraitUpsideDown || (UIDeviceOrientation)(orientation) == UIDeviceOrientationLandscapeLeft || (UIDeviceOrientation)(orientation) == UIDeviceOrientationLandscapeRight)
 
+// 判断orientation是否是竖屏
 static inline BOOL UIInterfaceOrientationIsPortrait(UIInterfaceOrientation orientation) __TVOS_PROHIBITED {
     return ((orientation) == UIInterfaceOrientationPortrait || (orientation) == UIInterfaceOrientationPortraitUpsideDown);
 }
 
+// 判断orientation是否是横屏
 static inline BOOL UIInterfaceOrientationIsLandscape(UIInterfaceOrientation orientation) __TVOS_PROHIBITED {
     return ((orientation) == UIInterfaceOrientationLandscapeLeft || (orientation) == UIInterfaceOrientationLandscapeRight);
 }
@@ -84,12 +106,17 @@ typedef NS_ENUM(NSInteger, UIBackgroundRefreshStatus) {
     UIBackgroundRefreshStatusAvailable   //< enabled for this application
 } NS_ENUM_AVAILABLE_IOS(7_0) __TVOS_PROHIBITED;
     
+// 应用状态枚举
 typedef NS_ENUM(NSInteger, UIApplicationState) {
+    // 活动态
     UIApplicationStateActive,
+    // 非活动态
     UIApplicationStateInactive,
+    // 处于后台
     UIApplicationStateBackground
 } NS_ENUM_AVAILABLE_IOS(4_0);
 
+// 定义UIBackgroundTaskIdentifier类型
 typedef NSUInteger UIBackgroundTaskIdentifier;
 UIKIT_EXTERN const UIBackgroundTaskIdentifier UIBackgroundTaskInvalid  NS_AVAILABLE_IOS(4_0);
 UIKIT_EXTERN const NSTimeInterval UIMinimumKeepAliveTimeout  NS_AVAILABLE_IOS(4_0);
