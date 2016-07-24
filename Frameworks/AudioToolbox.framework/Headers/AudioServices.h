@@ -85,6 +85,7 @@ CF_ENUM(OSStatus)
     @abstract       SystemSoundIDs are created by the System Sound client application
                     for playback of a provided AudioFile.
 */
+//定义SystemSoundID类型,SystemSoundID由系统根据提供的音频文件分配
 typedef UInt32      SystemSoundID;
 
 /*!
@@ -185,6 +186,15 @@ CF_ENUM(AudioServicesPropertyID)
     @param          outSystemSoundID
                         Returns a SystemSoundID.
 */
+//为inFileURL对应的音频文件分配一个系统声音ID,outSystemSoundID要传入一个SystemSoundID的地址
+/*例如:
+
+NSURL *url = [[NSBundle mainBundle]URLForResource:soundName withExtension:nil];
+ // 创建声音Id
+ SystemSoundID soundId;
+ AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundId);
+ 
+ */
 extern OSStatus 
 AudioServicesCreateSystemSoundID(   CFURLRef                    inFileURL,
                                     SystemSoundID*              outSystemSoundID)
@@ -338,6 +348,7 @@ AudioServicesPlayAlertSound(SystemSoundID inSystemSoundID)
     @param          inSystemSoundID
                         A SystemSoundID for the System Sound server to play.
 */
+//播放一次inSystemSoundID对应的音频                        
 extern void 
 AudioServicesPlaySystemSound(SystemSoundID inSystemSoundID)                                         
                                                                 __OSX_AVAILABLE_STARTING(__MAC_10_5,__IPHONE_2_0);

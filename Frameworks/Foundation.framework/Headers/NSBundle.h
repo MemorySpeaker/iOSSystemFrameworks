@@ -28,7 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 /* Methods for creating or retrieving bundle instances. */
+//获取应用程序默认包对象(最常用)
 + (NSBundle *)mainBundle;
+// 根据path路径生成包对象
 + (nullable instancetype)bundleWithPath:(NSString *)path;
 - (nullable instancetype)initWithPath:(NSString *)path NS_DESIGNATED_INITIALIZER;
 
@@ -77,6 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSURL *)URLForResource:(nullable NSString *)name withExtension:(nullable NSString *)ext subdirectory:(nullable NSString *)subpath inBundleWithURL:(NSURL *)bundleURL NS_AVAILABLE(10_6, 4_0);
 + (nullable NSArray<NSURL *> *)URLsForResourcesWithExtension:(nullable NSString *)ext subdirectory:(nullable NSString *)subpath inBundleWithURL:(NSURL *)bundleURL NS_AVAILABLE(10_6, 4_0);
 
+// 在包对象中寻找名称为name,扩展名为ext的文件,并返回其url,没有找到返回nil
 - (nullable NSURL *)URLForResource:(nullable NSString *)name withExtension:(nullable NSString *)ext NS_AVAILABLE(10_6, 4_0);
 - (nullable NSURL *)URLForResource:(nullable NSString *)name withExtension:(nullable NSString *)ext subdirectory:(nullable NSString *)subpath NS_AVAILABLE(10_6, 4_0);
 - (nullable NSURL *)URLForResource:(nullable NSString *)name withExtension:(nullable NSString *)ext subdirectory:(nullable NSString *)subpath localization:(nullable NSString *)localizationName NS_AVAILABLE(10_6, 4_0);

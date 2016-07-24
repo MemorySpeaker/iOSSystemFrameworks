@@ -43,9 +43,12 @@ typedef NS_ENUM(NSInteger, UIImageResizingMode) {
 
 /* Images are created with UIImageRenderingModeAutomatic by default. An image with this mode is interpreted as a template image or an original image based on the context in which it is rendered. For example, navigation bars, tab bars, toolbars, and segmented controls automatically treat their foreground images as templates, while image views and web views treat their images as originals. You can use UIImageRenderingModeAlwaysTemplate to force your image to always be rendered as a template or UIImageRenderingModeAlwaysOriginal to force your image to always be rendered as an original.
  */
+// 图片渲染模式枚举
 typedef NS_ENUM(NSInteger, UIImageRenderingMode) {
+    // 默认
     UIImageRenderingModeAutomatic,          // Use the default rendering mode for the context where the image is used
     
+    // 渲染为图片原生样式
     UIImageRenderingModeAlwaysOriginal,     // Always draw the original image, without treating it as a template
     UIImageRenderingModeAlwaysTemplate,     // Always draw the image as a template image, ignoring its color information
 } NS_ENUM_AVAILABLE_IOS(7_0);
@@ -121,7 +124,9 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIImage : NSObject <NSSecureCoding>
 @property(nonatomic,readonly) UIEdgeInsets alignmentRectInsets NS_AVAILABLE_IOS(6_0);
 
 // Create a version of this image with the specified rendering mode. By default, images have a rendering mode of UIImageRenderingModeAutomatic.
+//生成以renderingMode为模式渲染的图片对象,默认为UIImageRenderingModeAutomatic
 - (UIImage *)imageWithRenderingMode:(UIImageRenderingMode)renderingMode NS_AVAILABLE_IOS(7_0);
+// 获取当前图片对象的渲染模式
 @property(nonatomic, readonly) UIImageRenderingMode renderingMode NS_AVAILABLE_IOS(7_0);
 
 #if __has_include(<UIKit/UITraitCollection.h>)

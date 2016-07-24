@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class AVAudioSessionChannelDescription;
 @protocol AVAudioPlayerDelegate;
 
+// 音频播放器
 NS_CLASS_AVAILABLE(10_7, 2_2)
 @interface AVAudioPlayer : NSObject {
 @private
@@ -29,7 +30,9 @@ NS_CLASS_AVAILABLE(10_7, 2_2)
 */
 
 /* all data must be in the form of an audio file understood by CoreAudio */
+// 根据音频文件url实例化一个音频播放对象
 - (nullable instancetype)initWithContentsOfURL:(NSURL *)url error:(NSError **)outError;
+// 根据音频文件data实例化一个音频播放对象
 - (nullable instancetype)initWithData:(NSData *)data error:(NSError **)outError;
 
 /* The file type hint is a constant defined in AVMediaFormat.h whose value is a UTI for a file format. e.g. AVFileTypeAIFF. */
@@ -39,14 +42,19 @@ NS_CLASS_AVAILABLE(10_7, 2_2)
 
 /* transport control */
 /* methods that return BOOL return YES on success and NO on failure. */
+//播放前进行准备就绪,其实play方法会默认调用该方法
 - (BOOL)prepareToPlay;	/* get ready to play the sound. happens automatically on play. */
+// 异步播放音频
 - (BOOL)play;			/* sound is played asynchronously. */
 - (BOOL)playAtTime:(NSTimeInterval)time NS_AVAILABLE(10_7, 4_0); /* play a sound some time in the future. time is an absolute time based on and greater than deviceCurrentTime. */
+// 暂停播放,但仍处于准备播放状态
 - (void)pause;			/* pauses playback, but remains ready to play. */
+//停止播放,不再处于准备播放状态
 - (void)stop;			/* stops playback. no longer ready to play. */
 
 /* properties */
 
+// 当前是否正在播放
 @property(readonly, getter=isPlaying) BOOL playing; /* is it playing or not? */
 
 @property(readonly) NSUInteger numberOfChannels;
@@ -60,6 +68,7 @@ NS_CLASS_AVAILABLE(10_7, 2_2)
 @property(readonly, nullable) NSData *data; /* returns nil if object was not created with a data object */
 
 @property float pan NS_AVAILABLE(10_7, 4_0); /* set panning. -1.0 is left, 0.0 is center, 1.0 is right. */
+// 音量:0.0~1.0
 @property float volume; /* The volume for the sound. The nominal range is from 0.0 to 1.0. */
 
 @property BOOL enableRate NS_AVAILABLE(10_8, 5_0); /* You must set enableRate to YES for the rate property to take effect. You must set this before calling prepareToPlay. */
@@ -78,6 +87,7 @@ A value of zero means to play the sound just once.
 A value of one will result in playing the sound twice, and so on..
 Any negative number will loop indefinitely until stopped.
 */
+// 音频播放次数:如果是非负数n,则播放n+1次;如果为负数则无限轮播直到停止
 @property NSInteger numberOfLoops;
 
 /* settings */
