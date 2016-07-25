@@ -1,6 +1,11 @@
 /*	NSNull.h
 	Copyright (c) 1994-2015, Apple Inc. All rights reserved.
 */
+/*
+ * 由MemorySpeaker维护
+ * 联系邮箱:wangnistronger@icloud.com
+ * 本文件对应维护地址:
+ */
 
 #import <Foundation/NSObject.h>
 
