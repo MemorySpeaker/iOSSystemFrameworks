@@ -4,6 +4,11 @@
 //
 //  Copyright 2011-2012 Apple Inc. All rights reserved.
 //
+/*
+ * 由MemorySpeaker维护
+ * 联系邮箱:wangnistronger@icloud.com
+ * 本文件对应维护地址:
+ */
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKitDefines.h>
@@ -16,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 NS_CLASS_AVAILABLE_IOS(5_0) @interface UIStoryboard : NSObject {
 }
 
-// 实例化名称为name的storyboard,bundle参数为nil时默认为mainBundle
+// 实例化bundle中名称为name的storyboard,bundle参数为nil时默认为mainBundle
 + (UIStoryboard *)storyboardWithName:(NSString *)name bundle:(nullable NSBundle *)storyboardBundleOrNil;
 
 // 获取故事版中的初始控制器对象,可能为nil

@@ -15,8 +15,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 状态条风格枚举
 typedef NS_ENUM(NSInteger, UIStatusBarStyle) {
+    // 黑色内容.当背景为白色时使用
     UIStatusBarStyleDefault                                     = 0, // Dark content, for use on light backgrounds
+    // 白色内容.当背景为黑色时使用
     UIStatusBarStyleLightContent     NS_ENUM_AVAILABLE_IOS(7_0) = 1, // Light content, for use on dark backgrounds
     
     UIStatusBarStyleBlackTranslucent NS_ENUM_DEPRECATED_IOS(2_0, 7_0, "Use UIStatusBarStyleLightContent") = 1,
@@ -285,12 +288,14 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIApplication : UIResponder
 @end
 
 
+// 应用程序代理
 @protocol UIApplicationDelegate<NSObject>
 
 @optional
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application;
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions NS_AVAILABLE_IOS(6_0);
+//应用启动完成时调用.根据启动方式的不同,launchOptions中携带的信息也会有所不同
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions NS_AVAILABLE_IOS(3_0);
 
 - (void)applicationDidBecomeActive:(UIApplication *)application;
@@ -312,8 +317,10 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIApplication : UIResponder
 // This callback will be made upon calling -[UIApplication registerUserNotificationSettings:]. The settings the user has granted to the application will be passed in as the second argument.
  - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings NS_AVAILABLE_IOS(8_0) __TVOS_PROHIBITED;
 
+//注册远程推送权限成功时回调.deviceToken由系统根据应用的相关信息和设备信息生成.同一应用(不同版本)在同一个设备上的deviceToken唯一.
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken NS_AVAILABLE_IOS(3_0);
 
+//注册远程推送权限失败时回调.error包含了相关错误的信息
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error NS_AVAILABLE_IOS(3_0);
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo NS_AVAILABLE_IOS(3_0);

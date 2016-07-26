@@ -17,12 +17,17 @@
 - (BOOL)isEqual:(id)object;
 @property (readonly) NSUInteger hash;
 
+// 当前对象的父类类对象
 @property (readonly) Class superclass;
+// 当前对象的类对象.swift中使用'anObject.dynamicType'替代
 - (Class)class OBJC_SWIFT_UNAVAILABLE("use 'anObject.dynamicType' instead");
 - (instancetype)self;
 
+// 执行aSelector方法(消息)
 - (id)performSelector:(SEL)aSelector;
+// 执行aSelector方法(消息),可携带一个参数object
 - (id)performSelector:(SEL)aSelector withObject:(id)object;
+// 执行aSelector方法(消息),可携带两个参数object1,object2
 - (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2;
 
 - (BOOL)isProxy;
