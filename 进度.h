@@ -2841,3 +2841,32 @@
 2830__include/zconf.h
 2831__include/zlib.h
 
+
+
+/***********生成该列表时使用的代码段,手动删掉了列表中的0000__.DS_Store*****/
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    //frameInclude中包含两个子文件夹Frameworks和include
+    NSString *dirPath = @"/Users/wangNiStronger/Desktop/frameInclude";
+    
+    NSFileManager *fileMag = [NSFileManager defaultManager];
+    NSDirectoryEnumerator *dirEnum = [fileMag enumeratorAtPath:dirPath];
+    NSString *file = nil;
+    int i = -1;
+    NSMutableString *strM = [NSMutableString string];
+    BOOL isDir;
+    
+    while (file = [dirEnum nextObject]) {
+        [fileMag fileExistsAtPath:[dirPath stringByAppendingPathComponent:file] isDirectory:&isDir];
+        if (!isDir) {
+            i++;
+            [strM appendFormat:@"%04d__%@\n",i,file];
+        }else{
+            [strM appendFormat:@"dir__%@\n",file];
+        }
+        
+    }
+    NSLog(@"%@",strM);
+}
+/***********End**********/
