@@ -112,7 +112,9 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIViewController : UIResponder <NSCoding,
 - (void)viewWillUnload NS_DEPRECATED_IOS(5_0,6_0) __TVOS_PROHIBITED;
 - (void)viewDidUnload NS_DEPRECATED_IOS(3_0,6_0) __TVOS_PROHIBITED; // Called after the view controller's view is released and set to nil. For example, a memory warning which causes the view to be purged. Not invoked as a result of -dealloc.
 
+// 由当前VC管理的视图被加载时被调用.如果vc是从nib文件中获取的则不会触发该方法.
 - (void)viewDidLoad; // Called after the view has been loaded. For view controllers created in code, this is after -loadView. For view controllers unarchived from a nib, this is after the view is set.
+// 视图是否已经被加载
 - (BOOL)isViewLoaded NS_AVAILABLE_IOS(3_0);
 
 @property(nullable, nonatomic, readonly, copy) NSString *nibName;     // The name of the nib to be loaded to instantiate the view.
@@ -146,18 +148,25 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIViewController : UIResponder <NSCoding,
 // Deprecated. Returns a segue that will unwind from the source to destination view controller via the -unwindForSegue:towardViewController: method. When performing an unwind segue defined in a storyboard, if any view controller along the unwind path has overridden this method and returns non-nil, the runtime will use that segue object instead of constructing an instance of the class specified in Interface Builder.
 - (nullable UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(nullable NSString *)identifier NS_DEPRECATED_IOS(6_0, 9_0);
 
+// view每次将要显示时都会被调用,默认什么也不做
 - (void)viewWillAppear:(BOOL)animated;    // Called when the view is about to made visible. Default does nothing
+// view每次完全显示时都会被调用,默认什么也不做
 - (void)viewDidAppear:(BOOL)animated;     // Called when the view has been fully transitioned onto the screen. Default does nothing
+// view每次将要被释放,覆盖或者隐藏时都会被调用,默认什么也不做
 - (void)viewWillDisappear:(BOOL)animated; // Called when the view is dismissed, covered or otherwise hidden. Default does nothing
+// view每次已经被释放,覆盖或者隐藏时都会被调用,默认什么也不做
 - (void)viewDidDisappear:(BOOL)animated;  // Called after the view was dismissed, covered or otherwise hidden. Default does nothing
 
 // Called just before the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
+// 在view的layoutSubviews方法被调用前被调用.子类可以覆写自己的布局
 - (void)viewWillLayoutSubviews NS_AVAILABLE_IOS(5_0);
 // Called just after the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
+// 在view的layoutSubviews方法被调用后被调用.子类可以覆写自己的布局
 - (void)viewDidLayoutSubviews NS_AVAILABLE_IOS(5_0);
 
 @property(nullable, nonatomic,copy) NSString *title;  // Localized title for use by a parent controller.
 
+// 接收到内存警告时调用.6.0+不再执行默认的清理.默认实现为输出日志
 - (void)didReceiveMemoryWarning; // Called when the parent application receives a memory warning. On iOS 6.0 it will no longer clear the view by default.
 
 /*

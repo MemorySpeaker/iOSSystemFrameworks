@@ -26,10 +26,14 @@ UIKIT_EXTERN void UIRectFrame(CGRect rect);
 UIKIT_EXTERN void UIRectClip(CGRect rect);
 
 // UIImage context
+// 图片环境
 
+// 在内存中开启一个size尺寸的绘图环境(像素级)
 UIKIT_EXTERN void     UIGraphicsBeginImageContext(CGSize size);
 UIKIT_EXTERN void     UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat scale) NS_AVAILABLE_IOS(4_0);
+// 从当前图片环境中获取UIImage对象
 UIKIT_EXTERN UIImage* __null_unspecified UIGraphicsGetImageFromCurrentImageContext(void);
+// 关闭绘图环境
 UIKIT_EXTERN void     UIGraphicsEndImageContext(void); 
 
 // PDF context

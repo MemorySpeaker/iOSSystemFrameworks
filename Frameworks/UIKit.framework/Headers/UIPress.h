@@ -12,6 +12,7 @@
 @class UIResponder;
 @class UIWindow;
 
+// 按压的不同状态
 NS_ENUM_AVAILABLE_IOS(9_0) typedef NS_ENUM(NSInteger, UIPressPhase) {
     UIPressPhaseBegan,         // whenever a button press begins.
     UIPressPhaseChanged,       // whenever a button moves.
@@ -20,6 +21,7 @@ NS_ENUM_AVAILABLE_IOS(9_0) typedef NS_ENUM(NSInteger, UIPressPhase) {
     UIPressPhaseCancelled,     // whenever a button press doesn't end but we need to stop tracking.
 };
 
+// 按压类型
 NS_ENUM_AVAILABLE_IOS(9_0) typedef NS_ENUM(NSInteger, UIPressType) {
     UIPressTypeUpArrow,
     UIPressTypeDownArrow,
@@ -31,6 +33,7 @@ NS_ENUM_AVAILABLE_IOS(9_0) typedef NS_ENUM(NSInteger, UIPressType) {
     UIPressTypePlayPause,
 };
 
+// 按压对象
 NS_CLASS_AVAILABLE_IOS(9_0) @interface UIPress : NSObject
 
 @property(nonatomic,readonly) NSTimeInterval   timestamp;

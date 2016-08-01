@@ -1,4 +1,4 @@
-/*
+
 * 粗略统计为2831个文件
 * 7.25: 除去.tbd文件(83个),.modulemap文件(63个),多统计的.DS_Store文件(3个),共计149个,精确统计为2682个文件
 *
@@ -673,7 +673,7 @@
 0665__Frameworks/Foundation.framework/Headers/NSMetadataAttributes.h
 0666__Frameworks/Foundation.framework/Headers/NSMethodSignature.h
 0667__Frameworks/Foundation.framework/Headers/NSNetServices.h
-0668__Frameworks/Foundation.framework/Headers/NSNotification.h
+// 0668__Frameworks/Foundation.framework/Headers/NSNotification.h
 0669__Frameworks/Foundation.framework/Headers/NSNotificationQueue.h
 // 0670__Frameworks/Foundation.framework/Headers/NSNull.h
 0671__Frameworks/Foundation.framework/Headers/NSNumberFormatter.h
@@ -1442,14 +1442,14 @@
 1434__Frameworks/UIKit.framework/Headers/UIAccessibilityElement.h
 1435__Frameworks/UIKit.framework/Headers/UIAccessibilityIdentification.h
 1436__Frameworks/UIKit.framework/Headers/UIAccessibilityZoom.h
-1437__Frameworks/UIKit.framework/Headers/UIActionSheet.h
+// 1437__Frameworks/UIKit.framework/Headers/UIActionSheet.h
 1438__Frameworks/UIKit.framework/Headers/UIActivity.h
 1439__Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h
 1440__Frameworks/UIKit.framework/Headers/UIActivityItemProvider.h
 1441__Frameworks/UIKit.framework/Headers/UIActivityViewController.h
 1442__Frameworks/UIKit.framework/Headers/UIAlert.h
 1443__Frameworks/UIKit.framework/Headers/UIAlertController.h
-1444__Frameworks/UIKit.framework/Headers/UIAlertView.h
+// 1444__Frameworks/UIKit.framework/Headers/UIAlertView.h
 1445__Frameworks/UIKit.framework/Headers/UIAppearance.h
 1446__Frameworks/UIKit.framework/Headers/UIApplication.h
 1447__Frameworks/UIKit.framework/Headers/UIApplicationShortcutItem.h
@@ -1494,7 +1494,7 @@
 1486__Frameworks/UIKit.framework/Headers/UIGuidedAccessRestrictions.h
 1487__Frameworks/UIKit.framework/Headers/UIImage.h
 1488__Frameworks/UIKit.framework/Headers/UIImageAsset.h
-1489__Frameworks/UIKit.framework/Headers/UIImagePickerController.h
+// 1489__Frameworks/UIKit.framework/Headers/UIImagePickerController.h
 1490__Frameworks/UIKit.framework/Headers/UIImageView.h
 1491__Frameworks/UIKit.framework/Headers/UIInputView.h
 1492__Frameworks/UIKit.framework/Headers/UIInputViewController.h
@@ -1512,7 +1512,7 @@
 1504__Frameworks/UIKit.framework/Headers/UIMotionEffect.h
 1505__Frameworks/UIKit.framework/Headers/UINavigationBar.h
 1506__Frameworks/UIKit.framework/Headers/UINavigationController.h
-1507__Frameworks/UIKit.framework/Headers/UINib.h
+// 1507__Frameworks/UIKit.framework/Headers/UINib.h
 1508__Frameworks/UIKit.framework/Headers/UINibDeclarations.h
 1509__Frameworks/UIKit.framework/Headers/UINibLoading.h
 // 1510__Frameworks/UIKit.framework/Headers/UIPageControl.h
@@ -1536,7 +1536,7 @@
 1528__Frameworks/UIKit.framework/Headers/UIPrintInteractionController.h
 1529__Frameworks/UIKit.framework/Headers/UIPrintPageRenderer.h
 1530__Frameworks/UIKit.framework/Headers/UIPrintPaper.h
-1531__Frameworks/UIKit.framework/Headers/UIProgressView.h
+// 1531__Frameworks/UIKit.framework/Headers/UIProgressView.h
 1532__Frameworks/UIKit.framework/Headers/UIPushBehavior.h
 1533__Frameworks/UIKit.framework/Headers/UIReferenceLibraryViewController.h
 // 1534__Frameworks/UIKit.framework/Headers/UIRefreshControl.h
@@ -2869,4 +2869,4 @@
     }
     NSLog(@"%@",strM);
 }
-/***********End**********/
+/***********End*********

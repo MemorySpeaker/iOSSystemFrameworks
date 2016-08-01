@@ -86,6 +86,7 @@ typedef NS_OPTIONS(NSUInteger, NSDataBase64DecodingOptions) {
 - (void)getBytes:(void *)buffer range:(NSRange)range;
 - (BOOL)isEqualToData:(NSData *)other;
 - (NSData *)subdataWithRange:(NSRange)range;
+// 将数据写入到path中,useAuxiliaryFile表示是否保证线程安全
 - (BOOL)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile;
 - (BOOL)writeToURL:(NSURL *)url atomically:(BOOL)atomically; // the atomically flag is ignored if the url is not of a type the supports atomic writes
 - (BOOL)writeToFile:(NSString *)path options:(NSDataWritingOptions)writeOptionsMask error:(NSError **)errorPtr;

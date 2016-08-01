@@ -56,6 +56,7 @@ FOUNDATION_EXPORT NSString * const NSRegistrationDomain;
 /*!
  +standardUserDefaults returns a global instance of NSUserDefaults configured to search the current application's search list.
  */
+ // 返回一个被设置为从当前应用搜索列表搜索的全局NSUserDefaults对象(wtf应用搜索列表)
 + (NSUserDefaults *)standardUserDefaults;
 
 /// +resetStandardUserDefaults releases the standardUserDefaults and sets it to nil. A new standardUserDefaults will be created the next time it's accessed. The only visible effect this has is that all KVO observers of the previous standardUserDefaults will no longer be observing it.
@@ -73,26 +74,34 @@ FOUNDATION_EXPORT NSString * const NSRegistrationDomain;
 /*!
  -objectForKey: will search the receiver's search list for a default with the key 'defaultName' and return it. If another process has changed defaults in the search list, NSUserDefaults will automatically update to the latest values. If the key in question has been marked as ubiquitous via a Defaults Configuration File, the latest value may not be immediately available, and the registered value will be returned instead.
  */
+ // 获取defaultName对应的对象,如果defaultName不存在则返回nil
 - (nullable id)objectForKey:(NSString *)defaultName;
 
 /*!
  -setObject:forKey: immediately stores a value (or removes the value if nil is passed as the value) for the provided key in the search list entry for the receiver's suite name in the current user and any host, then asynchronously stores the value persistently, where it is made available to other processes.
  */
+ // 为defaultName键设置值为value.如果value传入nil,则用于删除
 - (void)setObject:(nullable id)value forKey:(NSString *)defaultName;
 
 /// -removeObjectForKey: is equivalent to -[... setObject:nil forKey:defaultName]
+// 等效与[... setObject:nil forKey:defaultName]
 - (void)removeObjectForKey:(NSString *)defaultName;
 
 /// -stringForKey: is equivalent to -objectForKey:, except that it will convert NSNumber values to their NSString representation. If a non-string non-number value is found, nil will be returned.
+// 获取defaultName对应的字符串对象或者NSNumber的字符串行驶.否则返回nil
 - (nullable NSString *)stringForKey:(NSString *)defaultName;
 
 /// -arrayForKey: is equivalent to -objectForKey:, except that it will return nil if the value is not an NSArray.
+// 返回defaultName对应的数组对象.如果不是数组对象则返回nil
 - (nullable NSArray *)arrayForKey:(NSString *)defaultName;
 /// -dictionaryForKey: is equivalent to -objectForKey:, except that it will return nil if the value is not an NSDictionary.
+// 返回defaultName对应的字典对象.如果不是字典对象则返回nil
 - (nullable NSDictionary<NSString *, id> *)dictionaryForKey:(NSString *)defaultName;
 /// -dataForKey: is equivalent to -objectForKey:, except that it will return nil if the value is not an NSData.
+// 返回defaultName对应的NSData对象.如果不是NSData对象则返回nil
 - (nullable NSData *)dataForKey:(NSString *)defaultName;
 /// -stringForKey: is equivalent to -objectForKey:, except that it will return nil if the value is not an NSArray<NSString *>. Note that unlike -stringForKey:, NSNumbers are not converted to NSStrings.
+// 返回defaultName对应的字符串数组对象.如果不是字符串数组对象则返回nil
 - (nullable NSArray<NSString *> *)stringArrayForKey:(NSString *)defaultName;
 /*!
  -integerForKey: is equivalent to -objectForKey:, except that it converts the returned value to an NSInteger. If the value is an NSNumber, the result of -integerValue will be returned. If the value is an NSString, it will be converted to NSInteger if possible. If the value is a boolean, it will be converted to either 1 for YES or 0 for NO. If the value is absent or can't be converted to an integer, 0 will be returned.
@@ -106,6 +115,10 @@ FOUNDATION_EXPORT NSString * const NSRegistrationDomain;
  -boolForKey: is equivalent to -objectForKey:, except that it converts the returned value to a BOOL. If the value is an NSNumber, NO will be returned if the value is 0, YES otherwise. If the value is an NSString, values of "YES" or "1" will return YES, and values of "NO", "0", or any other string will return NO. If the value is absent or can't be converted to a BOOL, NO will be returned.
  
  */
+ // 返回defaultName对应的BOOL值.
+ // 如果实际对应的是NSNumber对象,0返回NO,其他返回YES
+ // 如果实际对应的是NSString对象,"YES"或"1"返回YES,其他返回NO
+ // 其他情况返回NO
 - (BOOL)boolForKey:(NSString *)defaultName;
 /*!
  -URLForKey: is equivalent to -objectForKey: except that it converts the returned value to an NSURL. If the value is an NSString path, then it will construct a file URL to that path. If the value is an archived URL from -setURL:forKey: it will be unarchived. If the value is absent or can't be converted to an NSURL, nil will be returned.
@@ -171,6 +184,7 @@ FOUNDATION_EXPORT NSString * const NSRegistrationDomain;
  - ...before exiting in a non-app (command line tool, agent, or daemon) process: call CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication)
  - ...for any other reason: remove the synchronize call
  */
+ // 一般修改过一个值之后会执行该方法来将内存中的修改持久化,确保修改成功
 - (BOOL)synchronize;
 
 // -objectIsForcedForKey: returns YES if the value for 'key' is provided by managed preferences (a configuration profile or mcx)

@@ -1593,13 +1593,19 @@ AVF_EXPORT const AVCaptureWhiteBalanceGains AVCaptureWhiteBalanceGainsCurrent NS
  @constant AVAuthorizationStatusAuthorized
     The client is authorized to access the hardware supporting a media type.
  */
+// 授权状态枚举
 typedef NS_ENUM(NSInteger, AVAuthorizationStatus) {
+    // 未决定
 	AVAuthorizationStatusNotDetermined = 0,
+    // 受限制的
 	AVAuthorizationStatusRestricted,
+    // 被拒绝
 	AVAuthorizationStatusDenied,
+    // 被授权
 	AVAuthorizationStatusAuthorized
 } NS_AVAILABLE_IOS(7_0) __TVOS_PROHIBITED;
-		
+
+// 抓取资源设备类授权分类		
 @interface AVCaptureDevice (AVCaptureDeviceAuthorization)
 
 /*!
@@ -1619,6 +1625,7 @@ typedef NS_ENUM(NSInteger, AVAuthorizationStatus) {
     AVMediaTypeAudio is supplied, an NSInvalidArgumentException will be thrown.  If the status is AVAuthorizationStatusNotDetermined,
     you may use the +requestAccessForMediaType:completionHandler: method to request access by prompting the user.
  */
+// 返回对指定mediaType的授权状态.mediaType可以是AVMediaTypeVideo(相机) 或 AVMediaTypeAudio(录音)
 + (AVAuthorizationStatus)authorizationStatusForMediaType:(NSString *)mediaType NS_AVAILABLE_IOS(7_0);
 
 /*!

@@ -36,8 +36,11 @@ typedef NS_ENUM(NSInteger, UIImageOrientation) {
  Note that if an image's resizable area is one point then UIImageResizingModeTile
  is visually indistinguishable from UIImageResizingModeStretch.
  */
+ // 图片尺寸变化模式枚举
 typedef NS_ENUM(NSInteger, UIImageResizingMode) {
+    // 平铺
     UIImageResizingModeTile,
+    // 拉伸
     UIImageResizingModeStretch,
 };
 
@@ -61,22 +64,31 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIImage : NSObject <NSSecureCoding>
 + (nullable UIImage *)imageNamed:(NSString *)name inBundle:(nullable NSBundle *)bundle compatibleWithTraitCollection:(nullable UITraitCollection *)traitCollection NS_AVAILABLE_IOS(8_0);
 #endif
 
+// 使用path对应的文件实例化.不会有缓存
 + (nullable UIImage *)imageWithContentsOfFile:(NSString *)path;
+// 使用data实例化
 + (nullable UIImage *)imageWithData:(NSData *)data;
 + (nullable UIImage *)imageWithData:(NSData *)data scale:(CGFloat)scale NS_AVAILABLE_IOS(6_0);
+// 使用cgImage转换
 + (UIImage *)imageWithCGImage:(CGImageRef)cgImage;
 + (UIImage *)imageWithCGImage:(CGImageRef)cgImage scale:(CGFloat)scale orientation:(UIImageOrientation)orientation NS_AVAILABLE_IOS(4_0);
 #if __has_include(<CoreImage/CoreImage.h>)
+// 使用ciImage转换
 + (UIImage *)imageWithCIImage:(CIImage *)ciImage NS_AVAILABLE_IOS(5_0);
 + (UIImage *)imageWithCIImage:(CIImage *)ciImage scale:(CGFloat)scale orientation:(UIImageOrientation)orientation NS_AVAILABLE_IOS(6_0);
 #endif
 
+// 上边类方法的对象方法表示
+// 使用path对应的文件实例化.不会有缓存
 - (nullable instancetype)initWithContentsOfFile:(NSString *)path;
+// 使用data实例化
 - (nullable instancetype)initWithData:(NSData *)data;
 - (nullable instancetype)initWithData:(NSData *)data scale:(CGFloat)scale NS_AVAILABLE_IOS(6_0);
+// 使用cgImage转换
 - (instancetype)initWithCGImage:(CGImageRef)cgImage;
 - (instancetype)initWithCGImage:(CGImageRef)cgImage scale:(CGFloat)scale orientation:(UIImageOrientation)orientation NS_AVAILABLE_IOS(4_0);
 #if __has_include(<CoreImage/CoreImage.h>)
+// 使用ciImage转换
 - (instancetype)initWithCIImage:(CIImage *)ciImage NS_AVAILABLE_IOS(5_0);
 - (instancetype)initWithCIImage:(CIImage *)ciImage scale:(CGFloat)scale orientation:(UIImageOrientation)orientation NS_AVAILABLE_IOS(6_0);
 #endif
@@ -102,11 +114,16 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIImage : NSObject <NSSecureCoding>
 
 // the these draw the image 'right side up' in the usual coordinate system with 'point' being the top-left.
 
+// 将图片绘制在point点
 - (void)drawAtPoint:(CGPoint)point;                                                        // mode = kCGBlendModeNormal, alpha = 1.0
+// 将图片绘制在point点,可以指定重复模式及透明度
 - (void)drawAtPoint:(CGPoint)point blendMode:(CGBlendMode)blendMode alpha:(CGFloat)alpha;
+// 将图片绘制在rect内(拉伸)
 - (void)drawInRect:(CGRect)rect;                                                           // mode = kCGBlendModeNormal, alpha = 1.0
+// 将图片绘制在rect内,可以指定重复模式及透明度
 - (void)drawInRect:(CGRect)rect blendMode:(CGBlendMode)blendMode alpha:(CGFloat)alpha;
 
+// 将图片作为重复单元绘制在rect内(平铺)
 - (void)drawAsPatternInRect:(CGRect)rect; // draws the image as a CGPattern
 
 - (UIImage *)resizableImageWithCapInsets:(UIEdgeInsets)capInsets NS_AVAILABLE_IOS(5_0); // create a resizable version of this image. the interior is tiled when drawn.
@@ -153,13 +170,16 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIImage : NSObject <NSSecureCoding>
 #if __has_include(<CoreImage/CoreImage.h>)
 @interface CIImage(UIKitAdditions)
 
+// 使用image对象实例化
 - (nullable instancetype)initWithImage:(UIImage *)image NS_AVAILABLE_IOS(5_0);
 - (nullable instancetype)initWithImage:(UIImage *)image options:(nullable NSDictionary *)options NS_AVAILABLE_IOS(5_0);
 
 @end
 #endif
 
+// 将image对象转换为png格式数据
 UIKIT_EXTERN  NSData * __nullable UIImagePNGRepresentation(UIImage * __nonnull image);                               // return image as PNG. May return nil if image has no CGImageRef or invalid bitmap format
+// 将image对象转换为以compressionQuality压缩质量处理后的jpg格式数据.compressionQuality取值为0~1
 UIKIT_EXTERN  NSData * __nullable UIImageJPEGRepresentation(UIImage * __nonnull image, CGFloat compressionQuality);  // return image as JPEG. May return nil if image has no CGImageRef or invalid bitmap format. compression is 0(most)..1(least)
 
 NS_ASSUME_NONNULL_END
