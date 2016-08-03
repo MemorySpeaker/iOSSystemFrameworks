@@ -115,6 +115,7 @@ typedef NS_OPTIONS(NSUInteger, NSStringEncodingConversionOptions) {
 */
 - (NSComparisonResult)localizedStandardCompare:(NSString *)string NS_AVAILABLE(10_6, 4_0);
 
+// 判断对象的字符串内容是否与aString相同
 - (BOOL)isEqualToString:(NSString *)aString;
 
 
@@ -122,7 +123,9 @@ typedef NS_OPTIONS(NSUInteger, NSStringEncodingConversionOptions) {
 
 /* These perform locale unaware prefix or suffix match. If you need locale awareness, use rangeOfString:options:range:locale:, passing NSAnchoredSearch (or'ed with NSBackwardsSearch for suffix, and NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch if needed) for options, NSMakeRange(0, [receiver length]) for range, and [NSLocale currentLocale] for locale.
 */
+// 是否已str为前缀
 - (BOOL)hasPrefix:(NSString *)str;
+// 是否以str为后缀
 - (BOOL)hasSuffix:(NSString *)str;
 
 - (NSString *)commonPrefixWithString:(NSString *)str options:(NSStringCompareOptions)mask;
@@ -227,6 +230,7 @@ typedef NS_OPTIONS(NSUInteger, NSStringEnumerationOptions) {
 @property (readonly) NSStringEncoding smallestEncoding;   	// Result in O(n) time; the encoding in which the string is most compact
 
 - (nullable NSData *)dataUsingEncoding:(NSStringEncoding)encoding allowLossyConversion:(BOOL)lossy;   // External representation
+// 相当于上边的方法中lossy传值NO
 - (nullable NSData *)dataUsingEncoding:(NSStringEncoding)encoding;                                    // External representation
 
 - (BOOL)canBeConvertedToEncoding:(NSStringEncoding)encoding;
@@ -281,14 +285,17 @@ typedef NS_OPTIONS(NSUInteger, NSStringEnumerationOptions) {
 
 /* Replace all occurrences of the target string in the specified range with replacement. Specified compare options are used for matching target. If NSRegularExpressionSearch is specified, the replacement is treated as a template, as in the corresponding NSRegularExpression methods, and no other options can apply except NSCaseInsensitiveSearch and NSAnchoredSearch.
 */
+// 在searchRange范围内替换对象的target字符串为replacement字符串.查找target字符串时参照options指定的比较选项
 - (NSString *)stringByReplacingOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options range:(NSRange)searchRange NS_AVAILABLE(10_5, 2_0);
 
 /* Replace all occurrences of the target string with replacement. Invokes the above method with 0 options and range of the whole string.
 */
+// 替换对象中所有的target字符串为replacement字符串.相当于上边的方法中options使用默认值,searchRange为全部.
 - (NSString *)stringByReplacingOccurrencesOfString:(NSString *)target withString:(NSString *)replacement NS_AVAILABLE(10_5, 2_0);
 
 /* Replace characters in range with the specified string, returning new string.
 */
+// 替换对象中range范围的字符为replacement字符串
 - (NSString *)stringByReplacingCharactersInRange:(NSRange)range withString:(NSString *)replacement NS_AVAILABLE(10_5, 2_0);
 
 /* Perform string transliteration.  The transformation represented by transform is applied to the receiver. reverse indicates that the inverse transform should be used instead, if it exists. Attempting to use an invalid transform identifier or reverse an irreversible transform will return nil; otherwise the transformed string value is returned (even if no characters are actually transformed). You can pass one of the predefined transforms below (NSStringTransformLatinToKatakana, etc), or any valid ICU transform ID as defined in the ICU User Guide. Arbitrary ICU transform rules are not supported.
@@ -335,6 +342,7 @@ FOUNDATION_EXPORT NSString * const NSStringTransformStripDiacritics         NS_A
 - (instancetype)initWithFormat:(NSString *)format arguments:(va_list)argList NS_FORMAT_FUNCTION(1,0);
 - (instancetype)initWithFormat:(NSString *)format locale:(nullable id)locale, ... NS_FORMAT_FUNCTION(1,3);
 - (instancetype)initWithFormat:(NSString *)format locale:(nullable id)locale arguments:(va_list)argList NS_FORMAT_FUNCTION(1,0);
+//使用以encoding编码的data数据初始化
 - (nullable instancetype)initWithData:(NSData *)data encoding:(NSStringEncoding)encoding;
 - (nullable instancetype)initWithBytes:(const void *)bytes length:(NSUInteger)len encoding:(NSStringEncoding)encoding;
 - (nullable instancetype)initWithBytesNoCopy:(void *)bytes length:(NSUInteger)len encoding:(NSStringEncoding)encoding freeWhenDone:(BOOL)freeBuffer;	/* "NoCopy" is a hint */
@@ -418,10 +426,15 @@ FOUNDATION_EXPORT NSString * const NSStringEncodingDetectionLikelyLanguageKey   
 
 /* Additional mutation methods.  For subclassers these are all available implemented in terms of the primitive replaceCharactersInRange:range: method.
 */
+// 在loc索引处插入字符串aString
 - (void)insertString:(NSString *)aString atIndex:(NSUInteger)loc;
+// 删除range范围内的所有字符
 - (void)deleteCharactersInRange:(NSRange)range;
+// 在末尾追加aString
 - (void)appendString:(NSString *)aString;
+// 在末尾追加format格式的字符串
 - (void)appendFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
+// 重设字符串内容为aString
 - (void)setString:(NSString *)aString;
 
 /* This method replaces all occurrences of the target string with the replacement string, in the specified range of the receiver string, and returns the number of replacements. NSBackwardsSearch means the search is done from the end of the range (the results could be different); NSAnchoredSearch means only anchored (but potentially multiple) instances will be replaced. NSLiteralSearch and NSCaseInsensitiveSearch also apply. NSNumericSearch is ignored. Use NSMakeRange(0, [receiver length]) to process whole string. If NSRegularExpressionSearch is specified, the replacement is treated as a template, as in the corresponding NSRegularExpression methods, and no other options can apply except NSCaseInsensitiveSearch and NSAnchoredSearch.
@@ -434,6 +447,7 @@ FOUNDATION_EXPORT NSString * const NSStringEncodingDetectionLikelyLanguageKey   
 
 /* In addition to these two, NSMutableString responds properly to all NSString creation methods.
  */
+// 实例化指定容量的可变字符串对象.但如果容量不够时仍会自动扩充
 - (NSMutableString *)initWithCapacity:(NSUInteger)capacity;
 + (NSMutableString *)stringWithCapacity:(NSUInteger)capacity;
 

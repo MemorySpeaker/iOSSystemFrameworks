@@ -435,8 +435,13 @@ UIKIT_EXTERN int UIApplicationMain(int argc, char *argv[], NSString * __nullable
 UIKIT_EXTERN NSString *const UITrackingRunLoopMode;
 
 // These notifications are sent out after the equivalent delegate message is called
+// 当相应的代理方法被调用后会发出对应的通知
+
+// 应用已经进入后台.
 UIKIT_EXTERN NSString *const UIApplicationDidEnterBackgroundNotification       NS_AVAILABLE_IOS(4_0);
+// 应用将要从后台进入前台的通知."UIApplicationWillEnterForegroundNotification"
 UIKIT_EXTERN NSString *const UIApplicationWillEnterForegroundNotification      NS_AVAILABLE_IOS(4_0);
+// 应用启动完成的通知."UIApplicationDidFinishLaunchingNotification"
 UIKIT_EXTERN NSString *const UIApplicationDidFinishLaunchingNotification;
 UIKIT_EXTERN NSString *const UIApplicationDidBecomeActiveNotification;
 UIKIT_EXTERN NSString *const UIApplicationWillResignActiveNotification;
