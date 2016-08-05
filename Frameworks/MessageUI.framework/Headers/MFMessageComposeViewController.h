@@ -24,21 +24,28 @@ NS_ASSUME_NONNULL_BEGIN
  @constant   MessageComposeResultFailed      User's attempt to save or send was unsuccessful.
  */
 
+// 信息发送结果枚举
 enum MessageComposeResult {
+	// 被取消
     MessageComposeResultCancelled,
+    // 已发送
     MessageComposeResultSent,
+    // 发送失败
     MessageComposeResultFailed
 };
+// 定义发送结果枚举类型
 typedef enum MessageComposeResult MessageComposeResult;   // available in iPhone 4.0
 
 /*!
  @constant  MFMessageComposeViewControllerAttachmentURL   The url for the given attachment.
 */
+ // 附件中的url
 extern NSString *const MFMessageComposeViewControllerAttachmentURL;
 
 /*!
  @constant  MFMessageComposeViewControllerAttachmentAlternateFilename   The alternate filename for the given attachment.
  */
+ // 附件中的文件名
 extern NSString *const MFMessageComposeViewControllerAttachmentAlternateFilename;
 
 /*!
@@ -47,6 +54,7 @@ extern NSString *const MFMessageComposeViewControllerAttachmentAlternateFilename
  @discussion This notification is posted when the value of <tt>+[MFMessageComposeViewController canSendText]</tt>
              has changed. Clients should invalidate any caches and update UI as appropriate.
 */
+// ?
 extern NSString *const MFMessageComposeViewControllerTextMessageAvailabilityDidChangeNotification __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_5_0);
 
 /*!
@@ -56,8 +64,10 @@ extern NSString *const MFMessageComposeViewControllerTextMessageAvailabilityDidC
  @discussion The value of this key is an NSNumber containing a BOOL value. This value matches
              the result of <tt>+[MFMessageComposeViewController canSendText]</tt>.
 */
+ // ?
 extern NSString *const MFMessageComposeViewControllerTextMessageAvailabilityKey __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_5_0);
 
+// 代理协议声明
 @protocol MFMessageComposeViewControllerDelegate;
 
 /*!
@@ -71,6 +81,7 @@ extern NSString *const MFMessageComposeViewControllerTextMessageAvailabilityKey 
 			  <p>Prior to use, clients should verify the user has set up the device for sending messages via
 			  <tt>+[MFMessageComposeViewController canSendText]</tt>.
  */
+// 在不跳出应用的情况下弹出系统短信发送界面,发送短信
 NS_CLASS_AVAILABLE(NA, 4_0)
 @interface MFMessageComposeViewController : UINavigationController {
 }
@@ -82,18 +93,21 @@ NS_CLASS_AVAILABLE(NA, 4_0)
 			 If the return value is NO, the client may notify the user of the failure, or the
 			 client may open an SMS URL via <tt>-[UIApplication openURL:]</tt>.
  */
+ // 是否能发送文本
 + (BOOL)canSendText  __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
 
 /*!
  @method     canSendSubject
  @abstract   Returns <tt>YES</tt> if the user has set up the device for including subjects in messages.</tt>.
  */
+ // 是否能为信息设置主题
 + (BOOL)canSendSubject __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_7_0);
 
 /*!
  @method     canSendAttachments
  @abstract   Returns <tt>YES</tt> if the user has set up the device for including attachments in messages.</tt>.
  */
+ // 是否能够携带附件
 + (BOOL)canSendAttachments __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_7_0);
 
 /*!
@@ -102,12 +116,14 @@ NS_CLASS_AVAILABLE(NA, 4_0)
  @discussion If the return value is YES, the UTI is acceptable for attachment to a message, a return value of NO
  indicates that the given UTI is unsupported.
  */
+ // ?
 + (BOOL)isSupportedAttachmentUTI:(NSString *)uti __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_7_0);
 
 /*!
  @property   messageComposeDelegate
  @abstract   This property is the delegate for the MFMessageComposeViewController method callbacks.
  */
+ // 代理
 @property(nonatomic,assign,nullable) id<MFMessageComposeViewControllerDelegate> messageComposeDelegate /*__OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0)*/;
 
 /*!
@@ -115,6 +131,7 @@ NS_CLASS_AVAILABLE(NA, 4_0)
  @abstract   Calling this method will disable the camera/attachment button in the view controller.  After the controller has been presented,
              this call will have no effect.  The camera / attachment button is visible by default.
  */
+ // 调用该方法会在发送信息界面禁用拍照和附件按钮
 - (void)disableUserAttachments __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_7_0);
 
 /*!
@@ -125,6 +142,7 @@ NS_CLASS_AVAILABLE(NA, 4_0)
 			 to display.
 			 </p>After the view has been presented to the user, this property will no longer change the value.
  */
+// 接收者			 
 @property(nonatomic,copy,nullable) NSArray<NSString *> *recipients /*__OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0)*/;
 
 /*!
@@ -134,6 +152,7 @@ NS_CLASS_AVAILABLE(NA, 4_0)
 			 to display.
 			 </p>After the view has been presented to the user, this property will no longer change the value.
  */
+ // 消息文本内容
 @property(nonatomic,copy,nullable) NSString *body /*__OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0)*/;
 
 /*!
@@ -143,6 +162,7 @@ NS_CLASS_AVAILABLE(NA, 4_0)
  to display.
  </p>After the view has been presented to the user, this property will no longer change the value.
  */
+ // 消息的主题
 @property(nonatomic,copy,nullable) NSString *subject /*__OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_7_0)*/;
 
 /*!
@@ -151,6 +171,7 @@ NS_CLASS_AVAILABLE(NA, 4_0)
  @discussion This property returns an NSArray of NSDictionaries describing the properties of the current attachments.
              See MFMessageComposeViewControllerAttachmentURL, MFMessageComposeViewControllerAttachmentAlternateFilename.
  */
+ // 附件
 @property(nonatomic,copy,readonly,nullable) NSArray<NSDictionary *> *attachments /*__OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_7_0)*/;
 
 /*!
@@ -161,6 +182,7 @@ NS_CLASS_AVAILABLE(NA, 4_0)
              URL must not be NIL.  The alternate filename will be display to the user in leiu of the attachments URL.
              The alternate filename may be NIL.
  */
+// 添加附件url和附件文件名             
 - (BOOL)addAttachmentURL:(NSURL *)attachmentURL withAlternateFilename:(nullable NSString *)alternateFilename __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_7_0);
 
 /*!
@@ -169,6 +191,7 @@ NS_CLASS_AVAILABLE(NA, 4_0)
  @discussion If the return value is YES, the attachment was added to the composition. If the return value is NO,
  the attachment was not added to the composition.  The data and typeIdentifer must be non-nil.  typeIdentifier should be a valid Uniform Type Identifier.
  */
+ // 添加附件数据
 - (BOOL)addAttachmentData:(NSData *)attachmentData typeIdentifier:(NSString *)uti filename:(NSString *)filename __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_7_0);
 
 @end
@@ -193,6 +216,7 @@ NS_CLASS_AVAILABLE(NA, 4_0)
  @param      controller   The MFMessageComposeViewController instance which is returning the result.
  @param      result       MessageComposeResult indicating how the user chose to complete the composition process.
  */
+ // 发送完成后,result代表了发送结果
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result;
 
 @end

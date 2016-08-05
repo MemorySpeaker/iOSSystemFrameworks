@@ -24,12 +24,18 @@ NS_ASSUME_NONNULL_BEGIN
     @constant   MFMailComposeResultSent        User successfully sent/queued the message.
     @constant   MFMailComposeResultFailed      User's attempt to save or send was unsuccessful.
 */
+//邮件发送结果    
 enum MFMailComposeResult {
+    // 取消
     MFMailComposeResultCancelled,
+    // 保存为草稿
     MFMailComposeResultSaved,
+    // 发送成功
     MFMailComposeResultSent,
+    // 发送失败
     MFMailComposeResultFailed
 };
+// 定义邮件发送结果类型
 typedef enum MFMailComposeResult MFMailComposeResult;   // available in iPhone 3.0
 
 /*!
@@ -39,6 +45,7 @@ typedef enum MFMailComposeResult MFMailComposeResult;   // available in iPhone 3
                 MFMailCompose API.  Valid error code values are declared in the <tt>MFMailComposeErrorCode</tt>
                 space.
 */
+// 错误域                
 extern NSString *const MFMailComposeErrorDomain __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 /*!
@@ -50,10 +57,14 @@ extern NSString *const MFMailComposeErrorDomain __OSX_AVAILABLE_STARTING(__MAC_N
     @constant   MFMailComposeErrorCodeSaveFailed    Generic error indicating a save failed.
     @constant   MFMailComposeErrorCodeSendFailed    Generic error indicating a send failed.
 */
+// 错误码枚举    
 enum MFMailComposeErrorCode {
+    // 保存失败
     MFMailComposeErrorCodeSaveFailed,
+    // 发送失败
     MFMailComposeErrorCodeSendFailed
 };
+// 定义错误码枚举类型
 typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in iPhone 3.0
 
 
@@ -68,6 +79,7 @@ typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in 
                  of the user's composition completion and how they chose to complete the operation.<p>Prior to use, clients
                  should verify the user has set up the device for sending email via <tt>+[MFMailComposeViewController canSendMail]</tt>.
 */
+// 在不跳出应用的情况下弹出系统邮件发送界面,发送邮件                 
 @interface MFMailComposeViewController : UINavigationController
 {
 @private
@@ -81,12 +93,14 @@ typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in 
                 was the result, the client has a couple options.  It may choose to simply notify the user of the inability to
                 send mail, or it may issue a "mailto" URL via <tt>-[UIApplication openURL:]</tt>.
 */
+// 是否能够发送邮件                
 + (BOOL)canSendMail __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 /*!
     @property   mailComposeDelegate
     @abstract   This property is the delegate for the MFMailComposeViewControllerDelegate method callbacks.
  */
+// 代理    
 @property (nonatomic, assign, nullable) id<MFMailComposeViewControllerDelegate> mailComposeDelegate /*__OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0)*/;
 
 /*!
@@ -97,6 +111,7 @@ typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in 
                 </p>After the view has been presented to the user, this method will no longer change the value.
     @param      subject  A NSString specifying the message's Subject header.
 */
+// 设置邮件主题    
 - (void)setSubject:(NSString *)subject __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 /*!
@@ -107,6 +122,7 @@ typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in 
                 </p>After the view has been presented to the user, this method will no longer change the value.
     @param      toRecipients  A NSArray of NSString instances specifying the email addresses of recipients.
 */
+// 接收地址    
 - (void)setToRecipients:(nullable NSArray<NSString *> *)toRecipients __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 /*!
@@ -117,6 +133,7 @@ typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in 
                 </p>After the view has been presented to the user, this method will no longer change the value.
     @param      ccRecipients  A NSArray of NSString instances specifying the email addresses of recipients.
  */
+// 抄送者地址    
 - (void)setCcRecipients:(nullable NSArray<NSString *> *)ccRecipients __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 /*!
@@ -127,6 +144,7 @@ typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in 
                 </p>After the view has been presented to the user, this method will no longer change the value.
     @param      bccRecipients    A NSArray of NSString instances specifying the email addresses of recipients.
  */
+// 密送地址
 - (void)setBccRecipients:(nullable NSArray<NSString *> *)bccRecipients __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 /*!
@@ -137,6 +155,7 @@ typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in 
     @param      body A NSString containing the body contents of the email message.
     @param      isHTML  A boolean value indicating if the body argument is to be interpreted as HTML content.
 */
+// 邮件信息;isHtml指明body是否是html源码    
 - (void)setMessageBody:(NSString *)body isHTML:(BOOL)isHTML __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 /*!
@@ -150,6 +169,7 @@ typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in 
     @param      filename     NSString specifying the intended filename for the attachment.  This is displayed below
                                 the attachment's icon if the attachment is not decoded when displayed.  Must not be <tt>nil</tt>.
 */
+// 添加附件数据                                
 - (void)addAttachmentData:(NSData *)attachment mimeType:(NSString *)mimeType fileName:(NSString *)filename __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 @end
@@ -161,6 +181,7 @@ typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in 
     @discussion  This protocol must be implemented for delegates of MFMailComposeViewController instances.  It will
                  be called at various times while the user is composing, sending, saving, or canceling email composition.
 */
+// 代理                 
 @protocol MFMailComposeViewControllerDelegate <NSObject>
 @optional
 /*!
@@ -174,6 +195,7 @@ typedef enum MFMailComposeErrorCode MFMailComposeErrorCode;     // available in 
     @param      error        NSError indicating the failure reason if failure did occur.  This will be <tt>nil</tt> if
                              result did not indicate failure.
 */
+// 邮件发送结果回调                             
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(nullable NSError *)error __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 @end

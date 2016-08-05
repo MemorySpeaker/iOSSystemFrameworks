@@ -1,7 +1,7 @@
 
 * 粗略统计为2831个文件
 * 7.25: 除去.tbd文件(83个),.modulemap文件(63个),多统计的.DS_Store文件(3个),共计149个,精确统计为2682个文件
-*
+* 8.5 : 除去.map文件(28个),为2654个文件
 *
 *
 */
@@ -43,7 +43,7 @@
 0035__Frameworks/Accelerate.framework/Frameworks/vImage.framework/Headers/vImage_Types.h
 0036__Frameworks/Accelerate.framework/Frameworks/vImage.framework/Headers/vImage_Utilities.h
 0037__Frameworks/Accelerate.framework/Headers/Accelerate.h
-0038__Frameworks/Accelerate.framework/module.map
+// 0038__Frameworks/Accelerate.framework/module.map
 // 0039__Frameworks/Accelerate.framework/Modules/module.modulemap
 // 0040__Frameworks/Accounts.framework/Accounts.tbd
 0041__Frameworks/Accounts.framework/Headers/ACAccount.h
@@ -95,7 +95,7 @@
 0087__Frameworks/AudioToolbox.framework/Headers/CAFFile.h
 0088__Frameworks/AudioToolbox.framework/Headers/ExtendedAudioFile.h
 0089__Frameworks/AudioToolbox.framework/Headers/MusicPlayer.h
-0090__Frameworks/AudioToolbox.framework/module.map
+// 0090__Frameworks/AudioToolbox.framework/module.map
 // 0091__Frameworks/AudioToolbox.framework/Modules/module.modulemap
 0092__Frameworks/AudioUnit.framework/Headers/AUAudioUnit.h
 0093__Frameworks/AudioUnit.framework/Headers/AUAudioUnitImplementation.h
@@ -107,7 +107,7 @@
 0099__Frameworks/AudioUnit.framework/Headers/AudioUnitProperties.h
 0100__Frameworks/AudioUnit.framework/Headers/AUParameters.h
 0101__Frameworks/AudioUnit.framework/Headers/MusicDevice.h
-0102__Frameworks/AudioUnit.framework/module.map
+// 0102__Frameworks/AudioUnit.framework/module.map
 // 0103__Frameworks/AudioUnit.framework/Modules/module.modulemap
 // 0104__Frameworks/AVFoundation.framework/AVFoundation.tbd
 0105__Frameworks/AVFoundation.framework/Headers/AVAnimation.h
@@ -290,7 +290,7 @@
 // 0282__Frameworks/ContactsUI.framework/Modules/module.modulemap
 // 0283__Frameworks/CoreAudio.framework/CoreAudio.tbd
 0284__Frameworks/CoreAudio.framework/Headers/CoreAudioTypes.h
-0285__Frameworks/CoreAudio.framework/module.map
+// 0285__Frameworks/CoreAudio.framework/module.map
 // 0286__Frameworks/CoreAudio.framework/Modules/module.modulemap
 // 0287__Frameworks/CoreAudioKit.framework/CoreAudioKit.tbd
 0288__Frameworks/CoreAudioKit.framework/Headers/AUViewController.h
@@ -398,7 +398,7 @@
 0390__Frameworks/CoreFoundation.framework/Headers/CFUtilities.h
 0391__Frameworks/CoreFoundation.framework/Headers/CFUUID.h
 0392__Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h
-0393__Frameworks/CoreFoundation.framework/module.map
+// 0393__Frameworks/CoreFoundation.framework/module.map
 // 0394__Frameworks/CoreFoundation.framework/Modules/module.modulemap
 // 0395__Frameworks/CoreGraphics.framework/CoreGraphics.tbd
 0396__Frameworks/CoreGraphics.framework/Headers/CGAffineTransform.h
@@ -410,10 +410,10 @@
 0402__Frameworks/CoreGraphics.framework/Headers/CGContext.h
 0403__Frameworks/CoreGraphics.framework/Headers/CGDataConsumer.h
 0404__Frameworks/CoreGraphics.framework/Headers/CGDataProvider.h
-0405__Frameworks/CoreGraphics.framework/Headers/CGError.h
+// 0405__Frameworks/CoreGraphics.framework/Headers/CGError.h
 0406__Frameworks/CoreGraphics.framework/Headers/CGFont.h
 0407__Frameworks/CoreGraphics.framework/Headers/CGFunction.h
-0408__Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
+// 0408__Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
 0409__Frameworks/CoreGraphics.framework/Headers/CGGradient.h
 0410__Frameworks/CoreGraphics.framework/Headers/CGImage.h
 0411__Frameworks/CoreGraphics.framework/Headers/CGLayer.h
@@ -511,7 +511,7 @@
 0503__Frameworks/CoreMotion.framework/Headers/CMSensorRecorder.h
 0504__Frameworks/CoreMotion.framework/Headers/CMStepCounter.h
 0505__Frameworks/CoreMotion.framework/Headers/CoreMotion.h
-0506__Frameworks/CoreMotion.framework/module.map
+// 0506__Frameworks/CoreMotion.framework/module.map
 // 0507__Frameworks/CoreMotion.framework/Modules/module.modulemap
 // 0508__Frameworks/CoreSpotlight.framework/CoreSpotlight.tbd
 0509__Frameworks/CoreSpotlight.framework/Headers/CoreSpotlight.h
@@ -539,7 +539,7 @@
 0531__Frameworks/CoreTelephony.framework/Headers/CTSubscriber.h
 0532__Frameworks/CoreTelephony.framework/Headers/CTSubscriberInfo.h
 0533__Frameworks/CoreTelephony.framework/Headers/CTTelephonyNetworkInfo.h
-0534__Frameworks/CoreTelephony.framework/module.map
+// 0534__Frameworks/CoreTelephony.framework/module.map
 // 0535__Frameworks/CoreText.framework/CoreText.tbd
 0536__Frameworks/CoreText.framework/Headers/CoreText.h
 0537__Frameworks/CoreText.framework/Headers/CTDefines.h
@@ -577,7 +577,7 @@
 0569__Frameworks/CoreVideo.framework/Headers/CVPixelBufferPool.h
 0570__Frameworks/CoreVideo.framework/Headers/CVPixelFormatDescription.h
 0571__Frameworks/CoreVideo.framework/Headers/CVReturn.h
-0572__Frameworks/CoreVideo.framework/module.map
+// 0572__Frameworks/CoreVideo.framework/module.map
 // 0573__Frameworks/CoreVideo.framework/Modules/module.modulemap
 // 0574__Frameworks/EventKit.framework/EventKit.tbd
 0575__Frameworks/EventKit.framework/Headers/EKAlarm.h
@@ -726,7 +726,7 @@
 0718__Frameworks/Foundation.framework/Headers/NSValueTransformer.h
 0719__Frameworks/Foundation.framework/Headers/NSXMLParser.h
 0720__Frameworks/Foundation.framework/Headers/NSZone.h
-0721__Frameworks/Foundation.framework/module.map
+// 0721__Frameworks/Foundation.framework/module.map
 // 0722__Frameworks/Foundation.framework/Modules/module.modulemap
 // 0723__Frameworks/GameController.framework/GameController.tbd
 0724__Frameworks/GameController.framework/Headers/GameController.h
@@ -774,7 +774,7 @@
 0766__Frameworks/GameKit.framework/Headers/GKTurnBasedMatchmakerViewController.h
 0767__Frameworks/GameKit.framework/Headers/GKVoiceChat.h
 0768__Frameworks/GameKit.framework/Headers/GKVoiceChatService.h
-0769__Frameworks/GameKit.framework/module.map
+// 0769__Frameworks/GameKit.framework/module.map
 // 0770__Frameworks/GameKit.framework/Modules/module.modulemap
 // 0771__Frameworks/GameplayKit.framework/GameplayKit.tbd
 0772__Frameworks/GameplayKit.framework/Headers/GameplayKit.h
@@ -825,7 +825,7 @@
 0817__Frameworks/GLKit.framework/Headers/GLKVector4.h
 0818__Frameworks/GLKit.framework/Headers/GLKView.h
 0819__Frameworks/GLKit.framework/Headers/GLKViewController.h
-0820__Frameworks/GLKit.framework/module.map
+// 0820__Frameworks/GLKit.framework/module.map
 // 0821__Frameworks/GSS.framework/GSS.tbd
 0822__Frameworks/GSS.framework/Headers/GSS.h
 0823__Frameworks/GSS.framework/Headers/gssapi.h
@@ -834,7 +834,7 @@
 0826__Frameworks/GSS.framework/Headers/gssapi_oid.h
 0827__Frameworks/GSS.framework/Headers/gssapi_protos.h
 0828__Frameworks/GSS.framework/Headers/gssapi_spnego.h
-0829__Frameworks/GSS.framework/module.map
+// 0829__Frameworks/GSS.framework/module.map
 // 0830__Frameworks/GSS.framework/Modules/module.modulemap
 0831__Frameworks/HealthKit.framework/Headers/HealthKit.h
 0832__Frameworks/HealthKit.framework/Headers/HKActivitySummary.h
@@ -988,14 +988,14 @@
 0980__Frameworks/MapKit.framework/Headers/MKUserLocation.h
 0981__Frameworks/MapKit.framework/Headers/MKUserTrackingBarButtonItem.h
 // 0982__Frameworks/MapKit.framework/MapKit.tbd
-0983__Frameworks/MapKit.framework/module.map
+// 0983__Frameworks/MapKit.framework/module.map
 // 0984__Frameworks/MapKit.framework/Modules/module.modulemap
 0985__Frameworks/MediaAccessibility.framework/Headers/MAAudibleMedia.h
 0986__Frameworks/MediaAccessibility.framework/Headers/MACaptionAppearance.h
 0987__Frameworks/MediaAccessibility.framework/Headers/MADefinitions.h
 0988__Frameworks/MediaAccessibility.framework/Headers/MediaAccessibility.h
 // 0989__Frameworks/MediaAccessibility.framework/MediaAccessibility.tbd
-0990__Frameworks/MediaAccessibility.framework/module.map
+// 0990__Frameworks/MediaAccessibility.framework/module.map
 // 0991__Frameworks/MediaAccessibility.framework/Modules/module.modulemap
 0992__Frameworks/MediaPlayer.framework/Headers/AVFoundation+MPNowPlayingInfoLanguageOptionAdditions.h
 0993__Frameworks/MediaPlayer.framework/Headers/MediaPlayer.h
@@ -1032,9 +1032,9 @@
 1024__Frameworks/MediaToolbox.framework/Headers/MTFormatNames.h
 // 1025__Frameworks/MediaToolbox.framework/MediaToolbox.tbd
 // 1026__Frameworks/MediaToolbox.framework/Modules/module.modulemap
-1027__Frameworks/MessageUI.framework/Headers/MessageUI.h
-1028__Frameworks/MessageUI.framework/Headers/MFMailComposeViewController.h
-1029__Frameworks/MessageUI.framework/Headers/MFMessageComposeViewController.h
+// 1027__Frameworks/MessageUI.framework/Headers/MessageUI.h
+// 1028__Frameworks/MessageUI.framework/Headers/MFMailComposeViewController.h
+// 1029__Frameworks/MessageUI.framework/Headers/MFMessageComposeViewController.h
 // 1030__Frameworks/MessageUI.framework/MessageUI.tbd
 1031__Frameworks/Metal.framework/Headers/Metal.h
 1032__Frameworks/Metal.framework/Headers/MTLArgument.h
@@ -1112,7 +1112,7 @@
 1104__Frameworks/MultipeerConnectivity.framework/Headers/MCPeerID.h
 1105__Frameworks/MultipeerConnectivity.framework/Headers/MCSession.h
 1106__Frameworks/MultipeerConnectivity.framework/Headers/MultipeerConnectivity.h
-1107__Frameworks/MultipeerConnectivity.framework/module.map
+// 1107__Frameworks/MultipeerConnectivity.framework/module.map
 // 1108__Frameworks/MultipeerConnectivity.framework/Modules/module.modulemap
 // 1109__Frameworks/MultipeerConnectivity.framework/MultipeerConnectivity.tbd
 1110__Frameworks/NetworkExtension.framework/Headers/NEAppProxyFlow.h
@@ -1173,7 +1173,7 @@
 1165__Frameworks/OpenAL.framework/Headers/oalMacOSX_OALExtensions.h
 1166__Frameworks/OpenAL.framework/Headers/oalStaticBufferExtension.h
 1167__Frameworks/OpenAL.framework/Headers/OpenAL.h
-1168__Frameworks/OpenAL.framework/module.map
+// 1168__Frameworks/OpenAL.framework/module.map
 // 1169__Frameworks/OpenAL.framework/Modules/module.modulemap
 // 1170__Frameworks/OpenAL.framework/OpenAL.tbd
 1171__Frameworks/OpenGLES.framework/Headers/EAGL.h
@@ -1185,7 +1185,7 @@
 1177__Frameworks/OpenGLES.framework/Headers/ES3/gl.h
 1178__Frameworks/OpenGLES.framework/Headers/ES3/glext.h
 1179__Frameworks/OpenGLES.framework/Headers/gltypes.h
-1180__Frameworks/OpenGLES.framework/module.map
+// 1180__Frameworks/OpenGLES.framework/module.map
 // 1181__Frameworks/OpenGLES.framework/OpenGLES.tbd
 1182__Frameworks/PassKit.framework/Headers/PassKit.h
 1183__Frameworks/PassKit.framework/Headers/PKAddPassButton.h
@@ -1261,7 +1261,7 @@
 1253__Frameworks/QuartzCore.framework/Headers/CAValueFunction.h
 1254__Frameworks/QuartzCore.framework/Headers/CoreAnimation.h
 1255__Frameworks/QuartzCore.framework/Headers/QuartzCore.h
-1256__Frameworks/QuartzCore.framework/module.map
+// 1256__Frameworks/QuartzCore.framework/module.map
 // 1257__Frameworks/QuartzCore.framework/Modules/module.modulemap
 // 1258__Frameworks/QuartzCore.framework/QuartzCore.tbd
 1259__Frameworks/QuickLook.framework/Headers/QLBase.h
@@ -1321,7 +1321,7 @@
 1313__Frameworks/SceneKit.framework/Headers/SCNTechnique.h
 1314__Frameworks/SceneKit.framework/Headers/SCNTransaction.h
 1315__Frameworks/SceneKit.framework/Headers/SCNView.h
-1316__Frameworks/SceneKit.framework/module.map
+// 1316__Frameworks/SceneKit.framework/module.map
 // 1317__Frameworks/SceneKit.framework/Modules/module.modulemap
 // 1318__Frameworks/SceneKit.framework/SceneKit.tbd
 1319__Frameworks/Security.framework/Headers/CipherSuite.h
@@ -1338,7 +1338,7 @@
 1330__Frameworks/Security.framework/Headers/SecTrust.h
 1331__Frameworks/Security.framework/Headers/SecureTransport.h
 1332__Frameworks/Security.framework/Headers/Security.h
-1333__Frameworks/Security.framework/module.map
+// 1333__Frameworks/Security.framework/module.map
 // 1334__Frameworks/Security.framework/Security.tbd
 1335__Frameworks/Social.framework/Headers/SLComposeServiceViewController.h
 1336__Frameworks/Social.framework/Headers/SLComposeSheetConfigurationItem.h
@@ -1382,7 +1382,7 @@
 1374__Frameworks/SpriteKit.framework/Headers/SKView.h
 1375__Frameworks/SpriteKit.framework/Headers/SpriteKit.h
 1376__Frameworks/SpriteKit.framework/Headers/SpriteKitBase.h
-1377__Frameworks/SpriteKit.framework/module.map
+// 1377__Frameworks/SpriteKit.framework/module.map
 // 1378__Frameworks/SpriteKit.framework/SpriteKit.tbd
 1379__Frameworks/StoreKit.framework/Headers/SKCloudServiceController.h
 1380__Frameworks/StoreKit.framework/Headers/SKDownload.h
@@ -1397,7 +1397,7 @@
 1389__Frameworks/StoreKit.framework/Headers/SKStoreProductViewController.h
 1390__Frameworks/StoreKit.framework/Headers/StoreKit.h
 1391__Frameworks/StoreKit.framework/Headers/StoreKitDefines.h
-1392__Frameworks/StoreKit.framework/module.map
+// 1392__Frameworks/StoreKit.framework/module.map
 // 1393__Frameworks/StoreKit.framework/Modules/module.modulemap
 // 1394__Frameworks/StoreKit.framework/StoreKit.tbd
 1395__Frameworks/SystemConfiguration.framework/Headers/CaptiveNetwork.h
@@ -1430,7 +1430,7 @@
 1422__Frameworks/UIKit.framework/Headers/NSParagraphStyle.h
 1423__Frameworks/UIKit.framework/Headers/NSShadow.h
 1424__Frameworks/UIKit.framework/Headers/NSStringDrawing.h
-1425__Frameworks/UIKit.framework/Headers/NSText.h
+// 1425__Frameworks/UIKit.framework/Headers/NSText.h
 1426__Frameworks/UIKit.framework/Headers/NSTextAttachment.h
 1427__Frameworks/UIKit.framework/Headers/NSTextContainer.h
 1428__Frameworks/UIKit.framework/Headers/NSTextStorage.h
@@ -1457,7 +1457,7 @@
 1449__Frameworks/UIKit.framework/Headers/UIBarButtonItem.h
 1450__Frameworks/UIKit.framework/Headers/UIBarButtonItemGroup.h
 1451__Frameworks/UIKit.framework/Headers/UIBarCommon.h
-1452__Frameworks/UIKit.framework/Headers/UIBarItem.h
+// 1452__Frameworks/UIKit.framework/Headers/UIBarItem.h
 1453__Frameworks/UIKit.framework/Headers/UIBezierPath.h
 // 1454__Frameworks/UIKit.framework/Headers/UIButton.h
 1455__Frameworks/UIKit.framework/Headers/UICollectionView.h
@@ -1469,7 +1469,7 @@
 1461__Frameworks/UIKit.framework/Headers/UICollisionBehavior.h
 1462__Frameworks/UIKit.framework/Headers/UIColor.h
 // 1463__Frameworks/UIKit.framework/Headers/UIControl.h
-1464__Frameworks/UIKit.framework/Headers/UIDataDetectors.h
+// 1464__Frameworks/UIKit.framework/Headers/UIDataDetectors.h
 1465__Frameworks/UIKit.framework/Headers/UIDatePicker.h
 1466__Frameworks/UIKit.framework/Headers/UIDevice.h
 1467__Frameworks/UIKit.framework/Headers/UIDocument.h
@@ -1501,7 +1501,7 @@
 1493__Frameworks/UIKit.framework/Headers/UIInterface.h
 1494__Frameworks/UIKit.framework/Headers/UIKit.h
 1495__Frameworks/UIKit.framework/Headers/UIKitDefines.h
-1496__Frameworks/UIKit.framework/Headers/UILabel.h
+// 1496__Frameworks/UIKit.framework/Headers/UILabel.h
 1497__Frameworks/UIKit.framework/Headers/UILayoutGuide.h
 1498__Frameworks/UIKit.framework/Headers/UILexicon.h
 1499__Frameworks/UIKit.framework/Headers/UILocalizedIndexedCollation.h
@@ -1510,7 +1510,7 @@
 1502__Frameworks/UIKit.framework/Headers/UIManagedDocument.h
 1503__Frameworks/UIKit.framework/Headers/UIMenuController.h
 1504__Frameworks/UIKit.framework/Headers/UIMotionEffect.h
-1505__Frameworks/UIKit.framework/Headers/UINavigationBar.h
+// 1505__Frameworks/UIKit.framework/Headers/UINavigationBar.h
 1506__Frameworks/UIKit.framework/Headers/UINavigationController.h
 // 1507__Frameworks/UIKit.framework/Headers/UINib.h
 1508__Frameworks/UIKit.framework/Headers/UINibDeclarations.h
@@ -1544,7 +1544,7 @@
 1536__Frameworks/UIKit.framework/Headers/UIResponder.h
 1537__Frameworks/UIKit.framework/Headers/UIRotationGestureRecognizer.h
 1538__Frameworks/UIKit.framework/Headers/UIScreen.h
-1539__Frameworks/UIKit.framework/Headers/UIScreenEdgePanGestureRecognizer.h
+// 1539__Frameworks/UIKit.framework/Headers/UIScreenEdgePanGestureRecognizer.h
 1540__Frameworks/UIKit.framework/Headers/UIScreenMode.h
 1541__Frameworks/UIKit.framework/Headers/UIScrollView.h
 1542__Frameworks/UIKit.framework/Headers/UISearchBar.h
@@ -1563,10 +1563,10 @@
 1555__Frameworks/UIKit.framework/Headers/UIStoryboardSegue.h
 1556__Frameworks/UIKit.framework/Headers/UIStringDrawing.h
 1557__Frameworks/UIKit.framework/Headers/UISwipeGestureRecognizer.h
-1558__Frameworks/UIKit.framework/Headers/UISwitch.h
+// 1558__Frameworks/UIKit.framework/Headers/UISwitch.h
 1559__Frameworks/UIKit.framework/Headers/UITabBar.h
 1560__Frameworks/UIKit.framework/Headers/UITabBarController.h
-1561__Frameworks/UIKit.framework/Headers/UITabBarItem.h
+// 1561__Frameworks/UIKit.framework/Headers/UITabBarItem.h
 1562__Frameworks/UIKit.framework/Headers/UITableView.h
 1563__Frameworks/UIKit.framework/Headers/UITableViewCell.h
 1564__Frameworks/UIKit.framework/Headers/UITableViewController.h
@@ -1589,7 +1589,7 @@
 1581__Frameworks/UIKit.framework/Headers/UIVisualEffectView.h
 1582__Frameworks/UIKit.framework/Headers/UIWebView.h
 1583__Frameworks/UIKit.framework/Headers/UIWindow.h
-1584__Frameworks/UIKit.framework/module.map
+// 1584__Frameworks/UIKit.framework/module.map
 // 1585__Frameworks/UIKit.framework/Modules/module.modulemap
 // 1586__Frameworks/UIKit.framework/UIKit.tbd
 1587__Frameworks/VideoToolbox.framework/Headers/VideoToolbox.h
@@ -2299,7 +2299,7 @@
 2288__include/dispatch/group.h
 2289__include/dispatch/introspection.h
 2290__include/dispatch/io.h
-2291__include/dispatch/module.map
+// 2291__include/dispatch/module.map
 // 2292__include/dispatch/module.modulemap
 2293__include/dispatch/object.h
 2294__include/dispatch/once.h
@@ -2497,7 +2497,7 @@
 2486__include/mach-o/getsect.h
 2487__include/mach-o/ldsyms.h
 2488__include/mach-o/loader.h
-2489__include/mach-o/module.map
+// 2489__include/mach-o/module.map
 2490__include/mach-o/nlist.h
 2491__include/mach-o/ranlib.h
 2492__include/mach-o/reloc.h
@@ -2523,7 +2523,7 @@
 2512__include/math.h
 2513__include/membership.h
 2514__include/memory.h
-2515__include/module.map
+// 2515__include/module.map
 // 2516__include/module.modulemap
 2517__include/monetary.h
 2518__include/mpool.h
@@ -2547,9 +2547,9 @@
 2536__include/notify_keys.h
 2537__include/ntsid.h
 2538__include/objc/message.h
-2539__include/objc/module.map
+// 2539__include/objc/module.map
 2540__include/objc/NSObjCRuntime.h
-2541__include/objc/NSObject.h
+// 2541__include/objc/NSObject.h
 2542__include/objc/objc-api.h
 2543__include/objc/objc-auto.h
 2544__include/objc/objc-exception.h
@@ -2620,7 +2620,7 @@
 2609__include/simd/math.h
 2610__include/simd/matrix.h
 2611__include/simd/matrix_types.h
-2612__include/simd/module.map
+// 2612__include/simd/module.map
 // 2613__include/simd/module.modulemap
 2614__include/simd/packed.h
 2615__include/simd/simd.h

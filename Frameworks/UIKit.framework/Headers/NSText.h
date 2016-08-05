@@ -14,15 +14,20 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /* Values for NSTextAlignment */
+// 文本对齐方式
 typedef NS_ENUM(NSInteger, NSTextAlignment) {
+    // 左对齐
     NSTextAlignmentLeft      = 0,    // Visually left aligned
 #if TARGET_OS_IPHONE
+    // 居中
     NSTextAlignmentCenter    = 1,    // Visually centered
+    // 右对齐
     NSTextAlignmentRight     = 2,    // Visually right aligned
 #else /* !TARGET_OS_IPHONE */
     NSTextAlignmentRight     = 1,    // Visually right aligned
     NSTextAlignmentCenter    = 2,    // Visually centered
 #endif
+    // ?
     NSTextAlignmentJustified = 3,    // Fully-justified. The last line in a paragraph is natural-aligned.
     NSTextAlignmentNatural   = 4,    // Indicates the default alignment for script
 } NS_ENUM_AVAILABLE_IOS(6_0);
@@ -33,9 +38,12 @@ UIKIT_EXTERN NSTextAlignment NSTextAlignmentFromCTTextAlignment(CTTextAlignment 
 #endif
 
 /* Values for NSWritingDirection */
+// 文本书写方向
 typedef NS_ENUM(NSInteger, NSWritingDirection) {
     NSWritingDirectionNatural       = -1,    // Determines direction using the Unicode Bidi Algorithm rules P2 and P3
+    // 左到右
     NSWritingDirectionLeftToRight   =  0,    // Left to right writing direction
+    // 右到左
     NSWritingDirectionRightToLeft   =  1     // Right to left writing direction
 } NS_ENUM_AVAILABLE_IOS(6_0);
 

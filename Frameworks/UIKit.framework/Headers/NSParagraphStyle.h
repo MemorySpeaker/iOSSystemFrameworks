@@ -31,12 +31,19 @@ NS_CLASS_AVAILABLE(10_0, 7_0) @interface NSTextTab : NSObject <NSCopying, NSCodi
 
 
 // NSParagraphStyle
+// 文本换行模式枚举
 typedef NS_ENUM(NSInteger, NSLineBreakMode) {
+	// 单词不拆分
     NSLineBreakByWordWrapping = 0,     	// Wrap at word boundaries, default
+    // 字符不拆分
     NSLineBreakByCharWrapping,		// Wrap at character boundaries
+    // ?
     NSLineBreakByClipping,		// Simply clip
+    // 省略号在头部
     NSLineBreakByTruncatingHead,	// Truncate at head of line: "...wxyz"
+    // 省略号在末尾
     NSLineBreakByTruncatingTail,	// Truncate at tail of line: "abcd..."
+    // 省略号在中间
     NSLineBreakByTruncatingMiddle	// Truncate middle of line:  "ab...yz"
 } NS_ENUM_AVAILABLE(10_0, 6_0);
 

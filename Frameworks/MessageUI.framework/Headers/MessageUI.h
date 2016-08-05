@@ -7,5 +7,7 @@
  */
 
 
+//发邮件
 #import <MessageUI/MFMailComposeViewController.h>
+//发短信
 #import <MessageUI/MFMessageComposeViewController.h>

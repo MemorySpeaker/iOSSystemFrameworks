@@ -13,6 +13,7 @@
 
 /* Types used for errors and error handlers. */
 
+//错误类型枚举
 typedef CF_ENUM (int32_t, CGError) {
   kCGErrorSuccess = 0,
   kCGErrorFailure = 1000,
