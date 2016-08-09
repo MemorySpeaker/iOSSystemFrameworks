@@ -12,9 +12,11 @@
 typedef NS_ENUM(NSInteger, LAError)
 {
     /// Authentication was not successful, because user failed to provide valid credentials.
+    // 认证失败
     LAErrorAuthenticationFailed = kLAErrorAuthenticationFailed,
     
     /// Authentication was canceled by user (e.g. tapped Cancel button).
+    // 用户取消
     LAErrorUserCancel           = kLAErrorUserCancel,
     
     /// Authentication was canceled, because the user tapped the fallback button (Enter Password).
@@ -24,12 +26,15 @@ typedef NS_ENUM(NSInteger, LAError)
     LAErrorSystemCancel         = kLAErrorSystemCancel,
     
     /// Authentication could not start, because passcode is not set on the device.
+    // 没有设置密码
     LAErrorPasscodeNotSet       = kLAErrorPasscodeNotSet,
 
     /// Authentication could not start, because Touch ID is not available on the device.
+    // TouchID不可用
     LAErrorTouchIDNotAvailable  = kLAErrorTouchIDNotAvailable,
     
     /// Authentication could not start, because Touch ID has no enrolled fingers.
+    // TouchID中没有录入指纹
     LAErrorTouchIDNotEnrolled   = kLAErrorTouchIDNotEnrolled,
 
     /// Authentication was not successful, because there were too many failed Touch ID attempts and

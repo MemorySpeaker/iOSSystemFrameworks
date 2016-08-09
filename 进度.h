@@ -1,8 +1,9 @@
-
+/*
 * 粗略统计为2831个文件
+* Xcode版本为Version 7.3 (7D175);Frameworks文件夹和include文件夹均为原始状态
 * 7.25: 除去.tbd文件(83个),.modulemap文件(63个),多统计的.DS_Store文件(3个),共计149个,精确统计为2682个文件
 * 8.5 : 除去.map文件(28个),为2654个文件
-*
+* 8.9 : 使用TODO注释标记将要或者应该尽快做的
 *
 */
 
@@ -499,17 +500,17 @@
 0491__Frameworks/CoreMotion.framework/Headers/CMAttitude.h
 0492__Frameworks/CoreMotion.framework/Headers/CMAvailability.h
 0493__Frameworks/CoreMotion.framework/Headers/CMDeviceMotion.h
-0494__Frameworks/CoreMotion.framework/Headers/CMError.h
+// 0494__Frameworks/CoreMotion.framework/Headers/CMError.h
 0495__Frameworks/CoreMotion.framework/Headers/CMErrorDomain.h
 0496__Frameworks/CoreMotion.framework/Headers/CMGyro.h
-0497__Frameworks/CoreMotion.framework/Headers/CMLogItem.h
+// 0497__Frameworks/CoreMotion.framework/Headers/CMLogItem.h
 0498__Frameworks/CoreMotion.framework/Headers/CMMagnetometer.h
 0499__Frameworks/CoreMotion.framework/Headers/CMMotionActivity.h
 0500__Frameworks/CoreMotion.framework/Headers/CMMotionActivityManager.h
 0501__Frameworks/CoreMotion.framework/Headers/CMMotionManager.h
-0502__Frameworks/CoreMotion.framework/Headers/CMPedometer.h
+// 0502__Frameworks/CoreMotion.framework/Headers/CMPedometer.h
 0503__Frameworks/CoreMotion.framework/Headers/CMSensorRecorder.h
-0504__Frameworks/CoreMotion.framework/Headers/CMStepCounter.h
+// 0504__Frameworks/CoreMotion.framework/Headers/CMStepCounter.h
 0505__Frameworks/CoreMotion.framework/Headers/CoreMotion.h
 // 0506__Frameworks/CoreMotion.framework/module.map
 // 0507__Frameworks/CoreMotion.framework/Modules/module.modulemap
@@ -935,10 +936,10 @@
 0927__Frameworks/JavaScriptCore.framework/Headers/JSVirtualMachine.h
 0928__Frameworks/JavaScriptCore.framework/Headers/WebKitAvailability.h
 // 0929__Frameworks/JavaScriptCore.framework/JavaScriptCore.tbd
-0930__Frameworks/LocalAuthentication.framework/Headers/LAContext.h
-0931__Frameworks/LocalAuthentication.framework/Headers/LAError.h
-0932__Frameworks/LocalAuthentication.framework/Headers/LAPublicDefines.h
-0933__Frameworks/LocalAuthentication.framework/Headers/LocalAuthentication.h
+// 0930__Frameworks/LocalAuthentication.framework/Headers/LAContext.h
+// 0931__Frameworks/LocalAuthentication.framework/Headers/LAError.h
+// 0932__Frameworks/LocalAuthentication.framework/Headers/LAPublicDefines.h
+// 0933__Frameworks/LocalAuthentication.framework/Headers/LocalAuthentication.h
 // 0934__Frameworks/LocalAuthentication.framework/LocalAuthentication.tbd
 // 0935__Frameworks/LocalAuthentication.framework/Modules/module.modulemap
 0936__Frameworks/MapKit.framework/Headers/MapKit.h
@@ -1163,6 +1164,7 @@
 1155__Frameworks/NewsstandKit.framework/Headers/NKLibrary.h
 1156__Frameworks/NewsstandKit.framework/Headers/NKNSURLConnectionAdditions.h
 // 1157__Frameworks/NewsstandKit.framework/NewsstandKit.tbd
+// TODO:通知中"今天"中小部件开发
 1158__Frameworks/NotificationCenter.framework/Headers/NCWidgetController.h
 1159__Frameworks/NotificationCenter.framework/Headers/NCWidgetProviding.h
 1160__Frameworks/NotificationCenter.framework/Headers/NotificationCenter.h

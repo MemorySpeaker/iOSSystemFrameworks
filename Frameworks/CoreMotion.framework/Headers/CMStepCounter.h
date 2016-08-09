@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Discussion:
  *    Typedef of block to be invoked when the step count query is completed.
  */
+//查询历史数据处理块
 typedef void (^CMStepQueryHandler)(NSInteger numberOfSteps, NSError * __nullable error) __TVOS_PROHIBITED __WATCHOS_PROHIBITED;
 
 /*
@@ -25,6 +26,7 @@ typedef void (^CMStepQueryHandler)(NSInteger numberOfSteps, NSError * __nullable
  *      Typedef of block to be invoked on every update.  The total step count since startStepCountingUpdatesToQueue
  *      was called along with the timestamp associated with the latest determination will be returned.
  */
+//步数更新处理块
 typedef void (^CMStepUpdateHandler)(NSInteger numberOfSteps, NSDate *timestamp, NSError * __nullable error) __TVOS_PROHIBITED __WATCHOS_PROHIBITED;
 
 /*
@@ -45,6 +47,7 @@ typedef void (^CMStepUpdateHandler)(NSInteger numberOfSteps, NSDate *timestamp, 
  *      by either calling stopStepCountingUpdates or upon CMStepCounter deallocation.
  *
  */
+ // 7+添加的计步器,但8+后使用CMPedometer替代
 NS_CLASS_DEPRECATED_IOS(7_0,8_0,"Use CMPedometer instead") __TVOS_PROHIBITED __WATCHOS_PROHIBITED
 @interface CMStepCounter : NSObject
 
@@ -54,6 +57,7 @@ NS_CLASS_DEPRECATED_IOS(7_0,8_0,"Use CMPedometer instead") __TVOS_PROHIBITED __W
  *  Discussion:
  *      Determines whether the device supports step counting.
  */
+//计步器功能是否可用
 + (BOOL)isStepCountingAvailable;
 
 /*
@@ -64,6 +68,7 @@ NS_CLASS_DEPRECATED_IOS(7_0,8_0,"Use CMPedometer instead") __TVOS_PROHIBITED __W
  *      The step count returned is computed from a system wide history that is continuously being
  *      collected in the background.  The result is returned to the handler/queue specified.
  */
+// 查询历史数据
 - (void)queryStepCountStartingFrom:(NSDate *)start
                                 to:(NSDate *)end
                            toQueue:(NSOperationQueue *)queue
@@ -80,6 +85,7 @@ NS_CLASS_DEPRECATED_IOS(7_0,8_0,"Use CMPedometer instead") __TVOS_PROHIBITED __W
  *       period in the very next update.  The handler will be called when the number of steps (as defined by
  *       the user) has been detected on a best effort basis.
  */
+// 每隔stepCounts在queue中执行一次handler 
 - (void)startStepCountingUpdatesToQueue:(NSOperationQueue *)queue
                                updateOn:(NSInteger)stepCounts
                             withHandler:(CMStepUpdateHandler)handler;
@@ -93,6 +99,7 @@ NS_CLASS_DEPRECATED_IOS(7_0,8_0,"Use CMPedometer instead") __TVOS_PROHIBITED __W
  *      automatically invoked if updates are still active and stopStepCountingUpdates has not been
  *      called.
  */
+//停止计步数据更新 
 - (void)stopStepCountingUpdates;
 
 @end

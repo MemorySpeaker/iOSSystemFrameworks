@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  *      object contains a step count. On supported platforms it also contains
  *      distance, flights of stairs, pace, and cadence.
  */
+ // 用户徒步行走先关数据对象
 NS_CLASS_AVAILABLE(NA, 8_0) __TVOS_PROHIBITED
 @interface CMPedometerData : NSObject <NSSecureCoding, NSCopying>
 
@@ -29,6 +30,7 @@ NS_CLASS_AVAILABLE(NA, 8_0) __TVOS_PROHIBITED
  *
  *      This is the start time requested for the session or historical query.
  */
+ // 开始日期
 @property(readonly, nonatomic) NSDate *startDate;
 
 /*
@@ -40,6 +42,7 @@ NS_CLASS_AVAILABLE(NA, 8_0) __TVOS_PROHIBITED
  *      For updates this is the time for the most recent update. For historical
  *      queries this is the end time requested.
  */
+ // 结束日期
 @property(readonly, nonatomic) NSDate *endDate;
 
 /*
@@ -48,6 +51,7 @@ NS_CLASS_AVAILABLE(NA, 8_0) __TVOS_PROHIBITED
  *  Discussion:
  *      Number of steps taken by the user.
  */
+ // 行走步数
 @property(readonly, nonatomic) NSNumber *numberOfSteps;
 
 /*
@@ -57,6 +61,7 @@ NS_CLASS_AVAILABLE(NA, 8_0) __TVOS_PROHIBITED
  *      Estimated distance in meters traveled by the user while walking and
  *      running. Value is nil unsupported platforms.
  */
+ // 行走距离
 @property(readonly, nonatomic, nullable) NSNumber *distance;
 
 /*
@@ -67,6 +72,7 @@ NS_CLASS_AVAILABLE(NA, 8_0) __TVOS_PROHIBITED
  *      on unsupported platforms.
  *
  */
+ // 上楼层数
 @property(readonly, nonatomic, nullable) NSNumber *floorsAscended;
 
 /*
@@ -76,6 +82,7 @@ NS_CLASS_AVAILABLE(NA, 8_0) __TVOS_PROHIBITED
  *      Approximate number of floors descended by way of stairs. Value is nil
  *      on unsupported platforms.
  */
+ // 下楼层数
 @property(readonly, nonatomic, nullable) NSNumber *floorsDescended;
 
 /*
@@ -91,6 +98,7 @@ NS_CLASS_AVAILABLE(NA, 8_0) __TVOS_PROHIBITED
  *         (3) Unsupported platform.
  *
  */
+ // 行走步速,N秒/米
 @property(readonly, nonatomic, nullable) NSNumber *currentPace NS_AVAILABLE(NA,9_0);
 
 /*
@@ -106,6 +114,7 @@ NS_CLASS_AVAILABLE(NA, 8_0) __TVOS_PROHIBITED
  *         (3) Unsupported platform.
  *
  */
+ // 行走速率.N步/秒
 @property(readonly, nonatomic, nullable) NSNumber *currentCadence NS_AVAILABLE(NA,9_0);
 
 @end
@@ -117,6 +126,7 @@ NS_CLASS_AVAILABLE(NA, 8_0) __TVOS_PROHIBITED
  *      Typedef of block to be invoked when pedometer data is available. Error
  *      types are defined in "CMError.h".
  */
+ //对于步程数据的处理块
 typedef void (^CMPedometerHandler)(CMPedometerData * __nullable pedometerData, NSError * __nullable error) __TVOS_PROHIBITED;
 
 /*
@@ -135,6 +145,7 @@ typedef void (^CMPedometerHandler)(CMPedometerData * __nullable pedometerData, N
  *      updates can be stopped by calling stopPedometerUpdates.
  *
  */
+// 8.0+使用的计步器,可以获取步程,楼层等数据.7.0+的CMStepCounter已过时 
 NS_CLASS_AVAILABLE(NA,8_0) __TVOS_PROHIBITED
 @interface CMPedometer : NSObject
 
@@ -144,6 +155,7 @@ NS_CLASS_AVAILABLE(NA,8_0) __TVOS_PROHIBITED
  *  Discussion:
  *      Determines whether the device supports step counting functionality.
  */
+ // 计步是否可用
 + (BOOL)isStepCountingAvailable;
 
 /*
@@ -153,6 +165,7 @@ NS_CLASS_AVAILABLE(NA,8_0) __TVOS_PROHIBITED
  *      Determines whether the device supports distance estimation
  *      in addition to step counting.
  */
+ // 计距离是否可用
 + (BOOL)isDistanceAvailable;
 
 /*
@@ -162,6 +175,7 @@ NS_CLASS_AVAILABLE(NA,8_0) __TVOS_PROHIBITED
  *      Determines whether the device supports counting flights of stairs
  *      in addition to step counting.
  */
+ // 楼层计算是否可用
 + (BOOL)isFloorCountingAvailable;
 
 /*
@@ -171,6 +185,7 @@ NS_CLASS_AVAILABLE(NA,8_0) __TVOS_PROHIBITED
  *      Determines whether the device supports pace estimation
  *      in addition to step counting.
  */
+// 步速是否可用,N秒/米
 + (BOOL)isPaceAvailable NS_AVAILABLE(NA,9_0);
 
 /*
@@ -180,6 +195,7 @@ NS_CLASS_AVAILABLE(NA,8_0) __TVOS_PROHIBITED
  *      Determines whether the device supports cadence estimation
  *      in addition to step counting.
  */
+// 速率是否可用.N步/秒
 + (BOOL)isCadenceAvailable NS_AVAILABLE(NA,9_0);
 
 /*
@@ -191,6 +207,7 @@ NS_CLASS_AVAILABLE(NA,8_0) __TVOS_PROHIBITED
  *      system-wide history that is continuously being collected in the
  *      background. The result is returned on a serial queue.
  */
+ // 查询历史数据
 - (void)queryPedometerDataFromDate:(NSDate *)start
 							toDate:(NSDate *)end
 					   withHandler:(CMPedometerHandler)handler;
@@ -208,6 +225,7 @@ NS_CLASS_AVAILABLE(NA,8_0) __TVOS_PROHIBITED
  *      activity accumulated during the background period in the
  *      very next update.
  */
+ // 从指定日期开始获取数据
 - (void)startPedometerUpdatesFromDate:(NSDate *)start
 						  withHandler:(CMPedometerHandler)handler;
 
@@ -217,6 +235,7 @@ NS_CLASS_AVAILABLE(NA,8_0) __TVOS_PROHIBITED
  *  Discussion:
  *      Stops pedometer updates.
  */
+ // 停止数据更新
 - (void)stopPedometerUpdates;
 
 @end
