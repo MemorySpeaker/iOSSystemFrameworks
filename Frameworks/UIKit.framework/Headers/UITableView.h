@@ -14,8 +14,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 表视图风格
 typedef NS_ENUM(NSInteger, UITableViewStyle) {
+    // 默认一般风格
     UITableViewStylePlain,          // regular table view
+    // 组视图
     UITableViewStyleGrouped         // preferences style table view
 };
 
@@ -86,6 +89,7 @@ NS_CLASS_AVAILABLE_IOS(9_0) @interface UITableViewFocusUpdateContext : UIFocusUp
 
 // Display customization
 
+//将要或者已将显示cell,头部,脚部视图
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section NS_AVAILABLE_IOS(6_0);
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section NS_AVAILABLE_IOS(6_0);
@@ -95,7 +99,9 @@ NS_CLASS_AVAILABLE_IOS(9_0) @interface UITableViewFocusUpdateContext : UIFocusUp
 
 // Variable height support
 
+// indexpath行的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+// section分区头部,脚部视图的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section;
 
@@ -112,7 +118,9 @@ NS_CLASS_AVAILABLE_IOS(9_0) @interface UITableViewFocusUpdateContext : UIFocusUp
 
 // Accessories (disclosures). 
 
+// indexPath行的附件风格.3.0后过时
 - (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath NS_DEPRECATED_IOS(2_0, 3_0) __TVOS_PROHIBITED;
+// indexPath行的附件按钮被点击
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;
 
 // Selection
@@ -123,6 +131,7 @@ NS_CLASS_AVAILABLE_IOS(9_0) @interface UITableViewFocusUpdateContext : UIFocusUp
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
 
+// 将要,已经选中或者取消选中indexPath行cell
 // Called before the user changes the selection. Return a new indexPath, or nil, to change the proposed selection.
 - (nullable NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 - (nullable NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0);
@@ -193,12 +202,16 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITableView : UIScrollView <NSCoding>
 
 // Data
 
+// 重新加载所有表数据
 - (void)reloadData; // reloads everything from scratch. redisplays visible rows. because we only keep info about visible rows, this is cheap. will adjust offset if table shrinks
+// 重新加载右侧索引标题
 - (void)reloadSectionIndexTitles NS_AVAILABLE_IOS(3_0);   // reloads the index bar.
 
 // Info
 
+// 区数
 @property (nonatomic, readonly) NSInteger numberOfSections;
+// 区中的行数
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 
 - (CGRect)rectForSection:(NSInteger)section;                                    // includes header, footer and all rows
@@ -210,11 +223,16 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITableView : UIScrollView <NSCoding>
 - (nullable NSIndexPath *)indexPathForCell:(UITableViewCell *)cell;                      // returns nil if cell is not visible
 - (nullable NSArray<NSIndexPath *> *)indexPathsForRowsInRect:(CGRect)rect;                              // returns nil if rect not valid
 
+// 获取indexPath对应的cell对象
 - (nullable __kindof UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;   // returns nil if cell is not visible or index path is out of range
+// 当前所有可见cell组成的数组
 @property (nonatomic, readonly) NSArray<__kindof UITableViewCell *> *visibleCells;
+// 当前所有可见行数组
 @property (nonatomic, readonly, nullable) NSArray<NSIndexPath *> *indexPathsForVisibleRows;
 
+// section分区的头视图
 - (nullable UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section NS_AVAILABLE_IOS(6_0);
+// section分区的底部视图
 - (nullable UITableViewHeaderFooterView *)footerViewForSection:(NSInteger)section NS_AVAILABLE_IOS(6_0);
 
 - (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
@@ -237,7 +255,9 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITableView : UIScrollView <NSCoding>
 
 // Editing. When set, rows show insert/delete/reorder controls based on data source queries
 
+// 是否处于编辑模式
 @property (nonatomic, getter=isEditing) BOOL editing;                             // default is NO. setting is not animated.
+// 以动画形式切换编辑模式
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated;
 
 @property (nonatomic) BOOL allowsSelection NS_AVAILABLE_IOS(3_0);  // default is YES. Controls whether rows can be selected when not in editing mode
@@ -247,7 +267,9 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITableView : UIScrollView <NSCoding>
 
 // Selection
 
+// 当前选中的行
 @property (nonatomic, readonly, nullable) NSIndexPath *indexPathForSelectedRow; // returns nil or index path representing section and row of selection.
+// 当前选中行组成的数组
 @property (nonatomic, readonly, nullable) NSArray<NSIndexPath *> *indexPathsForSelectedRows NS_AVAILABLE_IOS(5_0); // returns nil or a set of index paths representing the sections and rows of the selection.
 
 // Selects and deselects rows. These methods will not call the delegate methods (-tableView:willSelectRowAtIndexPath: or tableView:didSelectRowAtIndexPath:), nor will it send out a notification.
@@ -270,6 +292,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITableView : UIScrollView <NSCoding>
 @property (nonatomic, strong, nullable) UIView *tableHeaderView;                           // accessory view for above row content. default is nil. not to be confused with section header
 @property (nonatomic, strong, nullable) UIView *tableFooterView;                           // accessory view below content. default is nil. not to be confused with section footer
 
+// 从复用池中获取一个重用标记为identifier的cell
 - (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  // Used by the delegate to acquire an already allocated cell, in lieu of allocating a new one.
 - (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0); // newer dequeue method guarantees a cell is returned and resized properly, assuming identifier is registered
 - (nullable __kindof UITableViewHeaderFooterView *)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(6_0);  // like dequeueReusableCellWithIdentifier:, but for headers/footers
@@ -292,22 +315,28 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITableView : UIScrollView <NSCoding>
 //_______________________________________________________________________________________________________________
 // this protocol represents the data model object. as such, it supplies no information about appearance (including the cells)
 
+// 数据源协议
 @protocol UITableViewDataSource<NSObject>
 
 @required
 
+// section分区中有几行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
+// indexPath行要显示的cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @optional
 
+// 有几个分区,默认一个
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;              // Default is 1 if not implemented
 
+// section的头部标题
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;    // fixed font style. use custom view (UILabel) if you want something different
+// section分区的底部标题
 - (nullable NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section;
 
 // Editing
@@ -340,11 +369,15 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITableView : UIScrollView <NSCoding>
 //_______________________________________________________________________________________________________________
 
 // This category provides convenience methods to make it easier to use an NSIndexPath to represent a section and row
+// 使NSIndexPath能代表section分区row行的分类
 @interface NSIndexPath (UITableView)
 
+// 快速实例化
 + (instancetype)indexPathForRow:(NSInteger)row inSection:(NSInteger)section;
 
+// 区数
 @property (nonatomic, readonly) NSInteger section;
+// 区中的行数
 @property (nonatomic, readonly) NSInteger row;
 
 @end
