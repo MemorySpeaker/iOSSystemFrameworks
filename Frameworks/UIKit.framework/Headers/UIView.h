@@ -48,13 +48,21 @@ typedef NS_ENUM(NSInteger, UIViewAnimationTransition) {
     UIViewAnimationTransitionCurlDown,
 };
 
+// 自动缩放尺寸项位移枚举
 typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {
+    // 不使用
     UIViewAutoresizingNone                 = 0,
+    // 距离父控件的左边是可以伸缩的
     UIViewAutoresizingFlexibleLeftMargin   = 1 << 0,
+    // 宽度可伸缩
     UIViewAutoresizingFlexibleWidth        = 1 << 1,
+    // 距离父控件的右边是可以伸缩的
     UIViewAutoresizingFlexibleRightMargin  = 1 << 2,
+    // 距离父控件的顶部是可以伸缩的
     UIViewAutoresizingFlexibleTopMargin    = 1 << 3,
+    // 高度可伸缩
     UIViewAutoresizingFlexibleHeight       = 1 << 4,
+    // 距离父控件的底部是可以伸缩的
     UIViewAutoresizingFlexibleBottomMargin = 1 << 5
 };
 
@@ -179,6 +187,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIView : UIResponder <NSCoding, UIAppeara
 - (CGRect)convertRect:(CGRect)rect fromView:(nullable UIView *)view;
 
 @property(nonatomic) BOOL               autoresizesSubviews; // default is YES. if set, subviews are adjusted according to their autoresizingMask if self.bounds changes
+// 自动尺寸缩放;默认值为UIViewAutoresizingNone
 @property(nonatomic) UIViewAutoresizing autoresizingMask;    // simple resize. default is UIViewAutoresizingNone
 
 - (CGSize)sizeThatFits:(CGSize)size;     // return 'best' size to fit given size. does not actually resize view. Default is return existing view size
@@ -218,6 +227,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIView : UIResponder <NSCoding, UIAppeara
 - (void)setNeedsLayout;
 - (void)layoutIfNeeded;
 
+// 布局子控件,layoutIfNeeded会自动调用该方法.一般在子类中重写调用[super layoutSubviews],然后添加一些自己的布局
 - (void)layoutSubviews;    // override point. called by layoutIfNeeded automatically. As of iOS 6.0, when constraints-based layout is used the base implementation applies the constraints-based layout, otherwise it does nothing.
 
 /*

@@ -100,16 +100,22 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITableViewCell : UIView <NSCoding, UIGes
 @property (nonatomic) BOOL                            showsReorderControl;        // default is NO
 @property (nonatomic) BOOL                            shouldIndentWhileEditing;   // default is YES.  This is unrelated to the indentation level below.
 
+// 附件类型
 @property (nonatomic) UITableViewCellAccessoryType    accessoryType;              // default is UITableViewCellAccessoryNone. use to set standard type
+// 自定义附件视图.accessoryView优先级>accessoryType
 @property (nonatomic, strong, nullable) UIView       *accessoryView;              // if set, use custom view. ignore accessoryType. tracks if enabled can calls accessory action
+// 编辑状态下的附件类型
 @property (nonatomic) UITableViewCellAccessoryType    editingAccessoryType;       // default is UITableViewCellAccessoryNone. use to set standard type
+// 编辑状态下的附件视图
 @property (nonatomic, strong, nullable) UIView       *editingAccessoryView;       // if set, use custom view. ignore editingAccessoryType. tracks if enabled can calls accessory action
 
 @property (nonatomic) NSInteger                       indentationLevel;           // adjust content indent. default is 0
 @property (nonatomic) CGFloat                         indentationWidth;           // width for each level. default is 10.0
 @property (nonatomic) UIEdgeInsets                    separatorInset NS_AVAILABLE_IOS(7_0) UI_APPEARANCE_SELECTOR __TVOS_PROHIBITED; // allows customization of the separator frame
 
+// 设置或获取是否处于编辑状态
 @property (nonatomic, getter=isEditing) BOOL          editing;                    // show appropriate edit controls (+/- & reorder). By default -setEditing: calls setEditing:animated: with NO for animated.
+// 以动画的方式切换编辑状态
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated;
 
 @property(nonatomic, readonly) BOOL                   showingDeleteConfirmation;  // currently showing "Delete" button
