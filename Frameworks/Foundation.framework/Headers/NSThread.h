@@ -9,12 +9,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 线程对象
 @interface NSThread : NSObject  {
 @private
     id _private;
     uint8_t _bytes[44];
 }
 
+// 当前代码运行所在的线程对象
 + (NSThread *)currentThread;
 
 + (void)detachNewThreadSelector:(SEL)selector toTarget:(id)target withObject:(nullable id)argument;
@@ -23,16 +25,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly, retain) NSMutableDictionary *threadDictionary;
 
+// 线程休眠到date时间
 + (void)sleepUntilDate:(NSDate *)date;
+// 线程休眠ti时长
 + (void)sleepForTimeInterval:(NSTimeInterval)ti;
 
 + (void)exit;
 
+// 线程优先级
 + (double)threadPriority;
 + (BOOL)setThreadPriority:(double)p;
 
+// 线程优先级.即将过时,使用qualityOfService代替
 @property double threadPriority NS_AVAILABLE(10_6, 4_0); // To be deprecated; use qualityOfService below
 
+// 服务质量
 @property NSQualityOfService qualityOfService NS_AVAILABLE(10_10, 8_0); // read-only after the thread is started
 
 + (NSArray<NSNumber *> *)callStackReturnAddresses NS_AVAILABLE(10_5, 2_0);

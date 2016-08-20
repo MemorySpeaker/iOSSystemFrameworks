@@ -16,16 +16,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIImage, UIColor, UILabel, UIImageView, UIButton, UITextField, UITableView, UILongPressGestureRecognizer;
 
+// 系统预设的cell风格
 typedef NS_ENUM(NSInteger, UITableViewCellStyle) {
+    // 图片+标题
     UITableViewCellStyleDefault,	// Simple cell with text label and optional image view (behavior of UITableViewCell in iPhoneOS 2.x)
+    // 图片+标题______________副标题
     UITableViewCellStyleValue1,		// Left aligned label on left and right aligned label on right with blue text (Used in Settings)
+    //标题+副标题
     UITableViewCellStyleValue2,		// Right aligned label on left with blue text and left aligned label on right (Used in Phone/Contacts)
+    // 图片+标题(上)+副标题(下)
     UITableViewCellStyleSubtitle	// Left aligned label on top and left aligned label on bottom with gray text (Used in iPod).
 };             // available in iPhone OS 3.0
 
+// 分隔线风格
 typedef NS_ENUM(NSInteger, UITableViewCellSeparatorStyle) {
+    // 无分隔线
     UITableViewCellSeparatorStyleNone,
+    // 单实线(默认)
     UITableViewCellSeparatorStyleSingleLine,
+    // 单虚线
     UITableViewCellSeparatorStyleSingleLineEtched   // This separator style is only supported for grouped style table views currently
 } __TVOS_PROHIBITED;
 
@@ -47,11 +56,17 @@ typedef NS_ENUM(NSInteger, UITableViewCellEditingStyle) {
     UITableViewCellEditingStyleInsert
 };
 
+// 系统预设的cell附件风格
 typedef NS_ENUM(NSInteger, UITableViewCellAccessoryType) {
+    // 不使用
     UITableViewCellAccessoryNone,                                                      // don't show any accessory view
+    //一个 > 号
     UITableViewCellAccessoryDisclosureIndicator,                                       // regular chevron. doesn't track
+    //一个详情按钮 + 一个 > 号
     UITableViewCellAccessoryDetailDisclosureButton __TVOS_PROHIBITED,                 // info button w/ chevron. tracks
+    // 一个 √ 号
     UITableViewCellAccessoryCheckmark,                                                 // checkmark. doesn't track
+    //一个详情按钮
     UITableViewCellAccessoryDetailButton NS_ENUM_AVAILABLE_IOS(7_0)  __TVOS_PROHIBITED // info button. tracks
 };
 
@@ -70,9 +85,12 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITableViewCell : UIView <NSCoding, UIGes
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 // Content.  These properties provide direct access to the internal label and image views used by the table view cell.  These should be used instead of the content properties below.
+// 图片
 @property (nonatomic, readonly, strong, nullable) UIImageView *imageView NS_AVAILABLE_IOS(3_0);   // default is nil.  image view will be created if necessary.
 
+// 标题标签
 @property (nonatomic, readonly, strong, nullable) UILabel *textLabel NS_AVAILABLE_IOS(3_0);   // default is nil.  label will be created if necessary.
+// 详情标签
 @property (nonatomic, readonly, strong, nullable) UILabel *detailTextLabel NS_AVAILABLE_IOS(3_0); // default is nil.  label will be created if necessary (and the current style supports a detail label).
 
 // If you want to customize cells by simply adding additional views, you should add them to the content view so they will be positioned appropriately as the cell transitions into and out of editing mode.
@@ -100,7 +118,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITableViewCell : UIView <NSCoding, UIGes
 @property (nonatomic) BOOL                            showsReorderControl;        // default is NO
 @property (nonatomic) BOOL                            shouldIndentWhileEditing;   // default is YES.  This is unrelated to the indentation level below.
 
-// 附件类型
+// cell附件风格.默认不使用附件
 @property (nonatomic) UITableViewCellAccessoryType    accessoryType;              // default is UITableViewCellAccessoryNone. use to set standard type
 // 自定义附件视图.accessoryView优先级>accessoryType
 @property (nonatomic, strong, nullable) UIView       *accessoryView;              // if set, use custom view. ignore accessoryType. tracks if enabled can calls accessory action
