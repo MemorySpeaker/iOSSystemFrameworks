@@ -6,6 +6,7 @@
 
 - Xcode版本为Version 7.3 (7D175);Frameworks文件夹和include文件夹均为原始状态
 - 进度.h用来掌控进度
+- XMinds文件夹是各个framework的辅助图
 - Frameworks的路径为/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks
 - include的路径为/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include
 
