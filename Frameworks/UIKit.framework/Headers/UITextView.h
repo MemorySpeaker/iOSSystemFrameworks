@@ -17,19 +17,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIFont, UIColor, UITextView, NSTextContainer, NSLayoutManager, NSTextStorage, NSTextAttachment;
 
+// 代理协议
 @protocol UITextViewDelegate <NSObject, UIScrollViewDelegate>
 
 @optional
 
+//是否允许开始;结束编辑
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView;
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView;
 
+//已经开始;结束编辑
 - (void)textViewDidBeginEditing:(UITextView *)textView;
 - (void)textViewDidEndEditing:(UITextView *)textView;
 
+//是否允许替代文本
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;
+//已经改变文本
 - (void)textViewDidChange:(UITextView *)textView;
 
+//选择区域改变
 - (void)textViewDidChangeSelection:(UITextView *)textView;
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0);
@@ -37,14 +43,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+// 文本视图. 可以多行输入,但是没有类似于textfield的placeholder属性
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UITextView : UIScrollView <UITextInput>
 
+// 各项属性
 @property(nullable,nonatomic,weak) id<UITextViewDelegate> delegate;
 @property(null_resettable,nonatomic,copy) NSString *text;
 @property(nullable,nonatomic,strong) UIFont *font;
 @property(nullable,nonatomic,strong) UIColor *textColor;
 @property(nonatomic) NSTextAlignment textAlignment;    // default is NSLeftTextAlignment
 @property(nonatomic) NSRange selectedRange;
+// 是否可编辑
 @property(nonatomic,getter=isEditable) BOOL editable __TVOS_PROHIBITED;
 @property(nonatomic,getter=isSelectable) BOOL selectable NS_AVAILABLE_IOS(7_0); // toggle selectability, which controls the ability of the user to select content and interact with URLs & attachments
 @property(nonatomic) UIDataDetectorTypes dataDetectorTypes NS_AVAILABLE_IOS(3_0) __TVOS_PROHIBITED;
@@ -53,11 +62,13 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITextView : UIScrollView <UITextInput>
 @property(null_resettable,copy) NSAttributedString *attributedText NS_AVAILABLE_IOS(6_0);
 @property(nonatomic,copy) NSDictionary<NSString *, id> *typingAttributes NS_AVAILABLE_IOS(6_0); // automatically resets when the selection changes
 
+// 是的range范围内文本可见
 - (void)scrollRangeToVisible:(NSRange)range;
 
 
 // Presented when object becomes first responder.  If set to nil, reverts to following responder chain.  If
 // set while first responder, will not take effect until reloadInputViews is called.
+// 输入源和输入源附件
 @property (nullable, readwrite, strong) UIView *inputView;             
 @property (nullable, readwrite, strong) UIView *inputAccessoryView;
 
@@ -81,6 +92,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITextView : UIScrollView <UITextInput>
 
 @end
 
+// 相关通知
 UIKIT_EXTERN NSString * const UITextViewTextDidBeginEditingNotification;
 UIKIT_EXTERN NSString * const UITextViewTextDidChangeNotification;
 UIKIT_EXTERN NSString * const UITextViewTextDidEndEditingNotification;

@@ -13,16 +13,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIImage;
 
+// 获取当前的绘图环境
 UIKIT_EXTERN CGContextRef __nullable UIGraphicsGetCurrentContext(void) CF_RETURNS_NOT_RETAINED;
+// 将context压入栈保存
 UIKIT_EXTERN void UIGraphicsPushContext(CGContextRef context);
+// 弹出
 UIKIT_EXTERN void UIGraphicsPopContext(void);
 
+// 矩形填充绘制
 UIKIT_EXTERN void UIRectFillUsingBlendMode(CGRect rect, CGBlendMode blendMode);
 UIKIT_EXTERN void UIRectFill(CGRect rect);
 
+// 矩形绘制
 UIKIT_EXTERN void UIRectFrameUsingBlendMode(CGRect rect, CGBlendMode blendMode);
 UIKIT_EXTERN void UIRectFrame(CGRect rect);
 
+// 裁剪
 UIKIT_EXTERN void UIRectClip(CGRect rect);
 
 // UIImage context
@@ -38,6 +44,7 @@ UIKIT_EXTERN void     UIGraphicsEndImageContext(void);
 
 // PDF context
 
+// 开启;关闭pdf环境
 UIKIT_EXTERN BOOL UIGraphicsBeginPDFContextToFile(NSString *path, CGRect bounds, NSDictionary * __nullable documentInfo) NS_AVAILABLE_IOS(3_2);
 UIKIT_EXTERN void UIGraphicsBeginPDFContextToData(NSMutableData *data, CGRect bounds, NSDictionary * __nullable documentInfo) NS_AVAILABLE_IOS(3_2);
 UIKIT_EXTERN void UIGraphicsEndPDFContext(void) NS_AVAILABLE_IOS(3_2);

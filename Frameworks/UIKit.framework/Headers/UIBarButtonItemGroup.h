@@ -10,14 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 按钮模型组. 9+的,没用过
 NS_CLASS_AVAILABLE_IOS(9_0) @interface UIBarButtonItemGroup : NSObject<NSCoding>
 
 /// Create a new bar button item group with the given items. When bar button item layout is done, either the group's barButtonItems or its representativeItem is displayed (if it exists).
+// 实例化
 - (instancetype)initWithBarButtonItems:(NSArray<UIBarButtonItem *> *)barButtonItems representativeItem:(nullable UIBarButtonItem *)representativeItem NS_DESIGNATED_INITIALIZER;
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 /// The bar button items assocaited with this group. Changing these items will affect the bar displaying these items without needing to re-set the groups that are in that bar. Any UIBarButtonItems that are already in group will be removed from that group.
+// 包含的项目
 @property (nonatomic, readwrite, copy) NSArray<UIBarButtonItem *> *barButtonItems;
 
 /// In order to display as many items as possible, bars that support UIBarButtonItemGroup may choose to collapse items associated with groups to the representativeItem specified by the group.
@@ -34,6 +37,7 @@ NS_CLASS_AVAILABLE_IOS(9_0) @interface UIBarButtonItemGroup : NSObject<NSCoding>
 @interface UIBarButtonItem (UIBarButtonItemGroup)
 
 /// The group that the UIBarButtonItem is currently associated with, either as a member of the barButtonItems array or as that group's representativeItem.
+// 所在的组
 @property (nonatomic, readonly, weak, nullable) UIBarButtonItemGroup *buttonGroup NS_AVAILABLE_IOS(9_0);
 
 @end

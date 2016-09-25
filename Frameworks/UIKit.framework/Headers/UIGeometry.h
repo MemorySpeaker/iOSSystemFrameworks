@@ -12,14 +12,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 内边距
 typedef struct UIEdgeInsets {
     CGFloat top, left, bottom, right;  // specify amount to inset (positive) for each of the edges. values can be negative to 'outset'
 } UIEdgeInsets;
 
+// 偏移量
 typedef struct UIOffset {
     CGFloat horizontal, vertical; // specify amount to offset a position, positive for right or down, negative for left or up
 } UIOffset;
 
+// 矩形边
 typedef NS_OPTIONS(NSUInteger, UIRectEdge) {
     UIRectEdgeNone   = 0,
     UIRectEdgeTop    = 1 << 0,
@@ -29,11 +32,13 @@ typedef NS_OPTIONS(NSUInteger, UIRectEdge) {
     UIRectEdgeAll    = UIRectEdgeTop | UIRectEdgeLeft | UIRectEdgeBottom | UIRectEdgeRight
 } NS_ENUM_AVAILABLE_IOS(7_0);
 
+// 创建内边距结构体
 UIKIT_STATIC_INLINE UIEdgeInsets UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
     UIEdgeInsets insets = {top, left, bottom, right};
     return insets;
 }
 
+//rect减去内边距后的矩形
 UIKIT_STATIC_INLINE CGRect UIEdgeInsetsInsetRect(CGRect rect, UIEdgeInsets insets) {
     rect.origin.x    += insets.left;
     rect.origin.y    += insets.top;
@@ -42,22 +47,27 @@ UIKIT_STATIC_INLINE CGRect UIEdgeInsetsInsetRect(CGRect rect, UIEdgeInsets inset
     return rect;
 }
 
+// 创建偏移量
 UIKIT_STATIC_INLINE UIOffset UIOffsetMake(CGFloat horizontal, CGFloat vertical) {
     UIOffset offset = {horizontal, vertical};
     return offset;
 }
 
+// 是否相等
 UIKIT_STATIC_INLINE BOOL UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsets insets1, UIEdgeInsets insets2) {
     return insets1.left == insets2.left && insets1.top == insets2.top && insets1.right == insets2.right && insets1.bottom == insets2.bottom;
 }
 
+// 是否相等
 UIKIT_STATIC_INLINE BOOL UIOffsetEqualToOffset(UIOffset offset1, UIOffset offset2) {
     return offset1.horizontal == offset2.horizontal && offset1.vertical == offset2.vertical;
 }
 
+// 0结构体
 UIKIT_EXTERN const UIEdgeInsets UIEdgeInsetsZero;
 UIKIT_EXTERN const UIOffset UIOffsetZero;
 
+// 字符串与结构体互转
 UIKIT_EXTERN NSString *NSStringFromCGPoint(CGPoint point);
 UIKIT_EXTERN NSString *NSStringFromCGVector(CGVector vector);
 UIKIT_EXTERN NSString *NSStringFromCGSize(CGSize size);
@@ -74,6 +84,7 @@ UIKIT_EXTERN CGAffineTransform CGAffineTransformFromString(NSString *string);
 UIKIT_EXTERN UIEdgeInsets UIEdgeInsetsFromString(NSString *string);
 UIKIT_EXTERN UIOffset UIOffsetFromString(NSString *string);
 
+// 对几何结构体的包装及解包
 @interface NSValue (NSValueUIGeometryExtensions)
 
 + (NSValue *)valueWithCGPoint:(CGPoint)point;
@@ -93,7 +104,8 @@ UIKIT_EXTERN UIOffset UIOffsetFromString(NSString *string);
 - (UIOffset)UIOffsetValue NS_AVAILABLE_IOS(5_0);
 
 @end
-    
+
+// 对几何结构体的归档及解档    
 @interface NSCoder (UIGeometryKeyedCoding)
 
 - (void)encodeCGPoint:(CGPoint)point forKey:(NSString *)key;

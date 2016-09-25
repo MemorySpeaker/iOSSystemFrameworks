@@ -25,6 +25,8 @@ typedef struct {
 
 @class NSArray<ObjectType>, NSString, NSDictionary<KeyType, ObjectType>;
 
+// 进程信息对象.可以获取一些进程及设备相关信息.
+//使用场景很少
 @interface NSProcessInfo : NSObject {
 @private
     NSDictionary	*environment;
@@ -34,8 +36,10 @@ typedef struct {
     NSInteger		automaticTerminationOptOutCounter;
 }
 
+// 获取对象
 + (NSProcessInfo *)processInfo;
 
+// 各项信息
 @property (readonly, copy) NSDictionary<NSString *, NSString *> *environment;
 @property (readonly, copy) NSArray<NSString *> *arguments;
 @property (readonly, copy) NSString *hostName;
@@ -201,6 +205,7 @@ typedef NS_ENUM(NSInteger, NSProcessInfoThermalState) {
 @interface NSProcessInfo (NSProcessInfoPowerState)
 
 // Retrieve the current setting of the system for the low power mode setting. On systems where the low power mode is unknown or unsupported, the value returned from the lowPowerModeEnabled property is always NO
+// 低电量模式是否可用
 @property (readonly, getter=isLowPowerModeEnabled) BOOL lowPowerModeEnabled NS_AVAILABLE(NA, 9_0);
 
 @end

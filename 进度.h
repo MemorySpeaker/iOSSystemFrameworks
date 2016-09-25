@@ -7,6 +7,11 @@
 *
 */
 
+/*
+Tips:
+	- 过期的方法就别再用了,技术要进步就不能总惯着用户.这一点苹果比安卓做的好多了,至于微软,呵呵
+*/
+
 // 0001__Frameworks/Accelerate.framework/Accelerate.tbd
 0002__Frameworks/Accelerate.framework/Frameworks/vecLib.framework/Headers/cblas.h
 0003__Frameworks/Accelerate.framework/Frameworks/vecLib.framework/Headers/clapack.h
@@ -616,11 +621,11 @@
 0607__Frameworks/ExternalAccessory.framework/Headers/ExternalAccessoryDefines.h
 // 0608__Frameworks/ExternalAccessory.framework/Modules/module.modulemap
 // 0609__Frameworks/Foundation.framework/Foundation.tbd
-0610__Frameworks/Foundation.framework/Headers/Foundation.h
-0611__Frameworks/Foundation.framework/Headers/FoundationErrors.h
-0612__Frameworks/Foundation.framework/Headers/NSArray.h
-0613__Frameworks/Foundation.framework/Headers/NSAttributedString.h
-0614__Frameworks/Foundation.framework/Headers/NSAutoreleasePool.h
+// 0610__Frameworks/Foundation.framework/Headers/Foundation.h
+// 0611__Frameworks/Foundation.framework/Headers/FoundationErrors.h
+// 0612__Frameworks/Foundation.framework/Headers/NSArray.h
+// 0613__Frameworks/Foundation.framework/Headers/NSAttributedString.h
+// 0614__Frameworks/Foundation.framework/Headers/NSAutoreleasePool.h
 0615__Frameworks/Foundation.framework/Headers/NSBundle.h
 0616__Frameworks/Foundation.framework/Headers/NSByteCountFormatter.h
 0617__Frameworks/Foundation.framework/Headers/NSByteOrder.h
@@ -631,17 +636,17 @@
 0622__Frameworks/Foundation.framework/Headers/NSComparisonPredicate.h
 0623__Frameworks/Foundation.framework/Headers/NSCompoundPredicate.h
 0624__Frameworks/Foundation.framework/Headers/NSData.h
-0625__Frameworks/Foundation.framework/Headers/NSDate.h
+// 0625__Frameworks/Foundation.framework/Headers/NSDate.h
 0626__Frameworks/Foundation.framework/Headers/NSDateComponentsFormatter.h
-0627__Frameworks/Foundation.framework/Headers/NSDateFormatter.h
+// 0627__Frameworks/Foundation.framework/Headers/NSDateFormatter.h
 0628__Frameworks/Foundation.framework/Headers/NSDateIntervalFormatter.h
 0629__Frameworks/Foundation.framework/Headers/NSDecimal.h
 0630__Frameworks/Foundation.framework/Headers/NSDecimalNumber.h
-0631__Frameworks/Foundation.framework/Headers/NSDictionary.h
+// 0631__Frameworks/Foundation.framework/Headers/NSDictionary.h
 0632__Frameworks/Foundation.framework/Headers/NSEnergyFormatter.h
-0633__Frameworks/Foundation.framework/Headers/NSEnumerator.h
-0634__Frameworks/Foundation.framework/Headers/NSError.h
-0635__Frameworks/Foundation.framework/Headers/NSException.h
+// 0633__Frameworks/Foundation.framework/Headers/NSEnumerator.h
+// 0634__Frameworks/Foundation.framework/Headers/NSError.h
+// 0635__Frameworks/Foundation.framework/Headers/NSException.h
 0636__Frameworks/Foundation.framework/Headers/NSExpression.h
 0637__Frameworks/Foundation.framework/Headers/NSExtensionContext.h
 0638__Frameworks/Foundation.framework/Headers/NSExtensionItem.h
@@ -656,18 +661,18 @@
 0647__Frameworks/Foundation.framework/Headers/NSHashTable.h
 0648__Frameworks/Foundation.framework/Headers/NSHTTPCookie.h
 0649__Frameworks/Foundation.framework/Headers/NSHTTPCookieStorage.h
-0650__Frameworks/Foundation.framework/Headers/NSIndexPath.h
-0651__Frameworks/Foundation.framework/Headers/NSIndexSet.h
+// 0650__Frameworks/Foundation.framework/Headers/NSIndexPath.h
+// 0651__Frameworks/Foundation.framework/Headers/NSIndexSet.h
 0652__Frameworks/Foundation.framework/Headers/NSInvocation.h
 0653__Frameworks/Foundation.framework/Headers/NSItemProvider.h
 // 0654__Frameworks/Foundation.framework/Headers/NSJSONSerialization.h
 0655__Frameworks/Foundation.framework/Headers/NSKeyedArchiver.h
-0656__Frameworks/Foundation.framework/Headers/NSKeyValueCoding.h
-0657__Frameworks/Foundation.framework/Headers/NSKeyValueObserving.h
+// 0656__Frameworks/Foundation.framework/Headers/NSKeyValueCoding.h
+// 0657__Frameworks/Foundation.framework/Headers/NSKeyValueObserving.h
 0658__Frameworks/Foundation.framework/Headers/NSLengthFormatter.h
 0659__Frameworks/Foundation.framework/Headers/NSLinguisticTagger.h
-0660__Frameworks/Foundation.framework/Headers/NSLocale.h
-0661__Frameworks/Foundation.framework/Headers/NSLock.h
+// 0660__Frameworks/Foundation.framework/Headers/NSLocale.h
+// 0661__Frameworks/Foundation.framework/Headers/NSLock.h
 0662__Frameworks/Foundation.framework/Headers/NSMapTable.h
 0663__Frameworks/Foundation.framework/Headers/NSMassFormatter.h
 0664__Frameworks/Foundation.framework/Headers/NSMetadata.h
@@ -690,40 +695,40 @@
 0681__Frameworks/Foundation.framework/Headers/NSPointerFunctions.h
 0682__Frameworks/Foundation.framework/Headers/NSPort.h
 0683__Frameworks/Foundation.framework/Headers/NSPredicate.h
-0684__Frameworks/Foundation.framework/Headers/NSProcessInfo.h
+// 0684__Frameworks/Foundation.framework/Headers/NSProcessInfo.h
 0685__Frameworks/Foundation.framework/Headers/NSProgress.h
-0686__Frameworks/Foundation.framework/Headers/NSPropertyList.h
-0687__Frameworks/Foundation.framework/Headers/NSProxy.h
+// 0686__Frameworks/Foundation.framework/Headers/NSPropertyList.h
+// 0687__Frameworks/Foundation.framework/Headers/NSProxy.h
 // 0688__Frameworks/Foundation.framework/Headers/NSRange.h
-0689__Frameworks/Foundation.framework/Headers/NSRegularExpression.h
+// 0689__Frameworks/Foundation.framework/Headers/NSRegularExpression.h
 // 0690__Frameworks/Foundation.framework/Headers/NSRunLoop.h
 0691__Frameworks/Foundation.framework/Headers/NSScanner.h
-0692__Frameworks/Foundation.framework/Headers/NSSet.h
+// 0692__Frameworks/Foundation.framework/Headers/NSSet.h
 0693__Frameworks/Foundation.framework/Headers/NSSortDescriptor.h
 0694__Frameworks/Foundation.framework/Headers/NSStream.h
-0695__Frameworks/Foundation.framework/Headers/NSString.h
+// 0695__Frameworks/Foundation.framework/Headers/NSString.h
 0696__Frameworks/Foundation.framework/Headers/NSTextCheckingResult.h
 0697__Frameworks/Foundation.framework/Headers/NSThread.h
-0698__Frameworks/Foundation.framework/Headers/NSTimer.h
-0699__Frameworks/Foundation.framework/Headers/NSTimeZone.h
-0700__Frameworks/Foundation.framework/Headers/NSUbiquitousKeyValueStore.h
+// 0698__Frameworks/Foundation.framework/Headers/NSTimer.h
+// 0699__Frameworks/Foundation.framework/Headers/NSTimeZone.h
+// 0700__Frameworks/Foundation.framework/Headers/NSUbiquitousKeyValueStore.h
 0701__Frameworks/Foundation.framework/Headers/NSUndoManager.h
-0702__Frameworks/Foundation.framework/Headers/NSURL.h
+// 0702__Frameworks/Foundation.framework/Headers/NSURL.h
 0703__Frameworks/Foundation.framework/Headers/NSURLAuthenticationChallenge.h
 0704__Frameworks/Foundation.framework/Headers/NSURLCache.h
 0705__Frameworks/Foundation.framework/Headers/NSURLConnection.h
 0706__Frameworks/Foundation.framework/Headers/NSURLCredential.h
 0707__Frameworks/Foundation.framework/Headers/NSURLCredentialStorage.h
-0708__Frameworks/Foundation.framework/Headers/NSURLError.h
+// 0708__Frameworks/Foundation.framework/Headers/NSURLError.h
 0709__Frameworks/Foundation.framework/Headers/NSURLProtectionSpace.h
 0710__Frameworks/Foundation.framework/Headers/NSURLProtocol.h
-0711__Frameworks/Foundation.framework/Headers/NSURLRequest.h
-0712__Frameworks/Foundation.framework/Headers/NSURLResponse.h
+// 0711__Frameworks/Foundation.framework/Headers/NSURLRequest.h
+// 0712__Frameworks/Foundation.framework/Headers/NSURLResponse.h
 0713__Frameworks/Foundation.framework/Headers/NSURLSession.h
 0714__Frameworks/Foundation.framework/Headers/NSUserActivity.h
-0715__Frameworks/Foundation.framework/Headers/NSUserDefaults.h
-0716__Frameworks/Foundation.framework/Headers/NSUUID.h
-0717__Frameworks/Foundation.framework/Headers/NSValue.h
+// 0715__Frameworks/Foundation.framework/Headers/NSUserDefaults.h
+// 0716__Frameworks/Foundation.framework/Headers/NSUUID.h
+// 0717__Frameworks/Foundation.framework/Headers/NSValue.h
 0718__Frameworks/Foundation.framework/Headers/NSValueTransformer.h
 0719__Frameworks/Foundation.framework/Headers/NSXMLParser.h
 0720__Frameworks/Foundation.framework/Headers/NSZone.h
@@ -1419,18 +1424,20 @@
 1409__Frameworks/SystemConfiguration.framework/Headers/SystemConfiguration.h
 // 1410__Frameworks/SystemConfiguration.framework/Modules/module.modulemap
 // 1411__Frameworks/SystemConfiguration.framework/SystemConfiguration.tbd
+
 1412__Frameworks/Twitter.framework/Headers/Twitter.h
 1413__Frameworks/Twitter.framework/Headers/TWRequest.h
 1414__Frameworks/Twitter.framework/Headers/TWTweetComposeViewController.h
 // 1415__Frameworks/Twitter.framework/Twitter.tbd
+
 1416__Frameworks/UIKit.framework/Headers/NSAttributedString.h
 1417__Frameworks/UIKit.framework/Headers/NSDataAsset.h
 1418__Frameworks/UIKit.framework/Headers/NSFileProviderExtension.h
 1419__Frameworks/UIKit.framework/Headers/NSLayoutAnchor.h
-1420__Frameworks/UIKit.framework/Headers/NSLayoutConstraint.h
+// 1420__Frameworks/UIKit.framework/Headers/NSLayoutConstraint.h
 1421__Frameworks/UIKit.framework/Headers/NSLayoutManager.h
 1422__Frameworks/UIKit.framework/Headers/NSParagraphStyle.h
-1423__Frameworks/UIKit.framework/Headers/NSShadow.h
+// 1423__Frameworks/UIKit.framework/Headers/NSShadow.h
 1424__Frameworks/UIKit.framework/Headers/NSStringDrawing.h
 // 1425__Frameworks/UIKit.framework/Headers/NSText.h
 1426__Frameworks/UIKit.framework/Headers/NSTextAttachment.h
@@ -1446,19 +1453,19 @@
 1436__Frameworks/UIKit.framework/Headers/UIAccessibilityZoom.h
 // 1437__Frameworks/UIKit.framework/Headers/UIActionSheet.h
 1438__Frameworks/UIKit.framework/Headers/UIActivity.h
-1439__Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h
+// 1439__Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h
 1440__Frameworks/UIKit.framework/Headers/UIActivityItemProvider.h
 1441__Frameworks/UIKit.framework/Headers/UIActivityViewController.h
-1442__Frameworks/UIKit.framework/Headers/UIAlert.h
-1443__Frameworks/UIKit.framework/Headers/UIAlertController.h
+// 1442__Frameworks/UIKit.framework/Headers/UIAlert.h
+// 1443__Frameworks/UIKit.framework/Headers/UIAlertController.h
 // 1444__Frameworks/UIKit.framework/Headers/UIAlertView.h
 1445__Frameworks/UIKit.framework/Headers/UIAppearance.h
 1446__Frameworks/UIKit.framework/Headers/UIApplication.h
 1447__Frameworks/UIKit.framework/Headers/UIApplicationShortcutItem.h
 1448__Frameworks/UIKit.framework/Headers/UIAttachmentBehavior.h
-1449__Frameworks/UIKit.framework/Headers/UIBarButtonItem.h
-1450__Frameworks/UIKit.framework/Headers/UIBarButtonItemGroup.h
-1451__Frameworks/UIKit.framework/Headers/UIBarCommon.h
+// 1449__Frameworks/UIKit.framework/Headers/UIBarButtonItem.h
+// 1450__Frameworks/UIKit.framework/Headers/UIBarButtonItemGroup.h
+// 1451__Frameworks/UIKit.framework/Headers/UIBarCommon.h
 // 1452__Frameworks/UIKit.framework/Headers/UIBarItem.h
 1453__Frameworks/UIKit.framework/Headers/UIBezierPath.h
 // 1454__Frameworks/UIKit.framework/Headers/UIButton.h
@@ -1469,11 +1476,11 @@
 1459__Frameworks/UIKit.framework/Headers/UICollectionViewLayout.h
 1460__Frameworks/UIKit.framework/Headers/UICollectionViewTransitionLayout.h
 1461__Frameworks/UIKit.framework/Headers/UICollisionBehavior.h
-1462__Frameworks/UIKit.framework/Headers/UIColor.h
+// 1462__Frameworks/UIKit.framework/Headers/UIColor.h
 // 1463__Frameworks/UIKit.framework/Headers/UIControl.h
 // 1464__Frameworks/UIKit.framework/Headers/UIDataDetectors.h
-1465__Frameworks/UIKit.framework/Headers/UIDatePicker.h
-1466__Frameworks/UIKit.framework/Headers/UIDevice.h
+// 1465__Frameworks/UIKit.framework/Headers/UIDatePicker.h
+// 1466__Frameworks/UIKit.framework/Headers/UIDevice.h
 1467__Frameworks/UIKit.framework/Headers/UIDocument.h
 1468__Frameworks/UIKit.framework/Headers/UIDocumentInteractionController.h
 1469__Frameworks/UIKit.framework/Headers/UIDocumentMenuViewController.h
@@ -1486,12 +1493,12 @@
 1476__Frameworks/UIKit.framework/Headers/UIFieldBehavior.h
 1477__Frameworks/UIKit.framework/Headers/UIFocus.h
 1478__Frameworks/UIKit.framework/Headers/UIFocusAnimationCoordinator.h
-1479__Frameworks/UIKit.framework/Headers/UIFont.h
+// 1479__Frameworks/UIKit.framework/Headers/UIFont.h
 1480__Frameworks/UIKit.framework/Headers/UIFontDescriptor.h
-1481__Frameworks/UIKit.framework/Headers/UIGeometry.h
-1482__Frameworks/UIKit.framework/Headers/UIGestureRecognizer.h
-1483__Frameworks/UIKit.framework/Headers/UIGestureRecognizerSubclass.h
-1484__Frameworks/UIKit.framework/Headers/UIGraphics.h
+// 1481__Frameworks/UIKit.framework/Headers/UIGeometry.h
+// 1482__Frameworks/UIKit.framework/Headers/UIGestureRecognizer.h
+// 1483__Frameworks/UIKit.framework/Headers/UIGestureRecognizerSubclass.h
+// 1484__Frameworks/UIKit.framework/Headers/UIGraphics.h
 1485__Frameworks/UIKit.framework/Headers/UIGravityBehavior.h
 1486__Frameworks/UIKit.framework/Headers/UIGuidedAccessRestrictions.h
 1487__Frameworks/UIKit.framework/Headers/UIImage.h
@@ -1500,15 +1507,15 @@
 1490__Frameworks/UIKit.framework/Headers/UIImageView.h
 1491__Frameworks/UIKit.framework/Headers/UIInputView.h
 1492__Frameworks/UIKit.framework/Headers/UIInputViewController.h
-1493__Frameworks/UIKit.framework/Headers/UIInterface.h
-1494__Frameworks/UIKit.framework/Headers/UIKit.h
-1495__Frameworks/UIKit.framework/Headers/UIKitDefines.h
+// 1493__Frameworks/UIKit.framework/Headers/UIInterface.h
+// 1494__Frameworks/UIKit.framework/Headers/UIKit.h
+// 1495__Frameworks/UIKit.framework/Headers/UIKitDefines.h
 // 1496__Frameworks/UIKit.framework/Headers/UILabel.h
 1497__Frameworks/UIKit.framework/Headers/UILayoutGuide.h
 1498__Frameworks/UIKit.framework/Headers/UILexicon.h
 1499__Frameworks/UIKit.framework/Headers/UILocalizedIndexedCollation.h
-1500__Frameworks/UIKit.framework/Headers/UILocalNotification.h
-1501__Frameworks/UIKit.framework/Headers/UILongPressGestureRecognizer.h
+// 1500__Frameworks/UIKit.framework/Headers/UILocalNotification.h
+// 1501__Frameworks/UIKit.framework/Headers/UILongPressGestureRecognizer.h
 1502__Frameworks/UIKit.framework/Headers/UIManagedDocument.h
 1503__Frameworks/UIKit.framework/Headers/UIMenuController.h
 1504__Frameworks/UIKit.framework/Headers/UIMotionEffect.h
@@ -1519,16 +1526,16 @@
 1509__Frameworks/UIKit.framework/Headers/UINibLoading.h
 // 1510__Frameworks/UIKit.framework/Headers/UIPageControl.h
 1511__Frameworks/UIKit.framework/Headers/UIPageViewController.h
-1512__Frameworks/UIKit.framework/Headers/UIPanGestureRecognizer.h
+// 1512__Frameworks/UIKit.framework/Headers/UIPanGestureRecognizer.h
 1513__Frameworks/UIKit.framework/Headers/UIPasteboard.h
-1514__Frameworks/UIKit.framework/Headers/UIPickerView.h
-1515__Frameworks/UIKit.framework/Headers/UIPinchGestureRecognizer.h
+// 1514__Frameworks/UIKit.framework/Headers/UIPickerView.h
+// 1515__Frameworks/UIKit.framework/Headers/UIPinchGestureRecognizer.h
 1516__Frameworks/UIKit.framework/Headers/UIPopoverBackgroundView.h
 1517__Frameworks/UIKit.framework/Headers/UIPopoverController.h
 1518__Frameworks/UIKit.framework/Headers/UIPopoverPresentationController.h
 1519__Frameworks/UIKit.framework/Headers/UIPopoverSupport.h
 1520__Frameworks/UIKit.framework/Headers/UIPresentationController.h
-1521__Frameworks/UIKit.framework/Headers/UIPress.h
+// 1521__Frameworks/UIKit.framework/Headers/UIPress.h
 1522__Frameworks/UIKit.framework/Headers/UIPressesEvent.h
 1523__Frameworks/UIKit.framework/Headers/UIPrinter.h
 1524__Frameworks/UIKit.framework/Headers/UIPrinterPickerController.h
@@ -1544,43 +1551,43 @@
 // 1534__Frameworks/UIKit.framework/Headers/UIRefreshControl.h
 1535__Frameworks/UIKit.framework/Headers/UIRegion.h
 1536__Frameworks/UIKit.framework/Headers/UIResponder.h
-1537__Frameworks/UIKit.framework/Headers/UIRotationGestureRecognizer.h
-1538__Frameworks/UIKit.framework/Headers/UIScreen.h
+// 1537__Frameworks/UIKit.framework/Headers/UIRotationGestureRecognizer.h
+// 1538__Frameworks/UIKit.framework/Headers/UIScreen.h
 // 1539__Frameworks/UIKit.framework/Headers/UIScreenEdgePanGestureRecognizer.h
-1540__Frameworks/UIKit.framework/Headers/UIScreenMode.h
-1541__Frameworks/UIKit.framework/Headers/UIScrollView.h
+// 1540__Frameworks/UIKit.framework/Headers/UIScreenMode.h
+// 1541__Frameworks/UIKit.framework/Headers/UIScrollView.h
 1542__Frameworks/UIKit.framework/Headers/UISearchBar.h
 1543__Frameworks/UIKit.framework/Headers/UISearchContainerViewController.h
 1544__Frameworks/UIKit.framework/Headers/UISearchController.h
 1545__Frameworks/UIKit.framework/Headers/UISearchDisplayController.h
-1546__Frameworks/UIKit.framework/Headers/UISegmentedControl.h
-1547__Frameworks/UIKit.framework/Headers/UISlider.h
+// 1546__Frameworks/UIKit.framework/Headers/UISegmentedControl.h
+// 1547__Frameworks/UIKit.framework/Headers/UISlider.h
 1548__Frameworks/UIKit.framework/Headers/UISnapBehavior.h
 1549__Frameworks/UIKit.framework/Headers/UISplitViewController.h
 1550__Frameworks/UIKit.framework/Headers/UIStackView.h
 1551__Frameworks/UIKit.framework/Headers/UIStateRestoration.h
-1552__Frameworks/UIKit.framework/Headers/UIStepper.h
+// 1552__Frameworks/UIKit.framework/Headers/UIStepper.h
 // 1553__Frameworks/UIKit.framework/Headers/UIStoryboard.h
-1554__Frameworks/UIKit.framework/Headers/UIStoryboardPopoverSegue.h
-1555__Frameworks/UIKit.framework/Headers/UIStoryboardSegue.h
-1556__Frameworks/UIKit.framework/Headers/UIStringDrawing.h
-1557__Frameworks/UIKit.framework/Headers/UISwipeGestureRecognizer.h
+// 1554__Frameworks/UIKit.framework/Headers/UIStoryboardPopoverSegue.h
+// 1555__Frameworks/UIKit.framework/Headers/UIStoryboardSegue.h
+// 1556__Frameworks/UIKit.framework/Headers/UIStringDrawing.h
+// 1557__Frameworks/UIKit.framework/Headers/UISwipeGestureRecognizer.h
 // 1558__Frameworks/UIKit.framework/Headers/UISwitch.h
-1559__Frameworks/UIKit.framework/Headers/UITabBar.h
-1560__Frameworks/UIKit.framework/Headers/UITabBarController.h
+// 1559__Frameworks/UIKit.framework/Headers/UITabBar.h
+// 1560__Frameworks/UIKit.framework/Headers/UITabBarController.h
 // 1561__Frameworks/UIKit.framework/Headers/UITabBarItem.h
 1562__Frameworks/UIKit.framework/Headers/UITableView.h
 1563__Frameworks/UIKit.framework/Headers/UITableViewCell.h
 1564__Frameworks/UIKit.framework/Headers/UITableViewController.h
 1565__Frameworks/UIKit.framework/Headers/UITableViewHeaderFooterView.h
-1566__Frameworks/UIKit.framework/Headers/UITapGestureRecognizer.h
+// 1566__Frameworks/UIKit.framework/Headers/UITapGestureRecognizer.h
 1567__Frameworks/UIKit.framework/Headers/UITextChecker.h
-1568__Frameworks/UIKit.framework/Headers/UITextField.h
+// 1568__Frameworks/UIKit.framework/Headers/UITextField.h
 1569__Frameworks/UIKit.framework/Headers/UITextInput.h
 1570__Frameworks/UIKit.framework/Headers/UITextInputTraits.h
-1571__Frameworks/UIKit.framework/Headers/UITextView.h
-1572__Frameworks/UIKit.framework/Headers/UIToolbar.h
-1573__Frameworks/UIKit.framework/Headers/UITouch.h
+// 1571__Frameworks/UIKit.framework/Headers/UITextView.h
+// 1572__Frameworks/UIKit.framework/Headers/UIToolbar.h
+// 1573__Frameworks/UIKit.framework/Headers/UITouch.h
 1574__Frameworks/UIKit.framework/Headers/UITraitCollection.h
 1575__Frameworks/UIKit.framework/Headers/UIUserNotificationSettings.h
 1576__Frameworks/UIKit.framework/Headers/UIVideoEditorController.h
@@ -1588,9 +1595,9 @@
 1578__Frameworks/UIKit.framework/Headers/UIViewController.h
 1579__Frameworks/UIKit.framework/Headers/UIViewControllerTransitionCoordinator.h
 1580__Frameworks/UIKit.framework/Headers/UIViewControllerTransitioning.h
-1581__Frameworks/UIKit.framework/Headers/UIVisualEffectView.h
-1582__Frameworks/UIKit.framework/Headers/UIWebView.h
-1583__Frameworks/UIKit.framework/Headers/UIWindow.h
+// 1581__Frameworks/UIKit.framework/Headers/UIVisualEffectView.h
+// 1582__Frameworks/UIKit.framework/Headers/UIWebView.h
+// 1583__Frameworks/UIKit.framework/Headers/UIWindow.h
 // 1584__Frameworks/UIKit.framework/module.map
 // 1585__Frameworks/UIKit.framework/Modules/module.modulemap
 // 1586__Frameworks/UIKit.framework/UIKit.tbd
@@ -1720,6 +1727,7 @@
 1707__include/bsm/audit_uevents.h
 1708__include/bsm/libbsm.h
 1709__include/bzlib.h
+
 // 1710__include/c++/.DS_Store
 1711__include/c++/4.2.1/algorithm
 1712__include/c++/4.2.1/backward/algo.h

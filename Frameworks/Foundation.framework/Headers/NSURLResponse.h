@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSURLConnection and NSURLConnectionDelegate for more information
     about receiving the content data for a URL load.
 */
+// 请求响应对象    
 @interface NSURLResponse : NSObject <NSSecureCoding, NSCopying>
 {
     @package
@@ -46,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
     @result The initialized NSURLResponse.
     @discussion This is the designated initializer for NSURLResponse.
 */
+//实例化    
 - (instancetype)initWithURL:(NSURL *)URL MIMEType:(nullable NSString *)MIMEType expectedContentLength:(NSInteger)length textEncodingName:(nullable NSString *)name NS_DESIGNATED_INITIALIZER;
 
 /*! 
@@ -66,6 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
     be made if the origin source did not report any such information.
     @result The MIME type of the receiver.
 */
+//相应数据的MIME类型    
 @property (nullable, readonly, copy) NSString *MIMEType;
 
 /*! 
@@ -81,6 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
     there is no expectation that can be arrived at regarding expected
     content length.
 */
+//期望的数据长度    
 @property (readonly) long long expectedContentLength;
 
 /*! 
@@ -108,6 +112,7 @@ NS_ASSUME_NONNULL_BEGIN
     This method always returns a valid filename.
     @result A suggested filename to use if saving the resource to disk.
 */
+//推荐的文件名    
 @property (nullable, readonly, copy) NSString *suggestedFilename;
 
 @end
@@ -124,6 +129,7 @@ NS_ASSUME_NONNULL_BEGIN
     provides conveniences for accessing information specific to HTTP
     protocol responses.
 */
+// http请求的响应对象    
 @interface NSHTTPURLResponse : NSURLResponse 
 {
     @package
@@ -140,6 +146,7 @@ NS_ASSUME_NONNULL_BEGIN
   @result 	the instance of the object, or NULL if an error occurred during initialization.
   @discussion This API was introduced in Mac OS X 10.7.2 and iOS 5.0 and is not available prior to those releases.
 */
+// 实例化  
 - (nullable instancetype)initWithURL:(NSURL *)url statusCode:(NSInteger)statusCode HTTPVersion:(nullable NSString *)HTTPVersion headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields NS_AVAILABLE(10_7, 5_0);
 
 /*! 
@@ -147,6 +154,7 @@ NS_ASSUME_NONNULL_BEGIN
     @abstract Returns the HTTP status code of the receiver. 
     @result The HTTP status code of the receiver. 
 */
+// 状态码    
 @property (readonly) NSInteger statusCode;
 
 /*! 
@@ -160,6 +168,7 @@ NS_ASSUME_NONNULL_BEGIN
     @result A dictionary containing all the HTTP header fields of the
     receiver.
 */
+// 响应头信息    
 @property (readonly, copy) NSDictionary *allHeaderFields;
 
 /*! 

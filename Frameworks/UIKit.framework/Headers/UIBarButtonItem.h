@@ -15,12 +15,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 风格
 typedef NS_ENUM(NSInteger, UIBarButtonItemStyle) {
     UIBarButtonItemStylePlain,
     UIBarButtonItemStyleBordered NS_ENUM_DEPRECATED_IOS(2_0, 8_0, "Use UIBarButtonItemStylePlain when minimum deployment target is iOS7 or later"),
     UIBarButtonItemStyleDone,
 };
 
+// 系统预设的一些按钮模型
 typedef NS_ENUM(NSInteger, UIBarButtonSystemItem) {
     UIBarButtonSystemItemDone,
     UIBarButtonSystemItemCancel,
@@ -50,16 +52,20 @@ typedef NS_ENUM(NSInteger, UIBarButtonSystemItem) {
 
 @class UIImage, UIView;
 
+// 条按钮模型
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UIBarButtonItem : UIBarItem <NSCoding>
 
+// 实例化
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithImage:(nullable UIImage *)image style:(UIBarButtonItemStyle)style target:(nullable id)target action:(nullable SEL)action;
 - (instancetype)initWithImage:(nullable UIImage *)image landscapeImagePhone:(nullable UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style target:(nullable id)target action:(nullable SEL)action NS_AVAILABLE_IOS(5_0); // landscapeImagePhone will be used for the bar button image when the bar has Compact or Condensed bar metrics.
 - (instancetype)initWithTitle:(nullable NSString *)title style:(UIBarButtonItemStyle)style target:(nullable id)target action:(nullable SEL)action;
 - (instancetype)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem target:(nullable id)target action:(nullable SEL)action;
+// 🔥使用自定义view实例化
 - (instancetype)initWithCustomView:(UIView *)customView;
 
+// 相关属性
 @property(nonatomic)         UIBarButtonItemStyle style;            // default is UIBarButtonItemStylePlain
 @property(nonatomic)         CGFloat              width;            // default is 0.0
 @property(nullable, nonatomic,copy)    NSSet<NSString *>   *possibleTitles;   // default is nil

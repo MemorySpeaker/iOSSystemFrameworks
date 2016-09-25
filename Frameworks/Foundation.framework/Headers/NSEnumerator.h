@@ -31,6 +31,7 @@ typedef struct {
 
 @end
 
+// 枚举器对象
 @interface NSEnumerator<ObjectType> : NSObject <NSFastEnumeration>
 
 // 获取枚举器指向的下一个对象

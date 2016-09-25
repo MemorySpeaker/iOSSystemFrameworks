@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable NSString *)displayNameForKey:(id)key value:(id)value;
 
+//使用指定标识初始化
+//@"zh_CN"   中国  
+//@"en_US"   美国
 - (instancetype)initWithLocaleIdentifier:(NSString *)string NS_DESIGNATED_INITIALIZER;
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
@@ -25,25 +28,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSLocale (NSExtendedLocale)
 
+//标识
 @property (readonly, copy) NSString *localeIdentifier;  // same as NSLocaleIdentifier
 
 @end
 
+// 创建方法扩展
 @interface NSLocale (NSLocaleCreation)
 
 + (NSLocale *)autoupdatingCurrentLocale NS_AVAILABLE(10_5, 2_0); // generally you should use this method
 
+//当前的locale
 + (NSLocale *)currentLocale;	// an object representing the user's current locale
+//系统locale
 + (NSLocale *)systemLocale;	// the default generic root locale with little localization
 
+//使用标识实例化
 + (instancetype)localeWithLocaleIdentifier:(NSString *)ident NS_AVAILABLE(10_6, 4_0);
 
 - (instancetype)init NS_UNAVAILABLE;     /* do not invoke; not a valid initializer for this class */
 
 @end
 
+// 获取通用信息
 @interface NSLocale (NSLocaleGeneralInfo)
 
+//所有可用的标识
 + (NSArray<NSString *> *)availableLocaleIdentifiers;
 + (NSArray<NSString *> *)ISOLanguageCodes;
 + (NSArray<NSString *> *)ISOCountryCodes;
@@ -74,7 +84,7 @@ typedef NS_ENUM(NSUInteger, NSLocaleLanguageDirection) {
 
 @end
 
-
+//当前locale发生改变的通知
 FOUNDATION_EXPORT NSString * const NSCurrentLocaleDidChangeNotification NS_AVAILABLE(10_5, 2_0);
 
 

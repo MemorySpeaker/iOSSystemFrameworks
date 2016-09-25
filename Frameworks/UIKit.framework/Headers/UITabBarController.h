@@ -28,27 +28,34 @@ NS_ASSUME_NONNULL_BEGIN
 @class UIView, UIImage, UINavigationController, UITabBarItem;
 @protocol UITabBarControllerDelegate;
 
+// 标签导航控制器
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UITabBarController : UIViewController <UITabBarDelegate, NSCoding>
 
+// 子控制器数组
 @property(nullable, nonatomic,copy) NSArray<__kindof UIViewController *> *viewControllers;
 // If the number of view controllers is greater than the number displayable by a tab bar, a "More" navigation controller will automatically be shown.
 // The "More" navigation controller will not be returned by -viewControllers, but it may be returned by -selectedViewController.
 - (void)setViewControllers:(NSArray<__kindof UIViewController *> * __nullable)viewControllers animated:(BOOL)animated;
 
+// 当前选中的控制器;索引
 @property(nullable, nonatomic, assign) __kindof UIViewController *selectedViewController; // This may return the "More" navigation controller if it exists.
 @property(nonatomic) NSUInteger selectedIndex;
 
 @property(nonatomic, readonly) UINavigationController *moreNavigationController __TVOS_PROHIBITED; // Returns the "More" navigation controller, creating it if it does not already exist.
 @property(nullable, nonatomic, copy) NSArray<__kindof UIViewController *> *customizableViewControllers __TVOS_PROHIBITED; // If non-nil, then the "More" view will include an "Edit" button that displays customization UI for the specified controllers. By default, all view controllers are customizable.
 
+// 内部封装的tabbar
 @property(nonatomic,readonly) UITabBar *tabBar NS_AVAILABLE_IOS(3_0); // Provided for -[UIActionSheet showFromTabBar:]. Attempting to modify the contents of the tab bar directly will throw an exception.
 
+// 代理
 @property(nullable, nonatomic,weak) id<UITabBarControllerDelegate> delegate;
 
 @end
 
+// 代理协议
 @protocol UITabBarControllerDelegate <NSObject>
 @optional
+// 是否;已经选中控制器
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController NS_AVAILABLE_IOS(3_0);
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController;
 
@@ -68,10 +75,13 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITabBarController : UIViewController <UI
 
 @end
 
+// 对vc的便捷扩展
 @interface UIViewController (UITabBarControllerItem)
 
+// 添加的子vc对应的tabbar中的tab模型
 @property(null_resettable, nonatomic, strong) UITabBarItem *tabBarItem; // Automatically created lazily with the view controller's title if it's not set explicitly.
 
+// 所在的tabbarVC
 @property(nullable, nonatomic, readonly, strong) UITabBarController *tabBarController; // If the view controller has a tab bar controller as its ancestor, return it. Returns nil otherwise.
 
 @end

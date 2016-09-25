@@ -7,6 +7,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/*
+    为一些类添加对路径处理的扩展,主要是NSString类的路径处理扩展
+*/
+
 @interface NSString (NSStringPathExtensions)
 
 + (NSString *)pathWithComponents:(NSArray<NSString *> *)components;

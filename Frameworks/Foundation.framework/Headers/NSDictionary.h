@@ -7,15 +7,22 @@
 
 @class NSArray<ObjectType>, NSSet<ObjectType>, NSString, NSURL;
 
+//字典(键值对),无序且键不可重复
+//使用@{key:value} 快速创建不可变字典
+
 /****************	Immutable Dictionary	****************/
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDictionary<__covariant KeyType, __covariant ObjectType> : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, NSFastEnumeration>
 
+// 字典中一级元素个数
 @property (readonly) NSUInteger count;
+// aKey对应的value
 - (nullable ObjectType)objectForKey:(KeyType)aKey;
+// 获取key枚举器
 - (NSEnumerator<KeyType> *)keyEnumerator;
+// 实例化
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 #if TARGET_OS_WIN32
 - (instancetype)initWithObjects:(const ObjectType [])objects forKeys:(const KeyType [])keys count:(NSUInteger)cnt;
@@ -28,8 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDictionary<KeyType, ObjectType> (NSExtendedDictionary)
 
+// 所有的key组成的数组
 @property (readonly, copy) NSArray<KeyType> *allKeys;
+// 所有value为anObject的对应key组成的数组
 - (NSArray<KeyType> *)allKeysForObject:(ObjectType)anObject;
+// 所有的value组成的数组
 @property (readonly, copy) NSArray<ObjectType> *allValues;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *descriptionInStringsFileFormat;
@@ -47,12 +57,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable ObjectType)objectForKeyedSubscript:(KeyType)key NS_AVAILABLE(10_8, 6_0);
 
+// 过滤字典中的所有元素
 - (void)enumerateKeysAndObjectsUsingBlock:(void (^)(KeyType key, ObjectType obj, BOOL *stop))block NS_AVAILABLE(10_6, 4_0);
 - (void)enumerateKeysAndObjectsWithOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(KeyType key, ObjectType obj, BOOL *stop))block NS_AVAILABLE(10_6, 4_0);
 
+// 根据value排序的key组成的数组
 - (NSArray<KeyType> *)keysSortedByValueUsingComparator:(NSComparator)cmptr NS_AVAILABLE(10_6, 4_0);
 - (NSArray<KeyType> *)keysSortedByValueWithOptions:(NSSortOptions)opts usingComparator:(NSComparator)cmptr NS_AVAILABLE(10_6, 4_0);
 
+//过滤元素
 - (NSSet<KeyType> *)keysOfEntriesPassingTest:(BOOL (^)(KeyType key, ObjectType obj, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
 - (NSSet<KeyType> *)keysOfEntriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(KeyType key, ObjectType obj, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
 
@@ -63,6 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getObjects:(ObjectType __unsafe_unretained [])objects andKeys:(KeyType __unsafe_unretained [])keys;
 @end
 
+// 创建方法的扩展
 @interface NSDictionary<KeyType, ObjectType> (NSDictionaryCreation)
 
 + (instancetype)dictionary;
@@ -91,17 +105,21 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 /****************	Mutable Dictionary	****************/
+// 可变字典
 
 @interface NSMutableDictionary<KeyType, ObjectType> : NSDictionary<KeyType, ObjectType>
 
+// 删改字典信息
 - (void)removeObjectForKey:(KeyType)aKey;
 - (void)setObject:(ObjectType)anObject forKey:(KeyType <NSCopying>)aKey;
+//实例化
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithCapacity:(NSUInteger)numItems NS_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 @end
 
+// 字典信息编辑扩展
 @interface NSMutableDictionary<KeyType, ObjectType> (NSExtendedMutableDictionary)
 
 - (void)addEntriesFromDictionary:(NSDictionary<KeyType, ObjectType> *)otherDictionary;
@@ -112,6 +130,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+//字典创建方法扩展
 @interface NSMutableDictionary<KeyType, ObjectType> (NSMutableDictionaryCreation)
 
 + (instancetype)dictionaryWithCapacity:(NSUInteger)numItems;

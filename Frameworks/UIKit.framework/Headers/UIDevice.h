@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, UIDeviceOrientation) {
     UIDeviceOrientationFaceDown             // Device oriented flat, face down
 } __TVOS_PROHIBITED;
 
+// 电池状态
 typedef NS_ENUM(NSInteger, UIDeviceBatteryState) {
     UIDeviceBatteryStateUnknown,
     UIDeviceBatteryStateUnplugged,   // on battery, discharging
@@ -35,6 +36,7 @@ typedef NS_ENUM(NSInteger, UIDeviceBatteryState) {
     UIDeviceBatteryStateFull,        // plugged in, at 100%
 } __TVOS_PROHIBITED;              // available in iPhone 3.0
 
+// 界面种类
 typedef NS_ENUM(NSInteger, UIUserInterfaceIdiom) {
     UIUserInterfaceIdiomUnspecified = -1,
     UIUserInterfaceIdiomPhone NS_ENUM_AVAILABLE_IOS(3_2), // iPhone and iPod touch style UI
@@ -59,26 +61,35 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIDevice : NSObject
 // 当前设备的单例对象方法
 + (UIDevice *)currentDevice;
 
+// 设备相关信息
+//名称
 @property(nonatomic,readonly,strong) NSString    *name;              // e.g. "My iPhone"
 @property(nonatomic,readonly,strong) NSString    *model;             // e.g. @"iPhone", @"iPod touch"
 @property(nonatomic,readonly,strong) NSString    *localizedModel;    // localized version of model
+// 系统名
 @property(nonatomic,readonly,strong) NSString    *systemName;        // e.g. @"iOS"
+// 系统版本
 @property(nonatomic,readonly,strong) NSString    *systemVersion;     // e.g. @"4.0"
+// 设备朝向
 @property(nonatomic,readonly) UIDeviceOrientation orientation __TVOS_PROHIBITED;       // return current device orientation.  this will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
 
 @property(nullable, nonatomic,readonly,strong) NSUUID      *identifierForVendor NS_AVAILABLE_IOS(6_0);      // a UUID that may be used to uniquely identify the device, same across apps from a single vendor.
 
+// 设置设备朝向通知相关
 @property(nonatomic,readonly,getter=isGeneratingDeviceOrientationNotifications) BOOL generatesDeviceOrientationNotifications __TVOS_PROHIBITED;
 - (void)beginGeneratingDeviceOrientationNotifications __TVOS_PROHIBITED;      // nestable
 - (void)endGeneratingDeviceOrientationNotifications __TVOS_PROHIBITED;
 
+// 电池监听是否可用,默认NO
 @property(nonatomic,getter=isBatteryMonitoringEnabled) BOOL batteryMonitoringEnabled NS_AVAILABLE_IOS(3_0) __TVOS_PROHIBITED;  // default is NO
 @property(nonatomic,readonly) UIDeviceBatteryState          batteryState NS_AVAILABLE_IOS(3_0) __TVOS_PROHIBITED;  // UIDeviceBatteryStateUnknown if monitoring disabled
 @property(nonatomic,readonly) float                         batteryLevel NS_AVAILABLE_IOS(3_0) __TVOS_PROHIBITED;  // 0 .. 1.0. -1.0 if UIDeviceBatteryStateUnknown
 
+// 近距监控是否可用
 @property(nonatomic,getter=isProximityMonitoringEnabled) BOOL proximityMonitoringEnabled NS_AVAILABLE_IOS(3_0); // default is NO
 @property(nonatomic,readonly)                            BOOL proximityState NS_AVAILABLE_IOS(3_0);  // always returns NO if no proximity detector
 
+// 是否支持多任务
 @property(nonatomic,readonly,getter=isMultitaskingSupported) BOOL multitaskingSupported NS_AVAILABLE_IOS(4_0);
 
 @property(nonatomic,readonly) UIUserInterfaceIdiom userInterfaceIdiom NS_AVAILABLE_IOS(3_2);
@@ -102,6 +113,7 @@ static inline UIUserInterfaceIdiom UI_USER_INTERFACE_IDIOM() {
             UIUserInterfaceIdiomPhone);
 }
 
+// 相关通知
 UIKIT_EXTERN NSString *const UIDeviceOrientationDidChangeNotification __TVOS_PROHIBITED;
 UIKIT_EXTERN NSString *const UIDeviceBatteryStateDidChangeNotification   NS_AVAILABLE_IOS(3_0) __TVOS_PROHIBITED;
 UIKIT_EXTERN NSString *const UIDeviceBatteryLevelDidChangeNotification   NS_AVAILABLE_IOS(3_0) __TVOS_PROHIBITED;

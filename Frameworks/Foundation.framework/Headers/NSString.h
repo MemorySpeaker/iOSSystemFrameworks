@@ -2,6 +2,7 @@
 	Copyright (c) 1994-2015, Apple Inc. All rights reserved.
 */
 
+//定义unichar类型
 typedef unsigned short unichar;
 
 #import <limits.h>
@@ -15,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* These options apply to the various search/find and comparison methods (except where noted).
 */
+//字符串比较选项
 typedef NS_OPTIONS(NSUInteger, NSStringCompareOptions) {
     NSCaseInsensitiveSearch = 1,
     NSLiteralSearch = 2,		/* Exact character-by-character equivalence */
@@ -32,10 +34,12 @@ See CFStringEncodingExt.h for a list of these encodings.
 See CFString.h for functions which convert between NSStringEncoding and CFStringEncoding.
 */
 typedef NSUInteger NSStringEncoding;
+//字符编码集
 NS_ENUM(NSStringEncoding) {
     NSASCIIStringEncoding = 1,		/* 0..127 only */
     NSNEXTSTEPStringEncoding = 2,
     NSJapaneseEUCStringEncoding = 3,
+    //常用的UTF8字符集
     NSUTF8StringEncoding = 4,
     NSISOLatin1StringEncoding = 5,
     NSSymbolStringEncoding = 6,
@@ -61,30 +65,38 @@ NS_ENUM(NSStringEncoding) {
     NSUTF32LittleEndianStringEncoding = 0x9c000100        /* NSUTF32StringEncoding encoding with explicit endianness specified */
 };
 
+//字符集之间转换选项
 typedef NS_OPTIONS(NSUInteger, NSStringEncodingConversionOptions) {
     NSStringEncodingConversionAllowLossy = 1,
     NSStringEncodingConversionExternalRepresentation = 2
 };
 
 
+//字符串对象. 使用频率极高.  若干字符组成的数组对象.
+//使用@"xxx"快速创建字符串对象
 @interface NSString : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 
 #pragma mark *** String funnel methods ***
 
 /* NSString primitives. A minimal subclass of NSString just needs to implement these two, along with an init method appropriate for that subclass. We also recommend overriding getCharacters:range: for performance.
  */
+// 长度
 @property (readonly) NSUInteger length;
+// index索引处字符的值表示
 - (unichar)characterAtIndex:(NSUInteger)index;
 
 /* The initializers available to subclasses. See further below for additional init methods.
 */
+// 实例化
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 @end
 
+// 扩展方法
 @interface NSString (NSStringExtensionMethods)
 
+// 子串
 #pragma mark *** Substrings ***
 
 /* To avoid breaking up character sequences such as Emoji, you can do:
@@ -92,13 +104,14 @@ typedef NS_OPTIONS(NSUInteger, NSStringEncodingConversionOptions) {
     [str substringToIndex:NSMaxRange([str rangeOfComposedCharacterSequenceAtIndex:index])]
     [str substringWithRange:[str rangeOfComposedCharacterSequencesForRange:range]
 */
+// 指定范围内的字串    
 - (NSString *)substringFromIndex:(NSUInteger)from;
 - (NSString *)substringToIndex:(NSUInteger)to;
 - (NSString *)substringWithRange:(NSRange)range;                // Use with rangeOfComposedCharacterSequencesForRange: to avoid breaking up character sequences
 
 - (void)getCharacters:(unichar *)buffer range:(NSRange)range;   // Use with rangeOfComposedCharacterSequencesForRange: to avoid breaking up character sequences
 
-
+//字串之间比较
 #pragma mark *** String comparison and equality ***
 
 /* In the compare: methods, the range argument specifies the subrange, rather than the whole, of the receiver to use in the comparison. The range is not applied to the search string.  For example, [@"AB" compare:@"ABC" options:0 range:NSMakeRange(0,1)] compares "A" to "ABC", not "A" to "A", and will return NSOrderedAscending.
@@ -118,7 +131,7 @@ typedef NS_OPTIONS(NSUInteger, NSStringEncodingConversionOptions) {
 // 判断对象的字符串内容是否与aString相同
 - (BOOL)isEqualToString:(NSString *)aString;
 
-
+// 字串搜索
 #pragma mark *** String searching ***
 
 /* These perform locale unaware prefix or suffix match. If you need locale awareness, use rangeOfString:options:range:locale:, passing NSAnchoredSearch (or'ed with NSBackwardsSearch for suffix, and NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch if needed) for options, NSMakeRange(0, [receiver length]) for range, and [NSLocale currentLocale] for locale.
@@ -158,10 +171,11 @@ Note that the first three methods do not take locale arguments, and perform the 
 - (NSRange)rangeOfComposedCharacterSequenceAtIndex:(NSUInteger)index;
 - (NSRange)rangeOfComposedCharacterSequencesForRange:(NSRange)range NS_AVAILABLE(10_5, 2_0);
 
+// 追加字串返回新的字符串
 - (NSString *)stringByAppendingString:(NSString *)aString;
 - (NSString *)stringByAppendingFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 
-
+//转换为数字
 #pragma mark *** Extracting numeric values ***
 
 /* The following convenience methods all skip initial space characters (whitespaceSet) and ignore trailing characters. They are not locale-aware. NSScanner or NSNumberFormatter can be used for more powerful and locale-aware parsing of numbers.
@@ -171,15 +185,19 @@ Note that the first three methods do not take locale arguments, and perform the 
 @property (readonly) int intValue;
 @property (readonly) NSInteger integerValue NS_AVAILABLE(10_5, 2_0);
 @property (readonly) long long longLongValue NS_AVAILABLE(10_5, 2_0);
+//与"Y", "y", "T", "t", or a digit 1-9 匹配时返回YES
 @property (readonly) BOOL boolValue NS_AVAILABLE(10_5, 2_0);  // Skips initial space characters (whitespaceSet), or optional -/+ sign followed by zeroes. Returns YES on encountering one of "Y", "y", "T", "t", or a digit 1-9. It ignores any trailing characters.
 
-
+// 大小写转换
 #pragma mark *** Case changing ***
 
 /* The following three return the canonical (non-localized) mappings. They are suitable for programming operations that require stable results not depending on the user's locale preference.  For locale-aware case mapping for strings presented to users, use the "localized" methods below.
 */
+//全部大写
 @property (readonly, copy) NSString *uppercaseString;
+//全部小写
 @property (readonly, copy) NSString *lowercaseString;
+//首字母大写
 @property (readonly, copy) NSString *capitalizedString;
 
 /* The following three return the locale-aware case mappings. They are suitable for strings presented to the user.
@@ -229,10 +247,12 @@ typedef NS_OPTIONS(NSUInteger, NSStringEnumerationOptions) {
 @property (readonly) NSStringEncoding fastestEncoding;    	// Result in O(1) time; a rough estimate
 @property (readonly) NSStringEncoding smallestEncoding;   	// Result in O(n) time; the encoding in which the string is most compact
 
+// 使用encoding字符集将字符串转换为data二进制数据
 - (nullable NSData *)dataUsingEncoding:(NSStringEncoding)encoding allowLossyConversion:(BOOL)lossy;   // External representation
 // 相当于上边的方法中lossy传值NO
 - (nullable NSData *)dataUsingEncoding:(NSStringEncoding)encoding;                                    // External representation
 
+// 是否能够使用encoding字符集转换
 - (BOOL)canBeConvertedToEncoding:(NSStringEncoding)encoding;
 
 /* Methods to convert NSString to a NULL-terminated cString using the specified encoding. Note, these are the "new" cString methods, and are not deprecated like the older cString methods which do not take encoding arguments.
@@ -273,10 +293,14 @@ typedef NS_OPTIONS(NSUInteger, NSStringEnumerationOptions) {
 @property (readonly, copy) NSString *decomposedStringWithCompatibilityMapping;
 @property (readonly, copy) NSString *precomposedStringWithCompatibilityMapping;
 
+//🚩以separator字符串为分隔符将字符串切割为字符数组
 - (NSArray<NSString *> *)componentsSeparatedByString:(NSString *)separator;
+//🚩以separator集合中的字符为分隔符将字符串切割为字符数组
 - (NSArray<NSString *> *)componentsSeparatedByCharactersInSet:(NSCharacterSet *)separator NS_AVAILABLE(10_5, 2_0);
 
+// 在首尾删除set中字符后的字符串
 - (NSString *)stringByTrimmingCharactersInSet:(NSCharacterSet *)set;
+// 使用padString增加字串长度到newLength
 - (NSString *)stringByPaddingToLength:(NSUInteger)newLength withString:(NSString *)padString startingAtIndex:(NSUInteger)padIndex;
 
 /* Returns a string with the character folding options applied. theOptions is a mask of compare flags with *InsensitiveSearch suffix.
@@ -285,7 +309,7 @@ typedef NS_OPTIONS(NSUInteger, NSStringEnumerationOptions) {
 
 /* Replace all occurrences of the target string in the specified range with replacement. Specified compare options are used for matching target. If NSRegularExpressionSearch is specified, the replacement is treated as a template, as in the corresponding NSRegularExpression methods, and no other options can apply except NSCaseInsensitiveSearch and NSAnchoredSearch.
 */
-// 在searchRange范围内替换对象的target字符串为replacement字符串.查找target字符串时参照options指定的比较选项
+// 🚩在searchRange范围内替换对象的target字符串为replacement字符串.查找target字符串时参照options指定的比较选项
 - (NSString *)stringByReplacingOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options range:(NSRange)searchRange NS_AVAILABLE(10_5, 2_0);
 
 /* Replace all occurrences of the target string with replacement. Invokes the above method with 0 options and range of the whole string.
@@ -322,6 +346,7 @@ FOUNDATION_EXPORT NSString * const NSStringTransformStripDiacritics         NS_A
 
 /* Write to specified url or path using the specified encoding.  The optional error return is to indicate file system or encoding errors.
  */
+// 写入到指定位置
 - (BOOL)writeToURL:(NSURL *)url atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc error:(NSError **)error;
 - (BOOL)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc error:(NSError **)error;
 
@@ -329,7 +354,7 @@ FOUNDATION_EXPORT NSString * const NSStringTransformStripDiacritics         NS_A
 
 @property (readonly) NSUInteger hash;
 
-
+// 各种实例化方法
 #pragma mark *** Initializers ***
 
 /* In general creation methods in NSString do not apply to subclassers, as subclassers are assumed to provide their own init methods which create the string in the way the subclass wishes.  Designated initializers of NSString are thus init and initWithCoder:.
@@ -411,7 +436,7 @@ FOUNDATION_EXPORT NSString * const NSStringEncodingDetectionLikelyLanguageKey   
 @end
 
 
-
+//------可变字符串-------------
 @interface NSMutableString : NSString
 
 #pragma mark *** Mutable string ***
@@ -422,6 +447,7 @@ FOUNDATION_EXPORT NSString * const NSStringEncodingDetectionLikelyLanguageKey   
 
 @end
 
+// 对字符串的编辑操作扩展
 @interface NSMutableString (NSMutableStringExtensionMethods)
 
 /* Additional mutation methods.  For subclassers these are all available implemented in terms of the primitive replaceCharactersInRange:range: method.
@@ -454,11 +480,11 @@ FOUNDATION_EXPORT NSString * const NSStringEncodingDetectionLikelyLanguageKey   
 @end
 
 
-
 FOUNDATION_EXPORT NSString * const NSCharacterConversionException;
 FOUNDATION_EXPORT NSString * const NSParseErrorException; // raised by -propertyList
 #define NSMaximumStringLength	(INT_MAX-1)
 
+// 已经过时或不在推荐使用的api
 #pragma mark *** Deprecated/discouraged APIs ***
 
 @interface NSString (NSExtendedStringPropertyListParsing)

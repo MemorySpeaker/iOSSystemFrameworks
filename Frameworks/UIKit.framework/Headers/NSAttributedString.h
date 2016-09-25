@@ -10,6 +10,11 @@
 @class NSFileWrapper;
 @class NSURL;
 
+/*
+    <Foundation/NSAttributedString.h>中创建富文本时使用到的参数字典信息的key在这里指定
+    还有其他对富文本进行的扩展
+*/
+
 NS_ASSUME_NONNULL_BEGIN
 /************************ Attributes ************************/
 

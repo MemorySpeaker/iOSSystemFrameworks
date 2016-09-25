@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /***************	Generic Exception names		***************/
+// 常见异常名称
 
 FOUNDATION_EXPORT NSString * const NSGenericException;
 FOUNDATION_EXPORT NSString * const NSRangeException;
@@ -45,9 +46,11 @@ __attribute__((__objc_exception__))
     id			reserved;
 }
 
+//创建异常对象
 + (NSException *)exceptionWithName:(NSString *)name reason:(nullable NSString *)reason userInfo:(nullable NSDictionary *)userInfo;
 - (instancetype)initWithName:(NSString *)aName reason:(nullable NSString *)aReason userInfo:(nullable NSDictionary *)aUserInfo NS_DESIGNATED_INITIALIZER;
 
+// 异常名称,缘由,附加信息
 @property (readonly, copy) NSString *name;
 @property (nullable, readonly, copy) NSString *reason;
 @property (nullable, readonly, copy) NSDictionary *userInfo;

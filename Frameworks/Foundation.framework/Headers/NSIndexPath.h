@@ -7,6 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//索引路径对象
 @interface NSIndexPath : NSObject <NSCopying, NSSecureCoding> {
 	@private
 	__strong NSUInteger *_indexes;
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
         void *_reserved;
 }
 
+// 实例化
 + (instancetype)indexPathWithIndex:(NSUInteger)index;
 + (instancetype)indexPathWithIndexes:(const NSUInteger [])indexes length:(NSUInteger)length;
 

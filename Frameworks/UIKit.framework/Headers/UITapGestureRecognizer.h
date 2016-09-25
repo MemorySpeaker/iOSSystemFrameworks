@@ -17,9 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 //     locationInView:         location of the tap, from the first tap in the sequence if numberOfTapsRequired > 1. this is the centroid if numberOfTouchesRequired > 1
 //     locationOfTouch:inView: location of a particular touch, from the first tap in the sequence if numberOfTapsRequired > 1
 
+// 点击手势
 NS_CLASS_AVAILABLE_IOS(3_2) @interface UITapGestureRecognizer : UIGestureRecognizer
 
+//同时的点击的手指数
 @property (nonatomic) NSUInteger  numberOfTapsRequired;       // Default is 1. The number of taps required to match
+//点击的次数
 @property (nonatomic) NSUInteger  numberOfTouchesRequired __TVOS_PROHIBITED;    // Default is 1. The number of fingers required to match
 
 @end

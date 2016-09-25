@@ -13,6 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//URL对象
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 @interface NSURL: NSObject <NSSecureCoding, NSCopying>
 #else
@@ -65,10 +66,10 @@ FOUNDATION_EXPORT NSString *NSURLFileScheme;
 
 /* These methods expect their string arguments to contain any percent escape codes that are necessary. It is an error for URLString to be nil.
  */
-//使用URLString字符串实例化:例如,@"tel://110",@"sms://110",@"http://so.com"
+//🔥使用URLString字符串实例化:例如,@"tel://110",@"sms://110",@"http://so.com"
 - (nullable instancetype)initWithString:(NSString *)URLString;
 - (nullable instancetype)initWithString:(NSString *)URLString relativeToURL:(nullable NSURL *)baseURL NS_DESIGNATED_INITIALIZER;
-//使用URLString字符串直接实例化对象
+//🔥使用URLString字符串直接实例化对象
 + (nullable instancetype)URLWithString:(NSString *)URLString;
 + (nullable instancetype)URLWithString:(NSString *)URLString relativeToURL:(nullable NSURL *)baseURL;
 
@@ -103,6 +104,7 @@ FOUNDATION_EXPORT NSString *NSURLFileScheme;
 
 /* If the URL conforms to rfc 1808 (the most common form of URL), the following accessors will return the various components; otherwise they return nil.  The litmus test for conformance is as recommended in RFC 1808 - whether the first two characters of resourceSpecifier is @"//".  In all cases, they return the component's value after resolving the receiver against its base URL.
  */
+//url中各部分信息
 @property (nullable, readonly, copy) NSString *host;
 @property (nullable, readonly, copy) NSNumber *port;
 @property (nullable, readonly, copy) NSString *user;
@@ -569,7 +571,7 @@ NS_CLASS_AVAILABLE(10_7, 5_0)
 
 /* deprecated interfaces
  */
-
+//Mac用的,忽略之
 #if (TARGET_OS_MAC && !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE))
 /* NSURLClient and NSURLLoading are deprecated; use NSURLConnection instead.
  */

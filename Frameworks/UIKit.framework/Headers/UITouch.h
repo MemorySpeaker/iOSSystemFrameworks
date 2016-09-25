@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIWindow, UIView, UIGestureRecognizer;
 
+// 触碰阶段
 typedef NS_ENUM(NSInteger, UITouchPhase) {
     UITouchPhaseBegan,             // whenever a finger touches the surface.
     UITouchPhaseMoved,             // whenever a finger moves on the surface.
@@ -40,8 +41,10 @@ typedef NS_OPTIONS(NSInteger, UITouchProperties) {
     UITouchPropertyLocation = (1UL << 3), // For predicted Touches
 } NS_AVAILABLE_IOS(9_1);
 
+// 触底对象
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UITouch : NSObject
 
+// 相关属性
 @property(nonatomic,readonly) NSTimeInterval      timestamp;
 @property(nonatomic,readonly) UITouchPhase        phase;
 @property(nonatomic,readonly) NSUInteger          tapCount;   // touch down within a certain point within a certain amount of time
@@ -52,10 +55,12 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITouch : NSObject
 @property(nonatomic,readonly) CGFloat majorRadius NS_AVAILABLE_IOS(8_0);
 @property(nonatomic,readonly) CGFloat majorRadiusTolerance NS_AVAILABLE_IOS(8_0);
 
+// 所在窗口;视图; 手势
 @property(nullable,nonatomic,readonly,strong) UIWindow                        *window;
 @property(nullable,nonatomic,readonly,strong) UIView                          *view;
 @property(nullable,nonatomic,readonly,copy)   NSArray <UIGestureRecognizer *> *gestureRecognizers NS_AVAILABLE_IOS(3_2);
 
+// 本次/前次触碰在view中的点位置
 - (CGPoint)locationInView:(nullable UIView *)view;
 - (CGPoint)previousLocationInView:(nullable UIView *)view;
 
@@ -65,6 +70,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITouch : NSObject
 - (CGPoint)precisePreviousLocationInView:(nullable UIView *)view NS_AVAILABLE_IOS(9_1);
 
 // Force of the touch, where 1.0 represents the force of an average touch
+// 触碰力度
 @property(nonatomic,readonly) CGFloat force NS_AVAILABLE_IOS(9_0);
 // Maximum possible force with this input mechanism
 @property(nonatomic,readonly) CGFloat maximumPossibleForce NS_AVAILABLE_IOS(9_0);

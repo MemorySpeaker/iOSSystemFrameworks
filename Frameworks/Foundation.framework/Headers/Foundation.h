@@ -1,7 +1,11 @@
 /*	Foundation.h
 	Copyright (c) 1994-2015, Apple Inc. All rights reserved.
 */
-
+/*
+基础框架,基于CoreFoundation框架的对象封装
+基本上每个框架的框架名.h文件中包含了这个框架的所有文件引入
+框架概览看对应的框架名.xmind文件
+*/
 
 #include <CoreFoundation/CoreFoundation.h>
 
@@ -92,6 +96,7 @@
 
 #import <Foundation/FoundationErrors.h>
 
+//这里我理解为原来iPhone和嵌入式设备不支持后来又支持了（这个写法so蛋疼）
 #if (TARGET_OS_MAC && !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)) || (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 
 #import <Foundation/NSAttributedString.h>
@@ -121,6 +126,8 @@
 #import <Foundation/NSUserActivity.h>
 #import <Foundation/NSUUID.h>
 #endif
+
+/**********以下都是Mac相关的，iOS的童鞋可以先下课了***********************/
 
 #if (TARGET_OS_MAC && !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)) || TARGET_OS_WIN32
 

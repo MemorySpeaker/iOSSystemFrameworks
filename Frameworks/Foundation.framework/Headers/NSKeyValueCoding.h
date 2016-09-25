@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 The actual value of this constant string is "NSUnknownKeyException," to match the exceptions that are thrown by KVC methods that were deprecated in Mac OS 10.3.
 */
+// 未定义key异常. 如果设置时指定的key找不到时会调用undefinedxx方法,此方法默认抛出异常
 FOUNDATION_EXPORT NSString *const NSUndefinedKeyException;
 
 /* Strings for the names of array operators supported by key-value coding. Only these string declarations are new in Mac OS 10.4. The actual support for array operators appeared in Mac OS 10.3. The values of these do not include "@" prefixes.
@@ -34,6 +35,7 @@ FOUNDATION_EXPORT NSString *const NSUnionOfArraysKeyValueOperator;
 FOUNDATION_EXPORT NSString *const NSUnionOfObjectsKeyValueOperator;
 FOUNDATION_EXPORT NSString *const NSUnionOfSetsKeyValueOperator;
 
+// 键值编码: 无论什么访问权限都可以直接无障碍设置
 @interface NSObject(NSKeyValueCoding)
 
 /* Return YES if -valueForKey:, -setValue:forKey:, -mutableArrayValueForKey:, -storedValueForKey:, -takeStoredValue:forKey:, and -takeValue:forKey: may directly manipulate instance variables when sent to instances of the receiving class, NO otherwise. The default implementation of this method returns YES.
@@ -55,6 +57,7 @@ Compatibility notes:
     - The behavior described in step 5 is a change from Mac OS 10.2, in which the instance variable search order was <key>, _<key>.
     - For backward binary compatibility, -handleQueryWithUnboundKey: will be invoked instead of -valueForUndefinedKey: in step 6, if the implementation of -handleQueryWithUnboundKey: in the receiver's class is not NSObject's.
 */
+// 无障碍获取key对应的值    
 - (nullable id)valueForKey:(NSString *)key;
 
 /* Given a value and a key that identifies an attribute, set the value of the attribute. Given an object and a key that identifies a to-one relationship, relate the object to the receiver, unrelating the previously related object if there was one. Given a collection object and a key that identifies a to-many relationship, relate the objects contained in the collection to the receiver, unrelating previously related objects if there were any.
@@ -116,6 +119,7 @@ Performance note: the repetitive -set<Key>: messages implied by step 2's descrip
 
 /* Key-path-taking variants of like-named methods. The default implementation of each parses the key path enough to determine whether or not it has more than one component (key path components are separated by periods). If so, -valueForKey: is invoked with the first key path component as the argument, and the method being invoked is invoked recursively on the result, with the remainder of the key path passed as an argument. If not, the like-named non-key-path-taking method is invoked.
 */
+// 🔥通过keyPath来多层指定key
 - (nullable id)valueForKeyPath:(NSString *)keyPath;
 - (void)setValue:(nullable id)value forKeyPath:(NSString *)keyPath;
 - (BOOL)validateValue:(inout id __nullable * __nonnull)ioValue forKeyPath:(NSString *)inKeyPath error:(out NSError **)outError;
@@ -125,22 +129,27 @@ Performance note: the repetitive -set<Key>: messages implied by step 2's descrip
 
 /* Given that an invocation of -valueForKey: would be unable to get a keyed value using its default access mechanism, return the keyed value using some other mechanism. The default implementation of this method raises an NSUndefinedKeyException. You can override it to handle properties that are dynamically defined at run-time.
 */
+// 获取值时如果key找不到时会调用该方法.默认抛出异常
 - (nullable id)valueForUndefinedKey:(NSString *)key;
 
 /* Given that an invocation of -setValue:forKey: would be unable to set the keyed value using its default mechanism, set the keyed value using some other mechanism. The default implementation of this method raises an NSUndefinedKeyException. You can override it to handle properties that are dynamically defined at run-time.
 */
+//设置值时如果key找不到时会调用该方法.默认抛出异常
 - (void)setValue:(nullable id)value forUndefinedKey:(NSString *)key;
 
 /* Given that an invocation of -setValue:forKey: would be unable to set the keyed value because the type of the parameter of the corresponding accessor method is an NSNumber scalar type or NSValue structure type but the value is nil, set the keyed value using some other mechanism. The default implementation of this method raises an NSInvalidArgumentException. You can override it to map nil values to something meaningful in the context of your application.
 */
+// 当设置的key不接受nil赋值时会调用该方法,默认抛出异常
 - (void)setNilValueForKey:(NSString *)key;
 
 /* Given an array of keys, return a dictionary containing the keyed attribute values, to-one-related objects, and/or collections of to-many-related objects. Entries for which -valueForKey: returns nil have NSNull as their value in the returned dictionary.
 */
+// 批量获取
 - (NSDictionary<NSString *, id> *)dictionaryWithValuesForKeys:(NSArray<NSString *> *)keys;
 
 /* Given a dictionary containing keyed attribute values, to-one-related objects, and/or collections of to-many-related objects, set the keyed values. Dictionary entries whose values are NSNull result in -setValue:nil forKey:key messages being sent to the receiver.
 */
+// 批量设置
 - (void)setValuesForKeysWithDictionary:(NSDictionary<NSString *, id> *)keyedValues;
 
 @end
@@ -197,6 +206,7 @@ Performance note: the repetitive -set<Key>: messages implied by step 2's descrip
 
 @end
 
+// Mac使用的
 #if (TARGET_OS_MAC && !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE))
 
 @interface NSObject(NSDeprecatedKeyValueCoding)

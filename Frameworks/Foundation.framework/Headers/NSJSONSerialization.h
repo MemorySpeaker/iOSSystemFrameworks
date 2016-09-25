@@ -30,7 +30,8 @@ typedef NS_OPTIONS(NSUInteger, NSJSONWritingOptions) {
     - All dictionary keys are NSStrings
     - NSNumbers are not NaN or infinity
 */
-// 实现对象或者数据与JSON互转.对象中的元素要求都是基本元素
+// 实现对象或者数据与JSON互转.对象中的元素要求都是基本元素json
+// 基本的json解析这个足够用了    
 NS_CLASS_AVAILABLE(10_7, 5_0)
 @interface NSJSONSerialization : NSObject {
 @private

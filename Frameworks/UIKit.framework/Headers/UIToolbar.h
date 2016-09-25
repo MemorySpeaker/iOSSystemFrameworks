@@ -20,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_CLASS_AVAILABLE_IOS(2_0) __TVOS_PROHIBITED @interface UIToolbar : UIView <UIBarPositioning>
 
+// 风格
 @property(nonatomic) UIBarStyle barStyle __TVOS_PROHIBITED; // default is UIBarStyleDefault (blue)
+// 工具项
 @property(nullable,nonatomic,copy) NSArray<UIBarButtonItem *> *items; // get/set visible UIBarButtonItem. default is nil. changes not animated. shown in order
 
 /*
@@ -34,9 +36,10 @@ NS_CLASS_AVAILABLE_IOS(2_0) __TVOS_PROHIBITED @interface UIToolbar : UIView <UIB
  If you send setTranslucent:NO to a bar with a translucent custom background image
  it will provide an opaque background for the image using the bar's barTintColor if defined, or black
  for UIBarStyleBlack or white for UIBarStyleDefault if barTintColor is nil.
- */
+ */ 	
 @property(nonatomic,assign,getter=isTranslucent) BOOL translucent NS_AVAILABLE_IOS(3_0) UI_APPEARANCE_SELECTOR; // Default is NO on iOS 6 and earlier. Always YES if barStyle is set to UIBarStyleBlackTranslucent
 
+// 动画形式设置工具项数组
 - (void)setItems:(nullable NSArray<UIBarButtonItem *> *)items animated:(BOOL)animated;   // will fade in or out or reorder and adjust spacing
 
 /*
@@ -65,6 +68,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) __TVOS_PROHIBITED @interface UIToolbar : UIView <UIB
 - (void)setShadowImage:(nullable UIImage *)shadowImage forToolbarPosition:(UIBarPosition)topOrBottom NS_AVAILABLE_IOS(6_0) UI_APPEARANCE_SELECTOR;
 - (nullable UIImage *)shadowImageForToolbarPosition:(UIBarPosition)topOrBottom NS_AVAILABLE_IOS(6_0) UI_APPEARANCE_SELECTOR;
 
+// 代理
 @property(nullable, nonatomic,assign) id<UIToolbarDelegate> delegate NS_AVAILABLE_IOS(7_0); // You may not set the delegate when the toolbar is managed by a UINavigationController.
 @end
 

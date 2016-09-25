@@ -36,10 +36,12 @@ NS_ENUM_AVAILABLE_IOS(9_0) typedef NS_ENUM(NSInteger, UIPressType) {
 // 按压对象
 NS_CLASS_AVAILABLE_IOS(9_0) @interface UIPress : NSObject
 
+//按压时间戳;所处状态;类型
 @property(nonatomic,readonly) NSTimeInterval   timestamp;
 @property(nonatomic,readonly) UIPressPhase     phase;
 @property(nonatomic,readonly) UIPressType      type;
 
+//所处窗口
 @property(nullable,nonatomic,readonly,strong) UIWindow                        *window;
 @property(nullable,nonatomic,readonly,strong) UIResponder                     *responder;
 @property(nullable,nonatomic,readonly,copy)   NSArray <UIGestureRecognizer *> *gestureRecognizers;

@@ -45,6 +45,8 @@ FOUNDATION_EXPORT NSString * const NSRegistrationDomain;
  
  NSUserDefaults can be observed using Key-Value Observing for any key stored in it. Using NSKeyValueObservingOptionPrior to observe changes from other processes or devices will behave as though NSKeyValueObservingOptionPrior was not specified.
  */
+ //以键值对的形式保存一些用户的偏好数据在本地.
+ //文件保存在沙盒的Library\Preferences\<your App's bundle ID>.plist文件中
 @interface NSUserDefaults : NSObject {
 @private
     id _kvo_;
@@ -184,7 +186,7 @@ FOUNDATION_EXPORT NSString * const NSRegistrationDomain;
  - ...before exiting in a non-app (command line tool, agent, or daemon) process: call CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication)
  - ...for any other reason: remove the synchronize call
  */
- // 一般修改过一个值之后会执行该方法来将内存中的修改持久化,确保修改成功
+ // 🔥一般修改过一个值之后会执行该方法来将内存中的修改持久化,确保修改成功
 - (BOOL)synchronize;
 
 // -objectIsForcedForKey: returns YES if the value for 'key' is provided by managed preferences (a configuration profile or mcx)

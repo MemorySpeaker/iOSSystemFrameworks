@@ -27,7 +27,7 @@ To enumerate without doing a call per index, you can use the method getIndexes:m
 #import <Foundation/NSRange.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+// 索引集合,但不是继承自NSSet,可能是因为它直接保存了基本数据类型
 @interface NSIndexSet : NSObject <NSCopying, NSMutableCopying, NSSecureCoding> {
     @protected   // all instance variables are private
     struct {
@@ -47,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
     } _internal;
 }
 
+// 实例化
 + (instancetype)indexSet;
 + (instancetype)indexSetWithIndex:(NSUInteger)value;
 + (instancetype)indexSetWithIndexesInRange:(NSRange)range;
@@ -75,16 +76,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSUInteger)countOfIndexesInRange:(NSRange)range NS_AVAILABLE(10_5, 2_0);
 
+// 是否包含
 - (BOOL)containsIndex:(NSUInteger)value;
 - (BOOL)containsIndexesInRange:(NSRange)range;
 - (BOOL)containsIndexes:(NSIndexSet *)indexSet;
 
 - (BOOL)intersectsIndexesInRange:(NSRange)range;
 
+// 枚举遍历
 - (void)enumerateIndexesUsingBlock:(void (^)(NSUInteger idx, BOOL *stop))block NS_AVAILABLE(10_6, 4_0);
 - (void)enumerateIndexesWithOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(NSUInteger idx, BOOL *stop))block NS_AVAILABLE(10_6, 4_0);
 - (void)enumerateIndexesInRange:(NSRange)range options:(NSEnumerationOptions)opts usingBlock:(void (^)(NSUInteger idx, BOOL *stop))block NS_AVAILABLE(10_6, 4_0);
 
+// 过滤
 - (NSUInteger)indexPassingTest:(BOOL (^)(NSUInteger idx, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
 - (NSUInteger)indexWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(NSUInteger idx, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
 - (NSUInteger)indexInRange:(NSRange)range options:(NSEnumerationOptions)opts passingTest:(BOOL (^)(NSUInteger idx, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
@@ -104,11 +108,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+// 可变索引集合
 @interface NSMutableIndexSet : NSIndexSet {
     @protected
     void *_reserved;
 }
 
+// 集合元素编辑
 - (void)addIndexes:(NSIndexSet *)indexSet;
 - (void)removeIndexes:(NSIndexSet *)indexSet;
 - (void)removeAllIndexes;

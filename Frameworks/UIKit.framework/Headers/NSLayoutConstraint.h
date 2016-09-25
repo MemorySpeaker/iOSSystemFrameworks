@@ -12,13 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class NSArray, NSDictionary;
 
-
+//约束关系
 typedef NS_ENUM(NSInteger, NSLayoutRelation) {
     NSLayoutRelationLessThanOrEqual = -1,
     NSLayoutRelationEqual = 0,
     NSLayoutRelationGreaterThanOrEqual = 1,
 };
 
+//约束属性
 typedef NS_ENUM(NSInteger, NSLayoutAttribute) {
     NSLayoutAttributeLeft = 1,
     NSLayoutAttributeRight,
@@ -71,6 +72,7 @@ typedef NS_OPTIONS(NSUInteger, NSLayoutFormatOptions) {
     NSLayoutFormatDirectionMask = 0x3 << 16,  
 };
 
+// 约束优先级
 typedef float UILayoutPriority;
 static const UILayoutPriority UILayoutPriorityRequired NS_AVAILABLE_IOS(6_0) = 1000; // A required constraint.  Do not exceed this.
 static const UILayoutPriority UILayoutPriorityDefaultHigh NS_AVAILABLE_IOS(6_0) = 750; // This is the priority level with which a button resists compressing its content.
@@ -78,10 +80,12 @@ static const UILayoutPriority UILayoutPriorityDefaultLow NS_AVAILABLE_IOS(6_0) =
 static const UILayoutPriority UILayoutPriorityFittingSizeLevel NS_AVAILABLE_IOS(6_0) = 50; // When you send -[UIView systemLayoutSizeFittingSize:], the size fitting most closely to the target size (the argument) is computed.  UILayoutPriorityFittingSizeLevel is the priority level with which the view wants to conform to the target size in that computation.  It's quite low.  It is generally not appropriate to make a constraint at exactly this priority.  You want to be higher or lower.
 
 NS_CLASS_AVAILABLE_IOS(6_0)
+// 布局约束. 实现自动布局.  使用Masonry会舒服很多
 @interface NSLayoutConstraint : NSObject
 
 /* Create an array of constraints using an ASCII art-like visual format string.
  */
+// VFL添加约束. 自己搜索下怎么用吧,保你看一遍后say bye bye
 + (NSArray<__kindof NSLayoutConstraint *> *)constraintsWithVisualFormat:(NSString *)format options:(NSLayoutFormatOptions)opts metrics:(nullable NSDictionary<NSString *,id> *)metrics views:(NSDictionary<NSString *, id> *)views;
 
 /* This macro is a helper for making view dictionaries for +constraintsWithVisualFormat:options:metrics:views:.  
@@ -94,6 +98,7 @@ UIKIT_EXTERN  NSDictionary *_NSDictionaryOfVariableBindings(NSString *commaSepar
 /* Create constraints explicitly.  Constraints are of the form "view1.attr1 = view2.attr2 * multiplier + constant" 
  If your equation does not have a second view and attribute, use nil and NSLayoutAttributeNotAnAttribute.
  */
+ // 实例化. 公式为"view1.attr1 = view2.attr2 * multiplier + constant" 
 +(instancetype)constraintWithItem:(id)view1 attribute:(NSLayoutAttribute)attr1 relatedBy:(NSLayoutRelation)relation toItem:(nullable id)view2 attribute:(NSLayoutAttribute)attr2 multiplier:(CGFloat)multiplier constant:(CGFloat)c;
 
 /* If a constraint's priority level is less than UILayoutPriorityRequired, then it is optional.  Higher priority constraints are met before lower priority constraints.
@@ -135,6 +140,7 @@ UIKIT_EXTERN  NSDictionary *_NSDictionaryOfVariableBindings(NSString *commaSepar
 /* For ease in debugging, name a constraint by setting its identifier, which will be printed in the constraint's description.
  Identifiers starting with UI and NS are reserved by the system.
  */
+ // 标识
 @property (nullable, copy) NSString *identifier NS_AVAILABLE_IOS(7_0);
 
 @end

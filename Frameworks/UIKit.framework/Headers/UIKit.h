@@ -5,6 +5,9 @@
 //  Copyright (c) 2005-2015 Apple Inc. All rights reserved.
 //
 
+//框架引入文件
+//系统提供的UI构建工具库,基本够用,太个性的自定义控件需要用到绘图等底层框架实现
+
 #import <UIKit/UIKitDefines.h>
 
 #if __has_include(<UIKit/UIAccelerometer.h>)

@@ -94,6 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
     confirms its validity, otherwise the URL is loaded from the
     origin source.  Unimplemented.
 */
+// 请求的缓存处理策略    
 typedef NS_ENUM(NSUInteger, NSURLRequestCachePolicy)
 {
     NSURLRequestUseProtocolCachePolicy = 0,
@@ -131,6 +132,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestCachePolicy)
  @constant NSURLNetworkServiceTypeVoice Specifies that the request is for voice data.
 
 */
+// 请求的网络服务类型 
 typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
 {
     NSURLNetworkServiceTypeDefault = 0,	// Standard internet traffic
@@ -172,6 +174,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     which can are used to perform the load of a URL, or as input to the
     NSURLConnection class method which performs synchronous loads.
 */
+// 网络请求对象    
 @interface NSURLRequest : NSObject <NSSecureCoding, NSCopying, NSMutableCopying>
 {
     @private
@@ -188,6 +191,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     @param URL The URL for the request.
     @result A newly-created and autoreleased NSURLRequest instance.
 */
+// 实例化    
 + (instancetype)requestWithURL:(NSURL *)URL;
 
 /*
@@ -195,6 +199,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     @abstract Indicates that NSURLRequest implements the NSSecureCoding protocol.
     @result A BOOL value set to YES.
 */
+//是否实现了NSSecureCoding协议    
 + (BOOL)supportsSecureCoding;
 
 /*!
@@ -208,6 +213,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     timeout intervals.
     @result A newly-created and autoreleased NSURLRequest instance. 
 */
+// 多参数实例化    
 + (instancetype)requestWithURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy timeoutInterval:(NSTimeInterval)timeoutInterval;
 
 /*! 
@@ -219,6 +225,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     @param URL The URL for the request. 
     @result An initialized NSURLRequest. 
 */
+// 实例化对象方法    
 - (instancetype)initWithURL:(NSURL *)URL;
 
 /*! 
@@ -234,6 +241,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     timeout intervals.
     @result An initialized NSURLRequest. 
 */
+// 实例化对象方法     
 - (instancetype)initWithURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy timeoutInterval:(NSTimeInterval)timeoutInterval NS_DESIGNATED_INITIALIZER;
 
 /*! 
@@ -241,6 +249,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     @abstract Returns the URL of the receiver. 
     @result The URL of the receiver. 
 */
+// 请求的url    
 @property (nullable, readonly, copy) NSURL *URL;
 
 /*! 
@@ -248,6 +257,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     @abstract Returns the cache policy of the receiver. 
     @result The cache policy of the receiver. 
 */
+// 请求的缓存策略    
 @property (readonly) NSURLRequestCachePolicy cachePolicy;
 
 /*! 
@@ -265,6 +275,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     in seconds.
     @result The timeout interval of the receiver. 
 */
+// 请求的超时时长    
 @property (readonly) NSTimeInterval timeoutInterval;
 
 /*!
@@ -287,6 +298,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
  not explicitly set a networkServiceType (using the setNetworkServiceType method).
  @result The NSURLRequestNetworkServiceType associated with this request.
  */
+// 请求的网络服务类型 
 @property (readonly) NSURLRequestNetworkServiceType networkServiceType NS_AVAILABLE(10_7, 4_0);
 
 /*! 
@@ -296,6 +308,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
  @result YES if the receiver is allowed to use the built in cellular radios to
  satify the request, NO otherwise.
  */
+// 是否允许通过蜂窝网络访问 
 @property (readonly) BOOL allowsCellularAccess  NS_AVAILABLE(10_8, 6_0);
 
 @end
@@ -331,6 +344,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     example.
     </ul>
 */
+// 可变网络请求    
 @interface NSMutableURLRequest : NSURLRequest
 
 /*! 
@@ -407,6 +421,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     The NSHTTPURLRequest on NSURLRequest provides methods for accessing
     information specific to HTTP protocol requests.
 */
+// http请求扩展    
 @interface NSURLRequest (NSHTTPURLRequest) 
 
 /*! 
@@ -414,6 +429,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     @abstract Returns the HTTP request method of the receiver. 
     @result the HTTP request method of the receiver. 
 */
+// 请求方式    
 @property (nullable, readonly, copy) NSString *HTTPMethod;
 
 /*! 
@@ -423,6 +439,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     @result a dictionary containing all the HTTP header fields of the
     receiver.
 */
+// 请求头信息    
 @property (nullable, readonly, copy) NSDictionary<NSString *, NSString *> *allHTTPHeaderFields;
 
 /*! 
@@ -435,6 +452,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     @result the value associated with the given header field, or nil if
     there is no value associated with the given header field.
 */
+// 请求头中field对应的信息    
 - (nullable NSString *)valueForHTTPHeaderField:(NSString *)field;
 
 /*! 
@@ -444,6 +462,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     in done in an HTTP POST request.
     @result The request body data of the receiver. 
 */
+// 请求体数据    
 @property (nullable, readonly, copy) NSData *HTTPBody;
 
 /*!
@@ -458,6 +477,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     NSCoding protocol
     @result The request body stream of the receiver.
 */
+// 请求体数据流    
 @property (nullable, readonly, retain) NSInputStream *HTTPBodyStream;
 
 /*! 
@@ -489,6 +509,7 @@ typedef NS_ENUM(NSUInteger, NSURLRequestNetworkServiceType)
     The NSMutableHTTPURLRequest on NSMutableURLRequest provides methods
     for configuring information specific to HTTP protocol requests.
 */
+// 可变网络请求对象的http访问扩展        
 @interface NSMutableURLRequest (NSMutableHTTPURLRequest) 
 
 /*! 

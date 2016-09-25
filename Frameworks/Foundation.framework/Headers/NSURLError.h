@@ -20,10 +20,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 网络相关的错误
+
 /*
     @discussion Constants used by NSError to differentiate between "domains" of error codes, serving as a discriminator for error codes that originate from different subsystems or sources.
     @constant NSURLErrorDomain Indicates an NSURL error.
 */
+//错误域
 FOUNDATION_EXPORT NSString * const NSURLErrorDomain;
 
 /*!
@@ -76,6 +79,7 @@ NS_ENUM(NSInteger)
     @enum NSURL-related Error Codes
     @abstract Constants used by NSError to indicate errors in the NSURL domain
 */
+//错误码枚举
 NS_ENUM(NSInteger)
 {
     NSURLErrorUnknown = 			-1,

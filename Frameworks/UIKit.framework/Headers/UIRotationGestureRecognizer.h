@@ -14,9 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 // Changes: when a finger moves while two fingers are down
 // Ends:    when both fingers have lifted
 
+// 旋转手势
 NS_CLASS_AVAILABLE_IOS(3_2) __TVOS_PROHIBITED @interface UIRotationGestureRecognizer : UIGestureRecognizer
 
+//相对于旋转前的旋转角度
 @property (nonatomic)          CGFloat rotation;            // rotation in radians
+//旋转速率
 @property (nonatomic,readonly) CGFloat velocity;            // velocity of the pinch in radians/second
 
 @end

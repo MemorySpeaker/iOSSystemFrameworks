@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol UIGestureRecognizerDelegate;
 @class UIView, UIEvent, UITouch, UIPress;
 
+// 识别状态
 typedef NS_ENUM(NSInteger, UIGestureRecognizerState) {
     UIGestureRecognizerStatePossible,   // the recognizer has not yet recognized its gesture, but may be evaluating touch events. this is the default state
     
@@ -28,23 +29,30 @@ typedef NS_ENUM(NSInteger, UIGestureRecognizerState) {
     UIGestureRecognizerStateRecognized = UIGestureRecognizerStateEnded // the recognizer has received touches recognized as the gesture. the action method will be called at the next turn of the run loop and the recognizer will be reset to UIGestureRecognizerStatePossible
 };
 
+// 手势识别
 NS_CLASS_AVAILABLE_IOS(3_2) @interface UIGestureRecognizer : NSObject
 
 // Valid action method signatures:
 //     -(void)handleGesture;
 //     -(void)handleGesture:(UIGestureRecognizer*)gestureRecognizer;
+// 实例化
 - (instancetype)initWithTarget:(nullable id)target action:(nullable SEL)action NS_DESIGNATED_INITIALIZER; // designated initializer
 
+// 添加/移除响应
 - (void)addTarget:(id)target action:(SEL)action;    // add a target/action pair. you can call this multiple times to specify multiple target/actions
 - (void)removeTarget:(nullable id)target action:(nullable SEL)action; // remove the specified target/action pair. passing nil for target matches all targets, and the same for actions
 
+// 识别状态
 @property(nonatomic,readonly) UIGestureRecognizerState state;  // the current state of the gesture recognizer
 
+// 代理
 @property(nullable,nonatomic,weak) id <UIGestureRecognizerDelegate> delegate; // the gesture recognizer's delegate
 
+// 是否可用
 @property(nonatomic, getter=isEnabled) BOOL enabled;  // default is YES. disabled gesture recognizers will not receive touches. when changed to NO the gesture recognizer will be cancelled if it's currently recognizing a gesture
 
 // a UIGestureRecognizer receives touches hit-tested to its view and any of that view's subviews
+//手势关联的view
 @property(nullable, nonatomic,readonly) UIView *view;           // the view the gesture is attached to. set by adding the recognizer to a UIView using the addGestureRecognizer: method
 
 @property(nonatomic) BOOL cancelsTouchesInView;       // default is YES. causes touchesCancelled:withEvent: or pressesCancelled:withEvent: to be sent to the view for all touches or presses recognized as part of this gesture immediately before the action method is called.
@@ -57,20 +65,26 @@ NS_CLASS_AVAILABLE_IOS(3_2) @interface UIGestureRecognizer : NSObject
 // create a relationship with another gesture recognizer that will prevent this gesture's actions from being called until otherGestureRecognizer transitions to UIGestureRecognizerStateFailed
 // if otherGestureRecognizer transitions to UIGestureRecognizerStateRecognized or UIGestureRecognizerStateBegan then this recognizer will instead transition to UIGestureRecognizerStateFailed
 // example usage: a single tap may require a double tap to fail
+//🔥是否需要在otherGestureRecognizer识别识别后再用此手势
 - (void)requireGestureRecognizerToFail:(UIGestureRecognizer *)otherGestureRecognizer;
 
 // individual UIGestureRecognizer subclasses may provide subclass-specific location information. see individual subclasses for details
+//在view中的触碰点
 - (CGPoint)locationInView:(nullable UIView*)view;                                // a generic single-point location for the gesture. usually the centroid of the touches involved
 
+//触碰点数
 - (NSUInteger)numberOfTouches;                                          // number of touches involved for which locations can be queried
+//touchIndex索引处触碰点在view中的位置
 - (CGPoint)locationOfTouch:(NSUInteger)touchIndex inView:(nullable UIView*)view; // the location of a particular touch
 
 @end
 
 
+// 代理协议
 @protocol UIGestureRecognizerDelegate <NSObject>
 @optional
 // called when a gesture recognizer attempts to transition out of UIGestureRecognizerStatePossible. returning NO causes it to transition to UIGestureRecognizerStateFailed
+//是否开始识别手势
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer;
 
 // called when the recognition of one of gestureRecognizer or otherGestureRecognizer would be blocked by the other
@@ -83,13 +97,16 @@ NS_CLASS_AVAILABLE_IOS(3_2) @interface UIGestureRecognizer : NSObject
 // return YES to set up a dynamic failure requirement between gestureRecognizer and otherGestureRecognizer
 //
 // note: returning YES is guaranteed to set up the failure requirement. returning NO does not guarantee that there will not be a failure requirement as the other gesture's counterpart delegate or subclass methods may return YES
+//是否应该依赖其他手势的失败
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer NS_AVAILABLE_IOS(7_0);
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer NS_AVAILABLE_IOS(7_0);
 
 // called before touchesBegan:withEvent: is called on the gesture recognizer for a new touch. return NO to prevent the gesture recognizer from seeing this touch
+//是否要处理touch触碰
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch;
 
 // called before pressesBegan:withEvent: is called on the gesture recognizer for a new press. return NO to prevent the gesture recognizer from seeing this press
+//是否处理按压
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceivePress:(UIPress *)press;
 
 @end

@@ -6,6 +6,7 @@
 
 /* NSError codes in NSCocoaErrorDomain. Note that other frameworks (such as AppKit and CoreData) also provide additional NSCocoaErrorDomain error codes.
 */
+//错误码枚举    
 NS_ENUM(NSInteger) {
     // File system and file I/O related errors, with NSFilePathErrorKey or NSURLErrorKey containing path or URL
     NSFileNoSuchFileError = 4,                                              // Attempt to do a file system operation on a non-existent file

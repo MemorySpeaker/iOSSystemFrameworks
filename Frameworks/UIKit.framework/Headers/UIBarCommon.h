@@ -8,7 +8,9 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
+// 条公用的一些东西
 
+// ?
 typedef NS_ENUM(NSInteger, UIBarMetrics) {
     UIBarMetricsDefault,
     UIBarMetricsCompact,
@@ -19,6 +21,7 @@ typedef NS_ENUM(NSInteger, UIBarMetrics) {
     UIBarMetricsLandscapePhonePrompt NS_ENUM_DEPRECATED_IOS(7_0, 8_0, "Use UIBarMetricsCompactPrompt") = UIBarMetricsCompactPrompt,
 };
 
+// 位置
 typedef NS_ENUM(NSInteger, UIBarPosition) {
     UIBarPositionAny = 0,
     UIBarPositionBottom = 1, // The bar is at the bottom of its local context, and directional decoration draws accordingly (e.g., shadow above the bar).
@@ -31,6 +34,7 @@ typedef NS_ENUM(NSInteger, UIBarPosition) {
 #define UIToolbarPositionBottom UIBarPositionBottom
 #define UIToolbarPositionTop UIBarPositionTop
 
+// 定义相关协议
 
 @protocol UIBarPositioning <NSObject> // UINavigationBar, UIToolbar, and UISearchBar conform to this
 @property(nonatomic,readonly) UIBarPosition barPosition;

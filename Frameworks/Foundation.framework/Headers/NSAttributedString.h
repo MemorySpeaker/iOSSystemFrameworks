@@ -8,10 +8,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//富文本:相当于多个普通字符串组成一个多种样式的字符串
+//样式设置使用的字典key在UIKit库中的NSAttributedString.h查看
 NS_CLASS_AVAILABLE(10_0, 3_2)
 @interface NSAttributedString : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 
+// 所表示的普通字符串
 @property (readonly, copy) NSString *string;
+// ?
 - (NSDictionary<NSString *, id> *)attributesAtIndex:(NSUInteger)location effectiveRange:(nullable NSRangePointer)range;
 
 @end
@@ -27,6 +31,7 @@ NS_CLASS_AVAILABLE(10_0, 3_2)
 
 - (BOOL)isEqualToAttributedString:(NSAttributedString *)other;
 
+// 实例化
 - (instancetype)initWithString:(NSString *)str;
 - (instancetype)initWithString:(NSString *)str attributes:(nullable NSDictionary<NSString *, id> *)attrs;
 - (instancetype)initWithAttributedString:(NSAttributedString *)attrStr;
@@ -41,18 +46,23 @@ typedef NS_OPTIONS(NSUInteger, NSAttributedStringEnumerationOptions) {
 
 @end
 
+//---可变富文本字符串
 NS_CLASS_AVAILABLE(10_0, 3_2)
 @interface NSMutableAttributedString : NSAttributedString
 
+//替换内容
 - (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str;
+// 修改样式
 - (void)setAttributes:(nullable NSDictionary<NSString *, id> *)attrs range:(NSRange)range;
 
 @end
 
 @interface NSMutableAttributedString (NSExtendedMutableAttributedString)
 
+//转换为不可变富文本表示
 @property (readonly, retain) NSMutableString *mutableString;
 
+//对富文本进行增删改操作
 - (void)addAttribute:(NSString *)name value:(id)value range:(NSRange)range;
 - (void)addAttributes:(NSDictionary<NSString *, id> *)attrs range:(NSRange)range;
 - (void)removeAttribute:(NSString *)name range:(NSRange)range;
@@ -63,6 +73,7 @@ NS_CLASS_AVAILABLE(10_0, 3_2)
 - (void)deleteCharactersInRange:(NSRange)range;
 - (void)setAttributedString:(NSAttributedString *)attrString;
 
+// ?
 - (void)beginEditing;
 - (void)endEditing;
 

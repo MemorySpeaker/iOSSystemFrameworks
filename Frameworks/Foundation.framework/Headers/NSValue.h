@@ -8,6 +8,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//将非对象类型的数据包装成对象类型,更常用的使其子类NSNumber
+// 可以使用@（xx）快速包装
+
 @interface NSValue : NSObject <NSCopying, NSSecureCoding>
 
 - (void)getValue:(void *)value;
@@ -18,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+// 创建方法扩展
 @interface NSValue (NSValueCreation)
 
 + (NSValue *)valueWithBytes:(const void *)value objCType:(const char *)type;
@@ -33,12 +37,15 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSValue *)valueWithPointer:(nullable const void *)pointer;
 @property (nullable, readonly) void *pointerValue;
 
+// 是否相等
 - (BOOL)isEqualToValue:(NSValue *)value;
 
 @end
 
+//主要实现对基本类型数据的对象化封装. 类似于JAVA中的装箱和拆箱
 @interface NSNumber : NSValue
 
+// 包装基本数据类型
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 - (NSNumber *)initWithChar:(char)value NS_DESIGNATED_INITIALIZER;
 - (NSNumber *)initWithUnsignedChar:(unsigned char)value NS_DESIGNATED_INITIALIZER;
@@ -56,6 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSNumber *)initWithInteger:(NSInteger)value NS_AVAILABLE(10_5, 2_0) NS_DESIGNATED_INITIALIZER;
 - (NSNumber *)initWithUnsignedInteger:(NSUInteger)value NS_AVAILABLE(10_5, 2_0) NS_DESIGNATED_INITIALIZER;
 
+//获取对象所包装的基本数据类型
 @property (readonly) char charValue;
 @property (readonly) unsigned char unsignedCharValue;
 @property (readonly) short shortValue;
@@ -72,8 +80,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) NSInteger integerValue NS_AVAILABLE(10_5, 2_0);
 @property (readonly) NSUInteger unsignedIntegerValue NS_AVAILABLE(10_5, 2_0);
 
+// 对象的字符串表示
 @property (readonly, copy) NSString *stringValue;
 
+// 进行比较大小
 - (NSComparisonResult)compare:(NSNumber *)otherNumber;
 
 - (BOOL)isEqualToNumber:(NSNumber *)number;
@@ -82,6 +92,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+//创建方法的类方法扩展
 @interface NSNumber (NSNumberCreation)
 
 + (NSNumber *)numberWithChar:(char)value;

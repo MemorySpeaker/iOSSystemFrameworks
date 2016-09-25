@@ -16,8 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIImage;
 
+// 颜色对象
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UIColor : NSObject <NSSecureCoding, NSCopying>
 
+// 创建颜色的便利方法
 // Convenience methods for creating colors
 + (UIColor *)colorWithWhite:(CGFloat)white alpha:(CGFloat)alpha;
 + (UIColor *)colorWithHue:(CGFloat)hue saturation:(CGFloat)saturation brightness:(CGFloat)brightness alpha:(CGFloat)alpha;
@@ -28,6 +30,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIColor : NSObject <NSSecureCoding, NSCop
 + (UIColor *)colorWithCIColor:(CIColor *)ciColor NS_AVAILABLE_IOS(5_0);
 #endif
 
+// 实例化颜色
 // Initializers for creating colors
 - (UIColor *)initWithWhite:(CGFloat)white alpha:(CGFloat)alpha;
 - (UIColor *)initWithHue:(CGFloat)hue saturation:(CGFloat)saturation brightness:(CGFloat)brightness alpha:(CGFloat)alpha;
@@ -38,6 +41,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIColor : NSObject <NSSecureCoding, NSCop
 - (UIColor *)initWithCIColor:(CIColor *)ciColor NS_AVAILABLE_IOS(5_0);
 #endif
 
+// 一些常用的预设颜色
 // Some convenience methods to create colors.  These colors will be as calibrated as possible.
 // These colors are cached.
 + (UIColor *)blackColor;      // 0.0 white 
@@ -57,10 +61,13 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIColor : NSObject <NSSecureCoding, NSCop
 + (UIColor *)clearColor;      // 0.0 white, 0.0 alpha 
 
 // Set the color: Sets the fill and stroke colors in the current drawing context. Should be implemented by subclassers.
+// 同时设置笔触色和填充色
 - (void)set;
 
 // Set the fill or stroke colors individually. These should be implemented by subclassers.
+// 设置填充色
 - (void)setFill;
+// 设置笔触色
 - (void)setStroke;
 
 // Convenience methods for getting components.
@@ -70,9 +77,11 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIColor : NSObject <NSSecureCoding, NSCop
 - (BOOL)getRed:(nullable CGFloat *)red green:(nullable CGFloat *)green blue:(nullable CGFloat *)blue alpha:(nullable CGFloat *)alpha NS_AVAILABLE_IOS(5_0);
 
 // Returns a color in the same color space as the receiver with the specified alpha component.
+// 在原有颜色对象上增加透明通道
 - (UIColor *)colorWithAlphaComponent:(CGFloat)alpha;
 
 // Access the underlying CGColor or CIColor.
+// 与CGColor, CIColor互转
 @property(nonatomic,readonly) CGColorRef CGColor;
 - (CGColorRef)CGColor NS_RETURNS_INNER_POINTER CF_RETURNS_NOT_RETAINED;
 #if __has_include(<CoreImage/CoreImage.h>)

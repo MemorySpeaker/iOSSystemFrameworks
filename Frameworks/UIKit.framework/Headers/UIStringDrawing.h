@@ -5,6 +5,8 @@
 //  Copyright (c) 2005-2015 Apple Inc. All rights reserved.
 //
 
+//对字符串的绘制功能扩展
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKitDefines.h>
 #if (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)

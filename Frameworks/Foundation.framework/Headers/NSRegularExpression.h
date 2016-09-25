@@ -24,6 +24,8 @@ typedef NS_OPTIONS(NSUInteger, NSRegularExpressionOptions) {
 };
 
 NS_CLASS_AVAILABLE(10_7, 4_0)
+//规则表达式(再次吐槽坑爹的翻译为正则)
+//没怎么用,都是用的谓词结合正则表达式来过滤数据
 @interface NSRegularExpression : NSObject <NSCopying, NSSecureCoding> {
     @protected   // all instance variables are private
     NSString *_pattern;

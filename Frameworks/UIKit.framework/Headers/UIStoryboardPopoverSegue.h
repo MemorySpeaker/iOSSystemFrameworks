@@ -11,9 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIPopoverController;
 
+// 弹出segue
 NS_CLASS_DEPRECATED_IOS(5_0, 9_0, "Access destinationViewController.popoverPresentationController from your segue's performHandler or override of -perform") @interface UIStoryboardPopoverSegue : UIStoryboardSegue {
 }
 
+// 弹出的控制器
 @property (nonatomic, strong, readonly) UIPopoverController *popoverController;
 
 @end

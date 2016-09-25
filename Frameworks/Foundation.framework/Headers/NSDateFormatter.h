@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define NS_CALENDAR_DEPRECATED_MAC(A, B, ...) NS_DEPRECATED_MAC(A, B, __VA_ARGS__)
 #endif
 
-
+// 日期格式化
 @interface NSDateFormatter : NSFormatter {
 @private
     NSMutableDictionary *_attributes;
@@ -34,9 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 // Even though NSDateFormatter responds to the usual NSFormatter methods,
 //   here are some convenience methods which are a little more obvious.
 
+// 🔥日期与字符串互转. 通过NSString *dateFormat属性指定转换规则
 - (NSString *)stringFromDate:(NSDate *)date;
 - (nullable NSDate *)dateFromString:(NSString *)string;
 
+//日期格式风格
 typedef NS_ENUM(NSUInteger, NSDateFormatterStyle) {    // date and time format styles
     NSDateFormatterNoStyle = kCFDateFormatterNoStyle,
     NSDateFormatterShortStyle = kCFDateFormatterShortStyle,
@@ -75,7 +77,9 @@ typedef NS_ENUM(NSUInteger, NSDateFormatterBehavior) {
  */
 - (void) setLocalizedDateFormatFromTemplate:(NSString *)dateFormatTemplate NS_AVAILABLE(10_10, 8_0);
 
+//🚩日期与字符串相互转换的格式字符串
 @property (null_resettable, copy) NSString *dateFormat;
+//时间风格
 @property NSDateFormatterStyle dateStyle;
 @property NSDateFormatterStyle timeStyle;
 @property (null_resettable, copy) NSLocale *locale;
@@ -111,6 +115,7 @@ typedef NS_ENUM(NSUInteger, NSDateFormatterBehavior) {
 
 @end
 
+//下面是mac的，忽略之
 #if (TARGET_OS_MAC && !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE))
 @interface NSDateFormatter (NSDateFormatterCompatibility)
 

@@ -8,6 +8,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//代理类;特殊的不以NSObject为根类的类
+//具体作用尚不清除
 NS_ROOT_CLASS
 @interface NSProxy <NSObject> {
     Class	isa;

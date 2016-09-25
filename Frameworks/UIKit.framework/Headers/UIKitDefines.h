@@ -7,6 +7,7 @@
 
 #import <Availability.h>
 
+// UIKit中使用的一些宏定义
 #ifdef __cplusplus
 #define UIKIT_EXTERN		extern "C" __attribute__((visibility ("default")))
 #else

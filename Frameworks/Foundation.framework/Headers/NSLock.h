@@ -8,13 +8,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 锁协议
 @protocol NSLocking
 
+// 加锁;解锁
 - (void)lock;
 - (void)unlock;
 
 @end
 
+// 加锁对象
 @interface NSLock : NSObject <NSLocking> {
 @private
     void *_priv;

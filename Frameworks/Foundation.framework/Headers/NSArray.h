@@ -10,28 +10,38 @@
 @class NSData, NSIndexSet, NSString, NSURL;
 
 /****************	Immutable Array		****************/
+//不可变数组,快速创建数组. @[A,B,C]
+//元素有序可重复
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSArray<__covariant ObjectType> : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, NSFastEnumeration>
 
+//数组长度
 @property (readonly) NSUInteger count;
+//index索引处元素
 - (ObjectType)objectAtIndex:(NSUInteger)index;
+//初始化
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithObjects:(const ObjectType [])objects count:(NSUInteger)cnt NS_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 @end
 
+// 扩展
 @interface NSArray<ObjectType> (NSExtendedArray)
 
+// 追加新元素返回新数组
 - (NSArray<ObjectType> *)arrayByAddingObject:(ObjectType)anObject;
 - (NSArray<ObjectType> *)arrayByAddingObjectsFromArray:(NSArray<ObjectType> *)otherArray;
+//🚩使用separator分隔符将数组所有元素组合为一个字符串
 - (NSString *)componentsJoinedByString:(NSString *)separator;
+// 是否包含某个元素
 - (BOOL)containsObject:(ObjectType)anObject;
 @property (readonly, copy) NSString *description;
 - (NSString *)descriptionWithLocale:(nullable id)locale;
 - (NSString *)descriptionWithLocale:(nullable id)locale indent:(NSUInteger)level;
+//第一个存在于与otherArray交集中的元素
 - (nullable ObjectType)firstObjectCommonWithArray:(NSArray<ObjectType> *)otherArray;
 - (void)getObjects:(ObjectType __unsafe_unretained [])objects range:(NSRange)range;
 - (NSUInteger)indexOfObject:(ObjectType)anObject;
@@ -39,8 +49,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSUInteger)indexOfObjectIdenticalTo:(ObjectType)anObject;
 - (NSUInteger)indexOfObjectIdenticalTo:(ObjectType)anObject inRange:(NSRange)range;
 - (BOOL)isEqualToArray:(NSArray<ObjectType> *)otherArray;
+// 首个,末个元素
 @property (nullable, nonatomic, readonly) ObjectType firstObject NS_AVAILABLE(10_6, 4_0);
 @property (nullable, nonatomic, readonly) ObjectType lastObject;
+// 正序,倒序枚举器
 - (NSEnumerator<ObjectType> *)objectEnumerator;
 - (NSEnumerator<ObjectType> *)reverseObjectEnumerator;
 @property (readonly, copy) NSData *sortedArrayHint;
@@ -51,25 +63,32 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile;
 - (BOOL)writeToURL:(NSURL *)url atomically:(BOOL)atomically;
 
+// 向数组中的每个元素发送aSelector消息
+// 没有enumerateObjectsUsingBlock:好用
 - (void)makeObjectsPerformSelector:(SEL)aSelector NS_SWIFT_UNAVAILABLE("Use enumerateObjectsUsingBlock: or a for loop instead");
 - (void)makeObjectsPerformSelector:(SEL)aSelector withObject:(nullable id)argument NS_SWIFT_UNAVAILABLE("Use enumerateObjectsUsingBlock: or a for loop instead");
 
 - (NSArray<ObjectType> *)objectsAtIndexes:(NSIndexSet *)indexes;
 
+//当使用arr[idx]形式获取某个元素时实际转换为该方法的调用
 - (ObjectType)objectAtIndexedSubscript:(NSUInteger)idx NS_AVAILABLE(10_8, 6_0);
 
+//使用块来遍历处理数组中所有元素
 - (void)enumerateObjectsUsingBlock:(void (^)(ObjectType obj, NSUInteger idx, BOOL *stop))block NS_AVAILABLE(10_6, 4_0);
 - (void)enumerateObjectsWithOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(ObjectType obj, NSUInteger idx, BOOL *stop))block NS_AVAILABLE(10_6, 4_0);
 - (void)enumerateObjectsAtIndexes:(NSIndexSet *)s options:(NSEnumerationOptions)opts usingBlock:(void (^)(ObjectType obj, NSUInteger idx, BOOL *stop))block NS_AVAILABLE(10_6, 4_0);
 
+//使用块来过滤获取块中指定元素
 - (NSUInteger)indexOfObjectPassingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
 - (NSUInteger)indexOfObjectWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
 - (NSUInteger)indexOfObjectAtIndexes:(NSIndexSet *)s options:(NSEnumerationOptions)opts passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
 
+//使用块来过滤获取块中一类指定元素索引集合
 - (NSIndexSet *)indexesOfObjectsPassingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
 - (NSIndexSet *)indexesOfObjectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
 - (NSIndexSet *)indexesOfObjectsAtIndexes:(NSIndexSet *)s options:(NSEnumerationOptions)opts passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0);
 
+// 排序数组
 - (NSArray<ObjectType> *)sortedArrayUsingComparator:(NSComparator)cmptr NS_AVAILABLE(10_6, 4_0);
 - (NSArray<ObjectType> *)sortedArrayWithOptions:(NSSortOptions)opts usingComparator:(NSComparator)cmptr NS_AVAILABLE(10_6, 4_0);
 
@@ -83,6 +102,7 @@ typedef NS_OPTIONS(NSUInteger, NSBinarySearchingOptions) {
 
 @end
 
+// 数组创建方法扩展
 @interface NSArray<ObjectType> (NSArrayCreation)
 
 //实例化一个空数组
@@ -113,21 +133,24 @@ typedef NS_OPTIONS(NSUInteger, NSBinarySearchingOptions) {
 @end
 
 /****************	Mutable Array		****************/
+//可变数组
 
 @interface NSMutableArray<ObjectType> : NSArray<ObjectType>
 
-// 添加anObject到数组
+// 增删改数组元素
 - (void)addObject:(ObjectType)anObject;
 - (void)insertObject:(ObjectType)anObject atIndex:(NSUInteger)index;
 - (void)removeLastObject;
 - (void)removeObjectAtIndex:(NSUInteger)index;
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(ObjectType)anObject;
+//实例化
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithCapacity:(NSUInteger)numItems NS_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 @end
 
+//对于数组增删改及排序操作的扩展
 @interface NSMutableArray<ObjectType> (NSExtendedMutableArray)
     
 - (void)addObjectsFromArray:(NSArray<ObjectType> *)otherArray;
@@ -157,6 +180,7 @@ typedef NS_OPTIONS(NSUInteger, NSBinarySearchingOptions) {
 
 @end
 
+//创建方法的扩展
 @interface NSMutableArray<ObjectType> (NSMutableArrayCreation)
 
 + (instancetype)arrayWithCapacity:(NSUInteger)numItems;

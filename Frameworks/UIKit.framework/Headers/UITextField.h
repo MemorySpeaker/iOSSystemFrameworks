@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, UITextFieldViewMode) {
     UITextFieldViewModeAlways   //始终都
 };
 
-// 文本框
+// 文本框. 单行文本域
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UITextField : UIControl <UITextInput, NSCoding> 
 
 // 文本框中的文本,默认为nil
@@ -58,6 +58,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITextField : UIControl <UITextInput, NSC
 @property(nonatomic)        NSTextAlignment         textAlignment;        // default is NSLeftTextAlignment
 // 边框线样式,默认为UITextBorderStyleNone,不显示.如果设置为UITextBorderStyleRoundedRect圆角矩形时,自定义的背景图片会被忽略
 @property(nonatomic)        UITextBorderStyle       borderStyle;          // default is UITextBorderStyleNone. If set to UITextBorderStyleRoundedRect, custom background images are ignored.
+// 默认文本样式
 @property(nonatomic,copy)   NSDictionary<NSString *, id>           *defaultTextAttributes NS_AVAILABLE_IOS(7_0); // applies attributes to the full range of text. Unset attributes act like default values.
 
 // 占位提示文字;显示为70%灰色
@@ -104,7 +105,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITextField : UIControl <UITextInput, NSC
 @property(nonatomic)        UITextFieldViewMode  rightViewMode;   // sets when the right view shows up. default is UITextFieldViewModeNever
 
 // drawing and positioning overrides
-
+//用于子类重写来自定义一些元素的布局
 - (CGRect)borderRectForBounds:(CGRect)bounds;
 - (CGRect)textRectForBounds:(CGRect)bounds;
 - (CGRect)placeholderRectForBounds:(CGRect)bounds;
@@ -118,7 +119,9 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITextField : UIControl <UITextInput, NSC
 
 // Presented when object becomes first responder.  If set to nil, reverts to following responder chain.  If
 // set while first responder, will not take effect until reloadInputViews is called.
+// 输入源
 @property (nullable, readwrite, strong) UIView *inputView;             
+// 输入源附件
 @property (nullable, readwrite, strong) UIView *inputAccessoryView;
 
 @property(nonatomic) BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0); // defaults to NO. if YES, the selection UI is hidden, and inserting text will replace the contents of the field. changing the selection will automatically set this to NO.

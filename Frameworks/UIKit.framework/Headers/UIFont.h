@@ -12,6 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 字体
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UIFont : NSObject <NSCopying>
 
 // Returns an instance of the font associated with the text style and scaled appropriately for the user's selected content size category. See UIFontDescriptor.h for the complete list.
@@ -21,15 +22,18 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIFont : NSObject <NSCopying>
 + (nullable UIFont *)fontWithName:(NSString *)fontName size:(CGFloat)fontSize;
 
 // Returns an array of font family names for all installed fonts
+// 返回所有可用字体名
 + (NSArray<NSString *> *)familyNames;
 
 // Returns an array of font names for the specified family name
+// 返回某一类字体可用的字体名
 + (NSArray<NSString *> *)fontNamesForFamilyName:(NSString *)familyName;
 
 
 // Some convenience methods to create system fonts
 
 // Think carefully before using these methods. In most cases, a font returned by +preferredFontForTextStyle: will be more appropriate, and will respect the user's selected content size category.
+// 指定尺寸的系统字体;粗体;斜体
 + (UIFont *)systemFontOfSize:(CGFloat)fontSize;
 + (UIFont *)boldSystemFontOfSize:(CGFloat)fontSize;
 + (UIFont *)italicSystemFontOfSize:(CGFloat)fontSize;

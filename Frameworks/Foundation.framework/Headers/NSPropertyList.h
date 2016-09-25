@@ -5,6 +5,8 @@
 #import <Foundation/NSObject.h>
 #include <CoreFoundation/CFPropertyList.h>
 
+//对plist文件的解析,没有用到过.  JSON走天下	
+
 @class NSData, NSString, NSError, NSInputStream, NSOutputStream;
 
 NS_ASSUME_NONNULL_BEGIN

@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIScreenMode, CADisplayLink, UIView;
 
+// 屏幕已连接,断开连接, 模式改变, 亮度改变的通知
 // Object is the UIScreen that represents the new screen. Connection notifications are not sent for screens present when the application is first launched
 UIKIT_EXTERN NSString *const UIScreenDidConnectNotification NS_AVAILABLE_IOS(3_2);
 // Object is the UIScreen that represented the disconnected screen.
@@ -32,16 +33,24 @@ typedef NS_ENUM(NSInteger, UIScreenOverscanCompensation) {
     UIScreenOverscanCompensationInsetApplicationFrame NS_ENUM_DEPRECATED_IOS(5_0, 9_0, "Use UIScreenOverscanCompensationNone") = 2,
 };
 
+// 屏幕对象. 一般使用mainScreen获取内置屏幕对象
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UIScreen : NSObject <UITraitEnvironment>
 
+//当前设备连接的所有屏幕
 + (NSArray<UIScreen *> *)screens NS_AVAILABLE_IOS(3_2);          // all screens currently attached to the device
+// 设备内置屏幕
 + (UIScreen *)mainScreen;      // the device's internal screen
 
+// 屏幕尺寸,单位为点
 @property(nonatomic,readonly) CGRect  bounds;                // Bounds of entire screen in points
+//屏幕的点与像素比
 @property(nonatomic,readonly) CGFloat scale NS_AVAILABLE_IOS(4_0);
 
+// 屏幕的所有可用模式
 @property(nonatomic,readonly,copy) NSArray<UIScreenMode *> *availableModes NS_AVAILABLE_IOS(3_2) __TVOS_PROHIBITED;             // The list of modes that this screen supports
+// 屏幕的默认模式
 @property(nullable, nonatomic,readonly,strong) UIScreenMode *preferredMode NS_AVAILABLE_IOS(4_3) __TVOS_PROHIBITED;       // Preferred mode of this screen. Choosing this mode will likely produce the best results
+//当前的屏幕模式；tvOS下只读
 #if TARGET_OS_TV
 @property(nullable,nonatomic,readonly,strong) UIScreenMode *currentMode NS_AVAILABLE_IOS(3_2);                  // Current mode of this screen
 #else
@@ -53,6 +62,7 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UIScreen : NSObject <UITraitEnvironment>
 
 @property(nullable, nonatomic,readonly,strong) UIScreen *mirroredScreen NS_AVAILABLE_IOS(4_3);          // The screen being mirrored by the receiver. nil if mirroring is disabled or unsupported. Moving a UIWindow to this screen will disable mirroring
 
+//屏幕亮度0.0~1.0
 @property(nonatomic) CGFloat brightness NS_AVAILABLE_IOS(5_0) __TVOS_PROHIBITED;        // 0 .. 1.0, where 1.0 is maximum brightness. Only supported by main screen.
 @property(nonatomic) BOOL wantsSoftwareDimming NS_AVAILABLE_IOS(5_0) __TVOS_PROHIBITED; // Default is NO. If YES, brightness levels lower than that of which the hardware is capable are emulated in software, if neccessary. Having enabled may entail performance cost.
 

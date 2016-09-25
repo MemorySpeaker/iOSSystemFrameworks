@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 时区对象
 @interface NSTimeZone : NSObject <NSCopying, NSSecureCoding>
 
 @property (readonly, copy) NSString *name;
@@ -24,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSTimeZone (NSExtendedTimeZone)
 
+// 系统时区
 + (NSTimeZone *)systemTimeZone;
 + (void)resetSystemTimeZone;
 
@@ -62,6 +64,7 @@ typedef NS_ENUM(NSInteger, NSTimeZoneNameStyle) {
 
 @end
 
+// 创建时区对象的扩展方法
 @interface NSTimeZone (NSTimeZoneCreation)
 
 // Primary creation method is +timeZoneWithName:; the
@@ -82,6 +85,7 @@ typedef NS_ENUM(NSInteger, NSTimeZoneNameStyle) {
 
 @end
 
+//系统时区发生改变的通知
 FOUNDATION_EXPORT NSString * const NSSystemTimeZoneDidChangeNotification NS_AVAILABLE(10_5, 2_0);
 
 NS_ASSUME_NONNULL_END

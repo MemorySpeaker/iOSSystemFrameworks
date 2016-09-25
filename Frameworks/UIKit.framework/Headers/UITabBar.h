@@ -11,6 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// ?
 typedef NS_ENUM(NSInteger, UITabBarItemPositioning) {
     UITabBarItemPositioningAutomatic,
     UITabBarItemPositioningFill,
@@ -21,12 +22,17 @@ typedef NS_ENUM(NSInteger, UITabBarItemPositioning) {
 @class UIImageView;
 @protocol UITabBarDelegate;
 
+// 标签条
 NS_CLASS_AVAILABLE_IOS(2_0) @interface UITabBar : UIView
 
+// 代理
 @property(nullable,nonatomic,assign) id<UITabBarDelegate> delegate;     // weak reference. default is nil
+// 标签项
 @property(nullable,nonatomic,copy) NSArray<UITabBarItem *> *items;        // get/set visible UITabBarItems. default is nil. changes not animated. shown in order
+// 选中的标签项
 @property(nullable,nonatomic,assign) UITabBarItem *selectedItem; // will show feedback based on mode. default is nil
 
+// 动画方式设置标签项
 - (void)setItems:(nullable NSArray<UITabBarItem *> *)items animated:(BOOL)animated;   // will fade in or out or reorder and adjust spacing
 
 // Reorder items. This will display a sheet with all the items listed, allow the user to change/reorder items and shows a 'Done' button at the top
@@ -40,7 +46,9 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITabBar : UIView
  and behaves as described for the tintColor property added to UIView.
  To tint the bar's background, please use -barTintColor.
  */
+ //渲染色
 @property(null_resettable, nonatomic,strong) UIColor *tintColor NS_AVAILABLE_IOS(5_0);
+//背景色
 @property(nullable, nonatomic,strong) UIColor *barTintColor NS_AVAILABLE_IOS(7_0) UI_APPEARANCE_SELECTOR;  // default is nil
 
 /* selectedImageTintColor will be applied to the gradient image used when creating the
@@ -51,18 +59,22 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITabBar : UIView
  Deprecated in iOS 8.0. On iOS 7.0 and later the selected image takes its color from the
  inherited tintColor of the UITabBar, which may be set separately if necessary.
  */
+ //被选中的图片选染色
 @property(nullable,nonatomic,strong) UIColor *selectedImageTintColor NS_DEPRECATED_IOS(5_0,8_0,"Use tintColor") UI_APPEARANCE_SELECTOR __TVOS_PROHIBITED;
 
 /* The background image will be tiled to fit, even if it was not created via the UIImage resizableImage methods.
  */
+//背景图
 @property(nullable, nonatomic,strong) UIImage *backgroundImage NS_AVAILABLE_IOS(5_0) UI_APPEARANCE_SELECTOR;
 
 /* The selection indicator image is drawn on top of the tab bar, behind the bar item icon.
  */
+//选中指示图
 @property(nullable, nonatomic,strong) UIImage *selectionIndicatorImage NS_AVAILABLE_IOS(5_0) UI_APPEARANCE_SELECTOR; 
 
 /* Default is nil. When non-nil, a custom shadow image to show instead of the default shadow image. For a custom shadow to be shown, a custom background image must also be set with -setBackgroundImage: (if the default background image is used, the default shadow image will be used).
  */
+//阴影图
 @property(nullable, nonatomic,strong) UIImage *shadowImage NS_AVAILABLE_IOS(6_0) UI_APPEARANCE_SELECTOR;
 
 /*
@@ -107,14 +119,17 @@ NS_CLASS_AVAILABLE_IOS(2_0) @interface UITabBar : UIView
  the tab bar will provide an opaque background for the image using the bar's barTintColor if defined, or black
  for UIBarStyleBlack or white for UIBarStyleDefault if barTintColor is nil.
  */
+//是否透明
 @property(nonatomic,getter=isTranslucent) BOOL translucent NS_AVAILABLE_IOS(7_0);
 @end
 
 //___________________________________________________________________________________________________
 
+// 代理协议
 @protocol UITabBarDelegate<NSObject>
 @optional
 
+//选中了某项
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item; // called when a new view is selected by the user (but not programatically)
 
 /* called when user shows or dismisses customize sheet. you can use the 'willEnd' to set up what appears underneath. 

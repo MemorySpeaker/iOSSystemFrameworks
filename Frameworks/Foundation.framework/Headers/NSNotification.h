@@ -10,7 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /****************	Notifications	****************/
 
-// 通知对象
+// "通知信息"对象
 @interface NSNotification : NSObject <NSCopying, NSCoding>
 
 // 通知名称
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 从通知中心移除监听者observer对anObject发出的aName通知的监听
 - (void)removeObserver:(id)observer name:(nullable NSString *)aName object:(nullable id)anObject;
 
-// ?
+// 使用block监听通知，返回值为监听者，用于解除监听时使用
 - (id <NSObject>)addObserverForName:(nullable NSString *)name object:(nullable id)obj queue:(nullable NSOperationQueue *)queue usingBlock:(void (^)(NSNotification *note))block NS_AVAILABLE(10_6, 4_0);
     // The return value is retained by the system, and should be held onto by the caller in
     // order to remove the observer with removeObserver: later, to stop observation.

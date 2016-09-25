@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* Options for use with -addObserver:forKeyPath:options:context: and -addObserver:toObjectsAtIndexes:forKeyPath:options:context:.
 */
+// 监听参数,可通过|运算来同时设置多个选项
 typedef NS_OPTIONS(NSUInteger, NSKeyValueObservingOptions) {
 
     /* Whether the change dictionaries sent in notifications should contain NSKeyValueChangeNewKey and NSKeyValueChangeOldKey entries, respectively.
@@ -54,12 +55,14 @@ typedef NS_ENUM(NSUInteger, NSKeyValueSetMutationKind) {
 
 /* Keys for entries in change dictionaries. See the comments for -observeValueForKeyPath:ofObject:change:context: for more information.
 */
+// 调用监听者的重写方法时,chang字典中对应信息项的key值
 FOUNDATION_EXPORT NSString *const NSKeyValueChangeKindKey;
 FOUNDATION_EXPORT NSString *const NSKeyValueChangeNewKey;
 FOUNDATION_EXPORT NSString *const NSKeyValueChangeOldKey;
 FOUNDATION_EXPORT NSString *const NSKeyValueChangeIndexesKey;
 FOUNDATION_EXPORT NSString *const NSKeyValueChangeNotificationIsPriorKey NS_AVAILABLE(10_5, 2_0);
 
+// 键值监听扩展
 @interface NSObject(NSKeyValueObserving)
 
 /* Given that the receiver has been registered as an observer of the value at a key path relative to an object, be notified of a change to that value.
@@ -77,6 +80,7 @@ If NSKeyValueObservingOptionPrior (introduced in Mac OS 10.5) was specified at o
 
 context is always the same pointer that was passed in at observer registration time.
 */
+// 监听者需要重写这个方法,当被监听值发生改变时会调用该方法
 - (void)observeValueForKeyPath:(nullable NSString *)keyPath ofObject:(nullable id)object change:(nullable NSDictionary<NSString*, id> *)change context:(nullable void *)context;
 
 @end
@@ -85,6 +89,7 @@ context is always the same pointer that was passed in at observer registration t
 
 /* Register or deregister as an observer of the value at a key path relative to the receiver. The options determine what is included in observer notifications and when they're sent, as described above, and the context is passed in observer notifications as described above. You should use -removeObserver:forKeyPath:context: instead of -removeObserver:forKeyPath: whenever possible because it allows you to more precisely specify your intent. When the same observer is registered for the same key path multiple times, but with different context pointers each time, -removeObserver:forKeyPath: has to guess at the context pointer when deciding what exactly to remove, and it can guess wrong.
 */
+// 添加,移除监听
 - (void)addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context;
 - (void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(nullable void *)context NS_AVAILABLE(10_7, 5_0);
 - (void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath;

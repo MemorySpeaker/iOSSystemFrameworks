@@ -9,6 +9,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 // Predefined domain for errors from most AppKit and Foundation APIs.
+// 错误域
 FOUNDATION_EXPORT NSString *const NSCocoaErrorDomain;
 
 // Other predefined domains; value of "code" will correspond to preexisting values in these domains.
@@ -20,6 +21,7 @@ FOUNDATION_EXPORT NSString *const NSMachErrorDomain;
 FOUNDATION_EXPORT NSString *const NSUnderlyingErrorKey;
 
 // Keys in userInfo, for subsystems wishing to provide their error messages up-front. Note that NSError will also consult the userInfoValueProvider for the domain when these values are not present in the userInfo dictionary.
+// 错误附加信息中信息字典里的key
 FOUNDATION_EXPORT NSString *const NSLocalizedDescriptionKey;             // NSString
 FOUNDATION_EXPORT NSString *const NSLocalizedFailureReasonErrorKey;      // NSString
 FOUNDATION_EXPORT NSString *const NSLocalizedRecoverySuggestionErrorKey; // NSString
@@ -33,7 +35,7 @@ FOUNDATION_EXPORT NSString *const NSURLErrorKey;              // NSURL
 FOUNDATION_EXPORT NSString *const NSFilePathErrorKey;         // NSString
 
 
-
+//错误对象
 @interface NSError : NSObject <NSCopying, NSSecureCoding> {
     @private
     void *_reserved;
@@ -44,6 +46,7 @@ FOUNDATION_EXPORT NSString *const NSFilePathErrorKey;         // NSString
 
 /* Domain cannot be nil; dict may be nil if no userInfo desired.
 */
+// 实例化
 - (instancetype)initWithDomain:(NSString *)domain code:(NSInteger)code userInfo:(nullable NSDictionary *)dict NS_DESIGNATED_INITIALIZER;
 + (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code userInfo:(nullable NSDictionary *)dict;
 
