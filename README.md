@@ -1,5 +1,8 @@
 #iOSSystemFrameworks
 
+##10.27日:全部整合到ITRoad中,这个库不再更新
+
+---
 
 >在原版iOS的系统框架上不断丰富众人的经验和见解作为注释,不断积累,以达到高效相互学习,高质量共同进步为目的,参见[iOS_系统所有Frameworks & usr/include概览](http://www.jianshu.com/p/6d371e7fb627)
 
